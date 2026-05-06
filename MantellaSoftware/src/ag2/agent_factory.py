@@ -3,6 +3,7 @@ from autogen import AssistantAgent
 from src.character_manager import Character
 from src.config.config_loader import ConfigLoader
 from src.llm.client_base import ClientBase
+import logging
 
 class AgentFactory:
     """Factory for creating AG2 agents from Mantella characters."""
@@ -54,18 +55,15 @@ class AgentFactory:
         # We'll map Mantella's "LLM Service" concept to AG2's config.
         
         # definitions are in config.definitions
+        # definitions are in config.definitions
         try:
-             service = config.llm_service # This might be an enum or string depending on implementation
-             model_name = config.llm_model 
+             service = config.llm_api # Correct attribute is llm_api
+             model_name = config.llm # Correct attribute is llm (mapped from model in config.ini)
         except AttributeError:
-             # Fallback if I can't find exact property names without looking at definitions, 
-             # but based on ClientBase, these should exist or be accessible via definitions.
-             # Let's check config_loader again if needed, but for prototype we can try standard names.
-             # Actually, simpler: ClientBase takes (api_url, llm, ...)
-             # Let's try to infer from config.ini values if we can access them.
-             # ConfigLoader exposes values as properties if they are defined.
-             service = config.definitions.get_value("llm_service")
-             model_name = config.definitions.get_value("llm_model")
+             # Fallback if attributes are missing (should not happen if config loaded correctly)
+             logging.warning("AgentFactory: Could not find llm_api or llm in config, checks definitions.")
+             service = config.definitions.get_value("llm_api")
+             model_name = config.definitions.get_value("model")
 
         base_url = None
         api_type = None
@@ -89,7 +87,7 @@ class AgentFactory:
 
         return {
             "config_list": config_list,
-            "temperature": config.definitions.get_value("temperature"), # Assuming this exists
+            "temperature": config.llm_params.get("temperature", 0.7), 
             "cache_seed": 42, # For reproducibility during testing
         }
 

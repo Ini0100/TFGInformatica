@@ -100,7 +100,11 @@ class Conversation:
         Returns:
             tuple[str, sentence | None]: Returns a tuple consisting of a reply type and an optional sentence
         """
+        logging.info( self.__context)
+        logging.info( self.__messages)
         greeting: UserMessage | None = self.__conversation_type.get_user_message(self.__context, self.__messages)
+        logging.info( UserMessage)
+
         if greeting:
             self.__messages.add_message(greeting)
             self.__start_generating_npc_sentences()

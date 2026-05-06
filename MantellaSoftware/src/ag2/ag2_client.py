@@ -37,7 +37,7 @@ class AG2Client(AIClient):
         # For now, return None or basic string to indicate AG2 is active.
         return None
 
-    async def streaming_call(self, messages: Message | message_thread, is_multi_npc: bool) -> AsyncGenerator[str | None, None]:
+    async def streaming_call(self, messages: Message | message_thread, is_multi_npc: bool, tools: list[dict] | None = None) -> AsyncGenerator[str | None, None]:
         """
         Triggers an AG2 agent reply and yields it as a stream.
         """
@@ -59,7 +59,7 @@ class AG2Client(AIClient):
         # Mantella's 'messages' contains the full history including the latest user message.
         
         last_message = messages.get_last_message()
-        last_content = last_message.get_content() if last_message else ""
+        last_content = last_message.get_formatted_content() if last_message else ""
         
         # 3. Generate Reply
         # We use a blocking call to generate_reply (AG2 is mostly sync, but has async support).
