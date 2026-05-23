@@ -51,7 +51,7 @@ async def chat_interactivo():
         image_secret_key_file="IMAGE_SECRET_KEY.txt"
     )
 
-    historial_base = [MockMessage("system", "Eres Nazeem Fuego Secreto.")]
+    historial_base = [MockMessage("system", "Eres Nazeem.")]
 
     print("\n=== CONSOLA DE PRUEBAS MANTELLA CON MEMORIA ===")
     print("Escribe 'salir' para terminar.\n")
@@ -67,7 +67,7 @@ async def chat_interactivo():
         historial_turno.append(MockMessage("user", texto_usuario))
         thread = MockMessageThread(historial_turno)
 
-        print("Farengar: ", end="", flush=True)
+        print("NPC: ", end="", flush=True)
         
         try:
             # Aquí ocurre la magia: El cliente busca en memoria, inyecta y responde

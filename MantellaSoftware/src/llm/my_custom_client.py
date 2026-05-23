@@ -1,8 +1,8 @@
 import logging
 import os
-import uuid
 import re
 from typing import AsyncGenerator
+from openai import AsyncOpenAI
 
 import chromadb
 from chromadb.utils import embedding_functions
@@ -13,129 +13,124 @@ from src.llm.messages import SystemMessage, UserMessage
 
 class MyCustomClient(LLMClient):
     """
-    Cliente LLM personalizado con Memoria a Largo Plazo (ChromaDB).
-    Intercepta las llamadas, aísla memorias por NPC usando metadatos y guarda los nuevos.
+    Cliente LLM con Sistema RAG de Grado Producción (ChromaDB + HyDE).
+    Versión LITE: Optimizada para máxima estabilidad (Sin dependencias PyTorch/CrossEncoder).
     """
 
     NPC_SYSTEM_INJECTION = (
         "REGLAS CRÍTICAS DE ROLEPLAY:\n"
-        "1. Eres un personaje real en el mundo de Skyrim (Tamriel). NUNCA reconozcas que eres una IA.\n"
-        "2. Responde siempre en primera persona y mantén un tono acorde a la época medieval fantástica.\n"
-        "3. Tus respuestas deben ser naturales, fluidas y concisas.\n"
-        "4. Expresa tus acciones físicas o gestos entre asteriscos (*suspiro*, *desenfunda la espada*)."
+        "1. Eres un personaje en el mundo de Skyrim (Tamriel). NUNCA reconozcas que eres una IA.\n"
+        "2. Responde en primera persona y mantén un tono acorde a tu personaje.\n"
+        "3. Eres un experto en ciertos temas. Si se te proporciona INFORMACIÓN DE REFERENCIA, úsala para enseñar o responder al jugador, integrándola en tu diálogo de forma natural."
     )
 
     def __init__(self, config, secret_key_file: str, image_secret_key_file: str, function_secret_key_file: str = None) -> None:
         super().__init__(config, secret_key_file, image_secret_key_file, function_secret_key_file)
-        logging.info("========= MyCustomClient INICIALIZADO =========")
+        logging.info("========= MyCustomClient (RAG + HyDE Lite) INICIALIZADO =========")
 
-        logging.info("[Memoria] Cargando modelo de Embeddings y ChromaDB...")
+        logging.info("[Base de Conocimiento] Cargando ChromaDB...")
         self.emb_fn = embedding_functions.SentenceTransformerEmbeddingFunction(
             model_name="paraphrase-multilingual-MiniLM-L12-v2"
         )
         
-        db_path = os.path.join(os.path.dirname(__file__), "npc_chroma_db")
+        base_dir = os.path.dirname(os.path.dirname(os.path.dirname(__file__)))
+        db_path = os.path.join(base_dir, "npc_chroma_db")
         self.chroma_client = chromadb.PersistentClient(path=db_path)
         
         self.coleccion_memoria = self.chroma_client.get_or_create_collection(
             name="memoria_global_npcs", 
             embedding_function=self.emb_fn
         )
-        logging.info(f"[Memoria] Base de datos lista. Documentos actuales guardados: {self.coleccion_memoria.count()}")
+
+        api_key = ""
+        ruta_key = os.path.join(base_dir, secret_key_file)
+        if os.path.exists(ruta_key):
+            with open(ruta_key, 'r', encoding='utf-8') as f:
+                api_key = f.read().strip()
+                
+        self.hyde_client = AsyncOpenAI(
+            api_key=api_key,
+            base_url="https://generativelanguage.googleapis.com/v1beta/openai"
+        )
 
     def _extraer_nombre_npc(self, messages) -> str:
-        """
-        Analiza el historial de mensajes para deducir con quién estamos hablando.
-        Busca patrones como 'You are [Nombre]' o 'Eres [Nombre]'.
-        """
         try:
             if hasattr(messages, 'messages') and isinstance(messages.messages, list):
                 for msg in messages.messages:
-                    # Buscamos en los mensajes del sistema
                     if getattr(msg, 'role', '') == 'system' or (hasattr(msg, 'get_openai_message') and msg.get_openai_message().get('role') == 'system'):
                         contenido = getattr(msg, 'content', '') if hasattr(msg, 'content') else msg.get_formatted_content()
-                        
-                        # Regex para capturar el nombre después de "Eres" o "You are", parando en la primera coma o punto
                         match = re.search(r'(?:You are|Eres)\s+([^,\.]+)', contenido, re.IGNORECASE)
                         if match:
-                            nombre = match.group(1).strip()
-                            return nombre
+                            return match.group(1).strip()
         except Exception as e:
-            logging.error(f"[Memoria] Error extrayendo nombre del NPC: {e}")
-        
-        return "Desconocido" # Fallback por si la regex falla
+            logging.error(f"[Base de Conocimiento] Error extrayendo NPC: {e}")
+        return "Desconocido"
+
+    async def _generar_documento_hipotetico(self, pregunta: str, npc_actual: str) -> str:
+        try:
+            logging.info(f"[HyDE] Iniciando transformación de consulta para: '{pregunta}'")
+            prompt_hyde = (
+                f"Escribe un párrafo enciclopédico, técnico y muy breve (máximo 2 líneas) que responda directamente "
+                f"a la siguiente consulta académica: '{pregunta}'.\n"
+                f"Proporciona datos fácticos, nombres propios y definiciones objetivas. "
+                f"NUNCA uses introducciones, saludos, comentarios ni lenguaje de rol."
+            )
+            
+            response = await self.hyde_client.chat.completions.create(
+                model="gemini-flash-latest",
+                messages=[{"role": "user", "content": prompt_hyde}],
+                temperature=0.1, 
+                max_tokens=120
+            )
+            doc_hipotetico = response.choices[0].message.content.strip()
+            logging.info(f"[HyDE] Documento imaginado generado:\n > {doc_hipotetico}")
+            return doc_hipotetico
+        except Exception as e:
+            logging.error(f"[HyDE] Error al generar documento: {e}")
+            return pregunta
 
     async def streaming_call(self, messages, is_multi_npc: bool, tools: list[dict] = None) -> AsyncGenerator[tuple[str, str | list] | None, None]:
         texto_usuario = ""
-        
-        # Obtenemos el nombre del NPC actual
         npc_actual = self._extraer_nombre_npc(messages)
-        logging.info(f"[Memoria] Identidad del NPC detectada: {npc_actual}")
 
-        # 1. Recuperar el texto del usuario de forma segura
         if hasattr(messages, 'get_last_message'):
             last_msg = messages.get_last_message()
             if hasattr(last_msg, 'get_openai_message'):
-                rol = last_msg.get_openai_message().get('role', '')
-                if rol == 'user' and hasattr(last_msg, 'get_formatted_content'):
+                if last_msg.get_openai_message().get('role', '') == 'user' and hasattr(last_msg, 'get_formatted_content'):
                     texto_usuario = last_msg.get_formatted_content()
                 
-            # 2. Búsqueda e inyección controlada (FILTRANDO POR NPC)
             if texto_usuario:
                 total_docs = self.coleccion_memoria.count()
+                
                 if total_docs > 0:
-                    n_res = min(5, total_docs)
+                    texto_busqueda = await self._generar_documento_hipotetico(texto_usuario, npc_actual)
                     
-                    # AQUÍ ESTÁ LA MAGIA: Filtramos (where) para que solo busque recuerdos de ESTE NPC
+                    # Recuperamos los 3 mejores directamente de ChromaDB (Re-Ranking eliminado por estabilidad)
                     resultados = self.coleccion_memoria.query(
-                        query_texts=[texto_usuario],
-                        n_results=n_res,
+                        query_texts=[texto_busqueda], 
+                        n_results=min(3, total_docs), 
                         where={"npc_name": npc_actual} if npc_actual != "Desconocido" else None
                     )
                     
                     if resultados and resultados['documents'] and len(resultados['documents'][0]) > 0:
-                        recuerdos_texto = "\n".join(resultados['documents'][0])
-                        inyeccion_memoria = (
-                            "ATENCIÓN AL SISTEMA: A continuación se muestran fragmentos literales de conversaciones "
-                            "pasadas que has tenido con este jugador. DEBES usar esta información para responder a la pregunta actual. "
-                            "NUNCA digas que has olvidado algo que está escrito en estos recuerdos.\n\n"
-                            f"RECUERDOS RECUPERADOS:\n{recuerdos_texto}"
+                        mejores_documentos = resultados['documents'][0]
+                        documentos_texto = "\n\n".join(mejores_documentos)
+                        
+                        inyeccion_rag = (
+                            "ATENCIÓN AL SISTEMA: Usa esta información privilegiada para responder a la pregunta del jugador, "
+                            "PERO DEBES MANTENER TU PERSONALIDAD. Bajo NINGÚN CONCEPTO hables de 'bases de datos' o 'archivos'.\n\n"
+                            f"CONOCIMIENTO ADQUIRIDO:\n{documentos_texto}"
                         )
                         
-                        msg_memoria = SystemMessage(inyeccion_memoria, config=None)
+                        msg_rag = SystemMessage(inyeccion_rag, config=None)
                         if hasattr(messages, 'messages') and isinstance(messages.messages, list) and len(messages.messages) > 0:
-                            messages.messages.insert(-1, msg_memoria)
-                        else:
-                            if hasattr(messages, 'add_message'):
-                                messages.add_message(msg_memoria)
-                            elif hasattr(messages, 'add_system_message'):
-                                messages.add_system_message(inyeccion_memoria)
-                                
-                        logging.info(f"[Memoria] ÉXITO: {len(resultados['documents'][0])} recuerdos recuperados para {npc_actual}.")
-                else:
-                    logging.info("[Memoria] INFO: La base de datos está vacía en este momento.")
+                            messages.messages.insert(-1, msg_rag)
+                        elif hasattr(messages, 'add_system_message'):
+                            messages.add_system_message(inyeccion_rag)
 
-            # Inyección de Roleplay general
             msg_roleplay = SystemMessage(self.NPC_SYSTEM_INJECTION, config=None)
             if hasattr(messages, 'messages') and isinstance(messages.messages, list) and len(messages.messages) > 0:
                 messages.messages.insert(0, msg_roleplay)
 
-        # 3. Llamada al LLM padre
-        full_response_parts: list[str] = []
         async for chunk_type, chunk_data in super().streaming_call(messages, is_multi_npc, tools):
-            if chunk_type == "content" and chunk_data:
-                full_response_parts.append(chunk_data)
             yield chunk_type, chunk_data
-
-        # 4. Almacenamiento comprobado (GUARDANDO METADATOS)
-        full_response = "".join(full_response_parts)
-        if texto_usuario and full_response:
-            interaccion_a_guardar = f"Jugador: {texto_usuario} | {npc_actual}: {full_response}"
-            
-            # Guardamos el recuerdo ASOCIADO al NPC actual
-            self.coleccion_memoria.add(
-                documents=[interaccion_a_guardar],
-                metadatas=[{"tipo": "dialogo", "npc_name": npc_actual}], 
-                ids=[str(uuid.uuid4())]
-            )
-            logging.info(f"[Memoria] GUARDADO: Recuerdo asignado a {npc_actual}. Total DB: {self.coleccion_memoria.count()}")

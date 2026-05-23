@@ -9,6 +9,8 @@ data/**/*.txt
 !data/Fallout4/placeholder/*.lip
 data/tmp/
 *SECRET_KEY.txt
+npc_chroma_db/
+npc_conversations_db/
 logging.log
 player_recording.wav
 MantellaEnv*
