@@ -11,6 +11,10 @@ from src.llm.llm_client import LLMClient
 from src.llm.message_thread import message_thread
 from src.llm.messages import SystemMessage, UserMessage
 
+from sentence_transformers import CrossEncoder
+import numpy as np
+import asyncio
+
 class MyCustomClient(LLMClient):
     """
     Cliente LLM con Sistema RAG de Grado Producción (ChromaDB + HyDE).
@@ -25,6 +29,16 @@ class MyCustomClient(LLMClient):
     )
 
     def __init__(self, config, secret_key_file: str, image_secret_key_file: str, function_secret_key_file: str = None) -> None:
+        
+        # Dentro del __init__ de MyCustomClient
+        logging.info("[Re-Ranker] Cargando modelo CrossEncoder en VRAM (CUDA)...")
+
+        # Instanciamos el modelo forzando su carga en la tarjeta gráfica
+        self.cross_encoder = CrossEncoder(
+            'cross-encoder/mmarco-mMiniLMv2-L12-H384-v1',
+            device='cuda'
+        )
+        
         super().__init__(config, secret_key_file, image_secret_key_file, function_secret_key_file)
         logging.info("========= MyCustomClient (RAG + HyDE Lite) INICIALIZADO =========")
 
@@ -41,6 +55,10 @@ class MyCustomClient(LLMClient):
             name="memoria_global_npcs", 
             embedding_function=self.emb_fn
         )
+
+        # 2. En el __init__ de MyCustomClient, inicializa el modelo CrossEncoder
+        logging.info("[Re-Ranker] Cargando modelo CrossEncoder...")
+        self.cross_encoder = CrossEncoder('cross-encoder/mmarco-mMiniLMv2-L12-H384-v1')
 
         api_key = ""
         ruta_key = os.path.join(base_dir, secret_key_file)
@@ -105,20 +123,36 @@ class MyCustomClient(LLMClient):
                 if total_docs > 0:
                     texto_busqueda = await self._generar_documento_hipotetico(texto_usuario, npc_actual)
                     
-                    # Recuperamos los 3 mejores directamente de ChromaDB (Re-Ranking eliminado por estabilidad)
+                    # FASE 1: Recuperación Amplia (Hasta 15 documentos)
                     resultados = self.coleccion_memoria.query(
                         query_texts=[texto_busqueda], 
-                        n_results=min(3, total_docs), 
+                        n_results=min(15, total_docs), 
                         where={"npc_name": npc_actual} if npc_actual != "Desconocido" else None
                     )
                     
                     if resultados and resultados['documents'] and len(resultados['documents'][0]) > 0:
-                        mejores_documentos = resultados['documents'][0]
+                        documentos_candidatos = resultados['documents'][0]
+
+                        # FASE 2: Re-Ranking con Cross-Encoder
+                        # Preparamos los pares (Pregunta Original, Documento Candidato)
+                        pares = [[texto_usuario, doc] for doc in documentos_candidatos]
+        
+                        # El modelo evalúa la relevancia cruzada de cada par
+                        scores = self.cross_encoder.predict(pares)
+        
+                        # Ordenamos los índices de mayor a menor puntuación usando numpy
+                        mejores_indices = np.argsort(scores)[::-1]
+        
+                        # Seleccionamos estrictamente los 3 mejores
+                        top_3_indices = mejores_indices[:3]
+                        mejores_documentos = [documentos_candidatos[i] for i in top_3_indices]
+        
                         documentos_texto = "\n\n".join(mejores_documentos)
                         
                         inyeccion_rag = (
-                            "ATENCIÓN AL SISTEMA: Usa esta información privilegiada para responder a la pregunta del jugador, "
-                            "PERO DEBES MANTENER TU PERSONALIDAD. Bajo NINGÚN CONCEPTO hables de 'bases de datos' o 'archivos'.\n\n"
+                            "ATENCIÓN AL SISTEMA: Eres un profesor de ciencias amable, paciente y entusiasta. "
+                            "Usa la siguiente información para enseñar al jugador de forma muy educada y respetuosa. "
+                            "CRÍTICO: Escribe tu respuesta en UN SOLO PÁRRAFO CONTINUO. NUNCA uses saltos de línea (\\n) ni viñetas.\n\n"
                             f"CONOCIMIENTO ADQUIRIDO:\n{documentos_texto}"
                         )
                         

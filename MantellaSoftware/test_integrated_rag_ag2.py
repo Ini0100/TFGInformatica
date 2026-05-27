@@ -120,10 +120,17 @@ def iniciar_sistema_completo():
                 extraer_conocimiento_rag(hyde_client, coleccion_memoria, texto_usuario, npc_name)
             )
 
-            # Inyección en la memoria de AG2
+           # Inyección en la memoria de AG2
             if contexto_factual:
                 print(f"[*] Inyectando conocimiento externo en la memoria de {npc_name}...")
-                msg_rag = {"role": "system", "content": f"DATOS DE REFERENCIA (Usa esto si es útil, pero mantén tu personalidad):\n{contexto_factual}"}
+                prompt_estricto = (
+                    "ATENCIÓN AL SISTEMA: Tienes dos fuentes de conocimiento. "
+                    "1. Para datos personales, identidades o cosas que habéis hablado antes, CONFÍA EN VUESTRO HISTORIAL DE CHAT.\n"
+                    "2. Para preguntas sobre lore, ciencia o datos concretos, usa la siguiente INFORMACIÓN DE REFERENCIA. "
+                    "Si le preguntas sobre un tema fáctico que NO está en esta referencia, responde con arrogancia que no pierdes el tiempo en nimiedades.\n\n"
+                    f"INFORMACIÓN DE REFERENCIA:\n{contexto_factual}"
+                )
+                msg_rag = {"role": "system", "content": prompt_estricto}
                 npc_agent.chat_messages[player_proxy].append(msg_rag)
 
             # Fase Conversación
@@ -134,11 +141,15 @@ def iniciar_sistema_completo():
                 silent=False
             )
             
+    except KeyboardInterrupt:
+        # Esto captura el Ctrl+C y evita que el programa muera sin guardar
+        print("\n[!] Cierre forzado detectado (Ctrl+C). Iniciando guardado de emergencia...")
+        
     finally:
-        # Guardado limpio
+        # Guardado limpio: filtramos las inyecciones de sistema para que no contaminen la memoria episódica
         historial_final = [
             m for m in npc_agent.chat_messages.get(player_proxy, []) 
-            if "DATOS DE REFERENCIA" not in m.get("content", "")
+            if "ATENCIÓN AL SISTEMA:" not in m.get("content", "")
         ]
         gestor_memoria.guardar_conversacion(npc_name, historial_final)
         print(f"\n[+] Sesión guardada. ¡Ecosistema RAG+AG2 cerrado con seguridad!")

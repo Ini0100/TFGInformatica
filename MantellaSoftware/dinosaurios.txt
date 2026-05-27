@@ -1,0 +1,484 @@
+Los dinosaurios, del superorden Dinosauria (del griego δεινός deinós ‘terrible’ y σαῦρος sauros ‘lagarto’, ‘lagartos terribles’) son un clado de saurópsidos[7][8] diápsidos arcosaurios que aparecieron durante el período Triásico, presentando una distribución cosmopolita. Aunque el origen exacto y su diversificación temprana es tema de activa investigación,[9] se sitúa su origen entre 245 y 231 millones de años atrás, entre el Triásico Medio al Superior.[10]
+
+Fueron los vertebrados terrestres dominantes durante 135 millones de años, desde el inicio del Jurásico —hace unos 200 millones de años, a partir de la extinción masiva del Triásico-Jurásico— hasta el final del Cretácico —hace 66 millones de años—, cuando la mayoría de los grupos de dinosaurios se extinguieron durante la extinción masiva del Cretácico-Paleógeno, que puso fin a la Era Mesozoica.[11][12][13] El registro fósil indica que las aves evolucionaron a partir de dinosaurios terópodos durante el período Jurásico y, en consecuencia, el consenso científico actual es que las aves forman un subgrupo dentro de Dinosauria.[14][15][16][17][18][2][19] Algunas aves sobrevivieron a este acontecimiento, y sus descendientes continúan el linaje de los dinosaurios hasta nuestros días.[20] Por lo tanto, los dinosaurios se pueden dividir en dinosaurios avianos —las aves en un sentido estricto— y los dinosaurios no avianos —todos extintos—, que son todos dinosaurios distintos de las aves.[21]
+
+Los dinosaurios son un grupo diverso de animales desde el punto de vista taxonómico, morfológico y ecológico. Usando la evidencia fósil, los paleontólogos han identificado cerca de 900 géneros distintos[22] y más de 1000 especies diferentes de dinosaurios no avianos.[23] Los dinosaurios están representados en todos los continentes tanto por especies existentes, las aves, como por restos fósiles.
+
+Los dinosaurios desarrollaron una notable diversidad de adaptaciones dietéticas a lo largo del Mesozoico, siendo algunos herbívoros, otros carnívoros o incluso omnívoros.[24] Los primeros dinosaurios fueron bípedos, pero muchos grupos incluyeron especies cuadrúpedas, y algunos podían alternar los dos tipos de locomoción.[25][26] Los cuernos o crestas son comunes a todos los grupos de dinosaurios, y algunos grupos desarrollaron modificaciones esqueléticas como armaduras óseas y espinas. La evidencia sugiere que la puesta de huevos y la construcción de nidos fueron rasgos que compartían todos los dinosaurios.[27][28] Muchos dinosaurios eran de gran porte, el dinosaurio saurópodo más grande pudo haber alcanzado una longitud de 40 m y 18 m de altura y una masa estimada máxima de 140 t. Sin embargo, la idea de que los dinosaurios no avianos fueron todos gigantescos es un error basado en el sesgo de conservación, ya que los huesos grandes y fuertes tienen más probabilidad de durar hasta que se fosilicen. Muchos dinosaurios eran bastante pequeños, algunos median solamente unos 50 cm de largo.
+
+Aunque la palabra dinosaurio significa ‘lagarto terrible’, el nombre es un poco engañoso, ya que los dinosaurios no son lagartos. En cambio, representan un grupo separado de reptiles que, como muchas formas extintas, no muestran características tradicionalmente vistas como propias de un reptil, como la postura extendida hacia los lados de las extremidades o la ectotermia. Además, muchos animales prehistóricos, incluidos los ictiosaurios, mosasaurios, plesiosaurios, pterosaurios y pelicosaurios, como Dimetrodon, son popularmente concebidos como dinosaurios, pero no están clasificados taxonómicamente como tales. A lo largo de la primera mitad del siglo XX, antes de que las aves fueran reconocidas como dinosaurios, la mayor parte de la comunidad científica creía que los dinosaurios habían sido lentos y de sangre fría. No obstante, la mayoría de las investigaciones realizadas desde la década de 1970 han indicado que los dinosaurios eran animales activos con un metabolismo más elevado del que se pensó inicialmente y exhibiendo numerosas adaptaciones para la interacción social.[29][30]
+
+Desde que en el siglo XIX se reconocieron los primeros fósiles de dinosaurios y se dio nombre al grupo,[31] los esqueletos fósiles montados, sean originales o réplicas, se han convertido en la principal atracción de muchos museos de todo el mundo, convirtiéndose los dinosaurios en parte permanente de la cultura mundial.[32] El gran tamaño de algunos grupos han asegurado apariciones regulares de dinosaurios en los libros de mayor venta y en películas como Parque Jurásico. El persistente entusiasmo del público por estos animales ha dado lugar a una importante financiación para la investigación científica de los dinosaurios, y los nuevos descubrimientos son dados a conocer regularmente en los medios de comunicación.[33][34]
+
+Definición y descripción
+
+Esqueleto de Triceratops horridus, Museo Americano de Historia Natural, Estados Unidos
+Desde el punto de vista de la taxonomía filogenética, los dinosaurios se definen generalmente como el grupo constituido por todos los descendientes del más reciente ancestro común (ACMR) de Triceratops horridus y Passer domesticus, una ave moderna.[35] También se ha propuesto que Dinosauria se defina con respecto al ACMR de Megalosaurus e Iguanodon, porque se trataba de dos de los tres géneros citados por Richard Owen al reconocer los Dinosauria.[36] Ambas definiciones incluyen el mismo grupo de animales: «Dinosauria=Ornithischia + Saurischia», que abarca los terópodos, en su mayoría carnívoros bípedos y aves, anquilosaurianos, cuadrúpedos herbívoros acorazados, estegosaurianos, cuadrúpedos herbívoros con placas en la espalda, ceratopsianos, herbívoros cuadrúpedos con cuernos y volantes, ornitópodos, herbívoros bípedos o cuadrúpedos, incluyendo a los "picos de pato", y sauropodomorfos, en su mayoría grandes cuadrúpedos herbívoros de cuello y cola largos.[37]
+
+En el siglo XXI, las aves se reconocen como las únicas supervivientes del linaje de los dinosaurios terópodos.[16][21] En la taxonomía tradicional, las aves eran consideradas una clase separada que había evolucionado a partir de los dinosaurios, un superorden distinto. Sin embargo, la mayoría de los paleontólogos contemporáneos relacionados con los dinosaurios rechazan la clasificación de estilo tradicional en favor de la nomenclatura filogenética; este enfoque requiere que, para que un grupo sea natural, todos los descendientes de los miembros del grupo se incluyan también en el grupo. Las aves están, por lo tanto, consideradas dinosaurios, y estos últimos, por consiguiente, no se han extinguido. Las aves se clasifican como pertenecientes al subgrupo Maniraptora, que son coelurosaurios, que a su vez son terópodos, que a su vez son saurisquios, y que a su vez son dinosaurios.[38]
+
+Por otra parte, la investigación realizada por Matthew Baron, David Norman y Paul Barrett en 2017 sugirió una revisión radical de la sistemática de los dinosaurios. El análisis filogenético estableció a Ornithischia como más cercano a Theropoda que a Sauropodomorpha, en contraposición a la unión tradicional de terópodos con sauropodomorfos. Esto haría que los saurópodos y sus parientes quedaran fuera de los dinosaurios tradicionales, por lo que redefinieron Dinosauria como el último ancestro común de Triceratops horridus, Passer domesticus y Diplodocus carnegii y todos sus descendientes, para garantizar que los saurópodos y sus parientes sigan incluidos como dinosaurios. También resucitaron el clado Ornithoscelida para referirse al grupo que contiene Ornithischia y Theropoda.[39][40] Esta hipótesis fue con posterioridad cuestionada y puesta en duda.[41][42]
+
+Descripción general
+
+Con más de 11 000 especies,[43] las aves modernas (Neornithes) son los únicos representantes del clado Dinosauria que sobrevivieron
+Los dinosaurios se pueden describir generalmente como arcosaurios con extremidades mantenidas erectas por debajo del cuerpo.[44] Muchos grupos de animales prehistóricos son popularmente concebidos como dinosaurios, como los ictiosaurios, plesiosaurios, mosasaurios, pterosaurios y pelicosaurios, pero no se clasifican científicamente como dinosaurios, y ninguno tenía la postura característica de miembro erecto de los verdaderos dinosaurios.[45] Los pterosaurios están relacionados lejanamente con los dinosaurios, siendo miembros del clado Ornithodira. Los otros grupos mencionados son, al igual que los dinosaurios y los pterosaurios, miembros de Sauropsida, el clado de reptiles y aves, excepto los pelicosaurios, que son sinápsidos. Ninguno de ellos tenía la postura erguida de las extremidades traseras característica de los verdaderos dinosaurios.[45]
+
+Los dinosaurios eran los vertebrados terrestres dominantes del Mesozoico, especialmente en los períodos Jurásico y Cretácico. Otros grupos de animales estaban restringidos en tamaño y nichos. Los mamíferos, por ejemplo, rara vez superaban el tamaño de un gato, y se trataba generalmente de roedores carnívoros del tamaño de una pequeña presa.[46] Se han identificado con certeza más de 900 géneros de dinosaurios no avianos hasta 2018, y el número total de géneros conservados en el registro fósil se ha estimado en alrededor de 1850, casi el 75% de los cuales aún están por descubrir, y se conocen 1124 especies para 2016.[47][48][22] Un estudio anterior predijo que existían alrededor de 3400 géneros de dinosaurios, incluyendo muchos que no se han conservado en el registro fósil.[49] En 2016, el número estimado de especies de dinosaurios que existieron en el Mesozoico era de 1543 a 2468.[50][51] En 2021, se estimó que el número de aves modernas, los dinosaurios avianos, era de 10806 especies.[52]
+
+Algunos eran herbívoros, otros carnívoros, incluyendo granívoros, piscívoros, insectívoros y omnívoros. Aunque los dinosaurios eran ancestralmente bípedos, al igual que todas las aves modernas, algunas especies prehistóricas eran cuadrúpedas, y otras, como Ammosaurus e Iguanodon, podían caminar con la misma facilidad en dos o cuatro patas. Las modificaciones craneales como cuernos y crestas son rasgos comunes de dinosaurios, y algunas especies extinguidas tenían armadura ósea. Aunque conocidos por su gran tamaño, muchos dinosaurios del Mesozoico eran del tamaño de un ser humano o menor, y las aves modernas son en general de pequeño tamaño. Hoy en día se encuentran dinosaurios enterrados en todos los continentes, y los fósiles muestran que habían logrado la distribución global por lo menos durante el período Jurásico temprano.[29] Las aves modernas habitan en la mayoría de los hábitats disponibles, desde terrestres hasta marinos, y existe evidencia de que algunos dinosaurios no avianos, como el Microraptor, podían volar o al menos planear y otros, como los espinosáuridos, tenían hábitos semiacuáticos.[53]
+
+Características anatómicas distintivas
+Si bien los descubrimientos recientes han hecho que sea más difícil presentar una lista universalmente aceptada de sus características distintivas, casi todos los dinosaurios descubiertos hasta ahora comparten ciertas modificaciones en el esqueleto ancestral del arcosaurio, o son claramente descendientes de dinosaurios más antiguos que muestran estas modificaciones. A pesar de que algunos géneros desarrollaron adaptaciones que hicieron aún más pronunciadas las diferencias estructurales, esos rasgos básicos son considerados como típicos del superorden Dinosauria, dichas cualidades comunes a los miembros de un grupo taxonómico reciben el nombre de sinapomorfias de dicho grupo.[54]
+
+
+Diagrama etiquetado de un cráneo de arcosaurio típico, el cráneo de Dromaeosaurus
+Una evaluación detallada de las interrelaciones entre arcosaurios llevada a cabo por el paleontólogo Sterling Nesbitt[55] confirmaron o encontraron las siguientes doce sinapomorfias inequívocas, siendo algunas conocidas previamente:
+
+En el cráneo se presenta una fosa supratemporal, una excavación por delante de la fenestra supratemporal, la principal abertura en la parte superior del cráneo trasero.
+En las vértebras cervicales anteriores, también llamadas frontales, del cuello, detrás del atlas y el axis están presentes las Epipófisis, procesos oblicuos en forma de puntas apuntando hacia atrás en las esquinas superiores traseras.
+En el húmero, hueso del brazo, el vértice de la cresta deltopectoral, una proyección en la que los músculos se unen deltopectorales, situado al nivel o más del 30 % de la longitud del mismo.
+El radio, un hueso del brazo inferior, más corto que el 80 % de la longitud del húmero
+En el fémur, hueso del muslo, el cuarto trocánter, proyección donde el músculo caudofemoralis se une al eje posterior interno, es una brida aguda.
+El cuarto trocánter es asimétrico con el margen distal inferior formando un ángulo más pronunciado con la diáfisis del fémur.
+La faceta articular proximal para la fíbula o peroné del astrágalo y el calcáneo, huesos superiores del tobillo, abarca menos del 30% del ancho transversal del elemento.
+Los exocciptiales, huesos en la parte posterior del cráneo, no se tocan a lo largo de la línea media en el suelo de la cavidad endocraneal, el espacio interior de la caja craneal.
+En la pelvis, las superficies articulares proximales del isquion con el ilion y el pubis están separadas por una gran superficie cóncava, en el lado superior del isquion entre los contactos con el hueso púbico de la cadera y el ilion se encuentra una parte de la articulación abierta.
+Las crestas cnémial, parte sobresaliente de la superficie superior en la tibia, se arquean anterolateralmente, es decir, hacia la parte superior de un lado.
+Cresta orientada proximodistalmente distinta presente en la cara posterior del extremo distal de la tibia.
+Nesbitt encontró una serie de potenciales nuevas sinapomorfías, y descontó un número de sinapomorfías sugeridas anteriormente. Algunas de estas también están presentes en los silesáuridos, que Nesbitt recuperó como un grupo hermano de Dinosauria, incluyendo un gran trocánter anterior, metatarsianos II y IV de longitud subequal, reducción de contacto entre el isquion y el pubis, la presencia de una cresta cnemial en la tibia y de un proceso ascendente en el astrágalo, y muchos otros.[35]
+
+Una variedad de otras características del esqueleto son compartidas por los dinosaurios. Sin embargo, debido a que son comunes a otros grupos de arcosaurios o no estaban presentes en todos los dinosaurios ancestrales, estas características no son considerados como sinapomorfías. Por ejemplo, al igual que los diápsidos, los dinosaurios ancestrales tenían dos pares de fenestra temporal, aberturas en el cráneo detrás de los ojos, y como miembros del grupo diápsido Archosauria, tenían aberturas adicionales en el hocico y la mandíbula inferior. Además, varias características que se creía eran sinapomorfías ahora se sabe que han aparecido antes de los dinosaurios, o estaban ausentes en los primeros dinosaurios y evolucionaron de forma independiente por diferentes grupos de dinosaurios.[56] Estas incluyen una escápula alargada u omóplato, un sacro compuesto por tres o más vértebras fusionadas, en algunos otros arcosaurios se encuentran tres, pero en Herrerasaurus se encuentran solo dos y un acetábulo perforado, o cavidad de la cadera, con un agujero en el centro de su superficie interior, que, por ejemplo en Saturnalia, se presenta cerrado. Otra dificultad de determinar claramente las características de los dinosaurios es que los primeros dinosaurios y otros arcosaurios del Triásico Tardío suelen ser poco conocidos aunque fueron similares en muchos aspectos, estos animales en ocasiones han sido mal identificados en la literatura.[57]
+
+
+Articulaciones de la cadera y posturas de las extremidades posteriores de: (de izquierda a derecha) los reptiles típicos (extenso), dinosaurios y mamíferos (erecto), y rauisuquiana (erecto)
+Los dinosaurios se colocaban de pie con sus patas traseras erectas de una manera similar a la mayoría de los mamíferos modernos, pero distinta de la mayoría de los otros reptiles, cuya expansión extremidades a cada lado.[58] también se presentan argumentos y muchas de las imágenes. Esta postura es debida al desarrollo de un rebaje frontal lateral en la pelvis, normalmente una cuenca abierta, y una cabeza distinta correspondiente hacia el interior frontal del fémur.[59] Su posición erecta les permitió a los primeros dinosaurios respirar con facilidad mientras se movían, lo que probablemente les produjo una resistencia extra y niveles de actividad que superaron a los de los "extensos" reptiles.[60] Probablemente las extremidades erectas también ayudaron a apoyar la evolución de gran tamaño mediante la reducción de los esfuerzos de flexión en las extremidades.[61] Algunos arcosaurios no dinosaurianos, incluyendo a los rauisuchianos, también tuvieron las extremidades erectas pero lograron esta característica de «pilar erecto» de la articulación de la cadera, donde el hueso de la pelvis superior, en lugar de tener una proyección de la inserción del fémur desde una toma de la cadera, fue girado para formar una plataforma sobresaliente.[61]
+
+Paleobiología
+El conocimiento sobre los dinosaurios ha sido obtenido a través de una variedad de registros fósiles, óseos y no óseos, como huesos fosilizados, huellas de pisadas (icnitas), heces (coprolitos), piedras usadas para ayudar en la digestión (gastrolitos), plumas, impresiones de piel, órganos internos y tejido blando.[62][63] Varios campos de estudio contribuyen a nuestro conocimiento paleontológico de los dinosaurios, incluyendo la física (especialmente la biomecánica; masa de los dinosaurios, velocidad y flujo sanguíneo), química, biología y ciencias de la Tierra (de la que la paleontología es una subdisciplina).[64][65] Dos temas de su particular interés y estudio han sido el tamaño de los dinosaurios y su comportamiento.[66] Al ser los dinosaurios un linaje tan exitoso que sobrevivió a dos extinciones masivas y estar representados hoy en día por el grupo más diverso de vertebrados terrestres, son muchos los factores de reproducción y crecimiento que influyen en la capacidad de las especie de este grupo para prosperar, en especial tras períodos que suceden a un evento de extinción, cuando aumenta drásticamente la presión reproductiva.[67][68]
+
+Tamaño
+Artículo principal: Anexo:Tamaño de los dinosaurios
+
+Diagrama a escala comparando los mayores dinosaurios conocidos de los cinco clados principales y un humano.
+La evidencia actual sugiere que el tamaño promedio de los dinosaurios varió a través de los períodos Triásico, Jurásico Inferior, Jurásico Superior y Cretácico.[69] Los dinosaurios terópodos depredadores, que ocupaban muchos de los nichos de carnívoros terrestres durante el Mesozoico, frecuentemente se ubicaban en la categoría de 100 a 1000 kg (kilogramos) cuando son clasificados por su peso estimado en categorías basadas en el orden de magnitud, mientras que los depredadores mamíferos del Holoceno se ubican en la categoría de 10 a 100 kg.[70] La moda estadística de las masas corporales de los dinosaurios mesozoicos se encuentra entre una a diez toneladas métricas[71] Esto contrasta fuertemente con el tamaño de los mamíferos a lo largo del Cenozoico, cuya masa fue estimada por el Museo Nacional de Historia Natural del Instituto Smithsoniano entre los 2 a 5 kg.[72]
+
+No obstante, el significado de «tamaño promedio» no es tan sencillo de precisar. Las observaciones actuales sugieren diferentes valores para cada uno de los períodos geológicos involucrados.[73]
+
+Los [pesos] estimados de dinosaurios medianos oscilan entre 500 kg y 5 toneladas […] Ochenta por ciento de la biomasa de la Formación de Morrison del oeste de los Estados Unidos consistía en Stegosaurus y saurópodos; estos últimos promediaban las 20 toneladas […]. El típico gran porte de los dinosaurios y el comparativamente pequeño tamaño de los mamíferos modernos ha sido cuantificado por Nicholas Hotton. Basándose en 63 géneros de dinosaurios, los datos de Hotton muestran una masa promedio que excede los 395.9 kg (el peso de un oso grizzly mediano), y una masa genérica mediana de cerca de dos toneladas (comparable a una jirafa). Esto contrasta marcadamente con mamíferos extintos (788 géneros) cuya masa promedio es de 631 gramos (la de un roedor pequeño). El dinosaurio no aviano más pequeño hallado hasta hoy era mayor que dos tercios de todos los mamíferos actuales; la mayoría de los dinosaurios eran mayores que todos los mamíferos vivientes con excepción de un 2 % de los individuos.[74]
+Los saurópodos fueron los dinosaurios más grandes y pesados. Durante la mayor parte de la era de los dinosaurios, incluso los menores saurópodos eran más grandes que cualquier otro animal en sus hábitats, y los mayores eran por un orden de magnitud más masivos que cualquier otra criatura que haya caminado sobre la Tierra. Los mamíferos prehistóricos gigantes tales como Paraceratherium (el mayor mamífero terrestre conocido) eran enanos junto a los saurópodos gigantes, y solo las ballenas modernas alcanzan o sobrepasan a los saurópodos en tamaño.[75] Hay varias ventajas propuestas para el gran tamaño de los saurópodos, incluyendo la protección de la depredación, la reducción en el uso de energía y la longevidad, pero puede que la más importante de ellas tuviera relación con su dieta. Los animales grandes son más eficientes digiriendo que los pequeños, ya que la comida pasa más tiempo en sus sistemas digestivos. Esto también les permite subsistir con comida de valor nutritivo más bajo que los animales pequeños. Los restos de saurópodos son hallados principalmente en formaciones rocosas que son interpretadas como de ambientes secos o secos estacionalmente, por lo que la habilidad de comer grandes cantidades de plantas con pocos nutrientes hubiera sido ventajosa en esa clase de ecosistemas.[76]
+
+Grandes y pequeños
+
+Tamaño comparativo de Giraffatitan con un humano promedio.
+Probablemente los científicos nunca sabrán cuales fueron los dinosaurios más grandes y más pequeños que hayan existido. Esto se debe a que solo un pequeño porcentaje de los animales llega a fosilizarse, y muchos de estos permanecen enterrados. Pocos de los especímenes que se recuperan son esqueletos completos y las impresiones de piel y otros tejidos blandos son muy raras. Reconstruir un esqueleto completo a través de comparar el tamaño y la morfología de los huesos de las especies mejor conocidas y que más se asemejen es un arte inexacto, y la reconstrucción de los músculos y otros órganos de la criatura viva es, como mucho, un proceso de establecer suposiciones fundamentadas.[77]
+
+El dinosaurio más alto y pesado conocido de esqueletos completos es Giraffatitan brancai (previamente clasificado como una especie de Brachiosaurus). Sus restos fueron descubiertos en Tanzania entre 1907 a 1912. Huesos de varios individuos de tamaño parecido fueron incorporados en el esqueleto ahora montado y expuesto en el Museo de Historia Natural de Berlín;[78] este esqueleto mide 12 m de alto y entre 21.8 y 22.5 m de largo,[79][80] y le pertenecería a un animal que pesaría entre 30 000 y 60 000 kg (kilogramos). El dinosaurio completo más largo es un espécimen de 27 m de largo de un Diplodocus, el cual fue descubierto en Wyoming en los Estados Unidos y se expone en el Museo Carnegie de Historia Natural en Pittsburgh desde 1907.[81]
+
+
+El colibrí zunzuncito (Mellisuga helenae) es el dinosaurio más pequeño del que se tengan registros.
+Hubo dinosaurios mucho mayores, pero el conocimiento de estos se basa en un pequeño número de fósiles fragmentarios. Muchos de los mayores especímenes registrados de herbívoros fueron todos descubiertos en la década de 1970 en adelante, e incluyen al enorme Argentinosaurus, el cual pudo haber pesado entre 80 000 y 100 000 kg; algunos de los más largos incluyen a Diplodocus hallorum de 33,5 m[76] (antes conocido como Seismosaurus) y a Supersaurus de 33 m de largo;[82] y entre los más altos, se encuentra a Sauroposeidon con 18 m de altura, el cual pudo haber alcanzado la ventana de un sexto piso. El más pesado y largo de todos ellos pudo haber sido Amphicoelias fragillimus, conocido solo por una vértebra parcial (el arco neural) descrita en 1878 y a la fecha diciembre de 2016 desaparecida. Extrapolando a partir de la ilustración de este hueso, el animal pudo haber medido 58 m de largo y pesado unos 120 000 kg.[76] El mayor dinosaurio carnívoro conocido fue Spinosaurus, alcanzando una longitud de más de 16 metros, y con un peso de 8150 kg.[83]
+
+Otros grandes dinosaurios carnívoros incluyen a los terópodos Giganotosaurus, Carcharodontosaurus y Tyrannosaurus.[84] Therizinosaurus y Deinocheirus estuvieron entre los más altos entre los terópodos.
+
+Sin incluir a las aves (Avialae), los dinosaurios más pequeños conocidos eran del tamaño de palomas.[85] No resulta sorprendente que los dinosaurios no avianos más pequeños fueran aquellos más cercanamente relacionados con las aves. Anchiornis huxleyi, por ejemplo, tenía un esqueleto cuya longitud total era de menos de 35 cm.[85][86] A. huxleyi es reconocido como el dinosaurio no aviano más pequeño descrito de un espécimen adulto, con un peso estimado de 110 g.[86] Los dinosaurios herbívoros no avianos más pequeños incluyen a Microceratus y a Wannanosaurus, con cerca de 60 cm de longitud cada uno.[20][87]
+
+Comportamiento
+
+Un nido de tierra del hadrosáurido Maiasaura peeblesorum fue descubierto en 1978.
+Muchas aves modernas son muy sociales, viviendo con frecuencia en bandadas. Hay un consenso generalizado de que algunos comportamientos que son comunes en las aves, así como en los cocodrilos (los parientes vivos más cercanos de las aves), eran también comunes entre los grupos extintos de dinosaurios. Las interpretaciones del comportamiento de las especies animales conocidas por restos fósiles se basan generalmente en la postura de sus esqueletos y su hábitat, las simulaciones por computadora de su biomecánica, y las comparaciones con animales modernos que tengan nichos ecológicos similares.[64]
+
+La primera evidencia de que el comportamiento en manada era común en varios grupos de dinosaurios aparte de las aves se produjo en 1878 con el descubrimiento de 31 ejemplares de Iguanodon bernissartensis, ornitisquios que se piensa perecieron juntos en un yacimiento en Bernissart, Bélgica, tras haber caído en un profundo socavón inundado en que se ahogaron.[88] Otros sitios de muerte en masa fueron descubiertos posteriormente. Estos, junto con varias huellas fosilizadas, sugieren que el comportamiento gregario era común en varias especies de dinosaurios. Las huellas de cientos o incluso miles de herbívoros indica que los hadrosáuridos pueden haberse movido en grandes grupos, como ocurre con el bisonte americano o la gacela saltarina. Las huellas de saurópodos documentan que estos animales viajaban en grupos compuestos de diferentes especies, al menos en Oxfordshire, Inglaterra,[89] aunque esto no es evidencia de una estructura específica de las manada.[90] El congregarse en grupos pudo haber evolucionado para defenderse, para propósitos de migración, o para proporcionar protección a las crías. Hay evidencia de que muchos tipos de dinosaurios de crecimiento lento, incluyendo a varios terópodos, saurópodos, anquilosaurios, ornitópodos y ceratopsios, formaban agregaciones de individuos inmaduros. Un ejemplo es un sitio en Mongolia Interior en que se han hallado los restos de cerca de 20 Sinornithomimus, de entre uno a siete años de edad. Se ha interpretado que esta asociación corresponde a un grupo social que quedó atrapado en el fango.[91] La interpretación de los dinosaurios como animales sociales también se ha extendido a los terópodos carnívoros, representándolos como cazadores grupales que cooperaban para derribar presas de gran tamaño.[92][93] Sin embargo, este estilo de vida no es común entre las aves modernas, cocodrilos y otros reptiles, y la evidencia tafonómica sugiere que la supuesta cacería en grupo al estilo de los mamíferos sugerida para dinosaurios como Deinonychus y Allosaurus puede interpretarse también como el resultado de disputa fatales entre animales que se encontraban alimentándose, como se ha observado en varios diápsidos depredadores modernos.[94]
+
+
+Recreación artística de dos Centrosaurus apertus trabados en combate.
+Las crestas y golas de algunos dinosaurios, como los marginocéfalos, terópodos y lambeosaurinos, pueden haber sido demasiado frágiles para haber sido usadas como defensa activa, y por tanto probablemente eran usadas para exhibiciones sexuales o de agresión, aunque poco se sabe sobre el apareamiento y el territorialismo en los dinosaurios. Heridas en la cabeza por mordidas sugieren que por lo menos los terópodos luchaban en confrontaciones agresivas.[95]
+
+Desde el punto de vista del comportamiento, uno de los más valiosos fósiles de dinosaurios fue el hallado en el desierto de Gobi en 1971. Este incluye a un Velociraptor atacando a Protoceratops,[96] lo cual proporciona evidencia de que los dinosaurios ciertamente se atacaban entre sí.[97] Evidencia adicional de ataques a presas vivas se halla en la cola parcialmente curada de un Edmontosaurus, un dinosaurio hadrosáurido; la cola fue dañada de tal manera que muestra que el animal fue atacado por un tiranosáurido pero logró sobrevivir.[97] El canibalismo entre algunas especies de dinosaurios fue confirmado por marcas de dientes halladas en Madagascar en 2003, en el terópodo Majungasaurus.[98]
+
+Las comparaciones realizadas con los anillos escleróticos de dinosaurios, aves y reptiles modernos han sido utilizadas para inferir los patrones de actividad diaria de los dinosaurios. Aunque se ha sugerido que la mayoría de los dinosaurios eran activos durante el día, estas comparaciones han mostrado los pequeños dinosaurios depredadores como los dromeosáuridos, Juravenator y Megapnosaurus eran probablemente nocturnos. Los dinosaurios herbívoros y omnívoros de tamaño medio y grande como los ceratopsios, sauropodomorfos, hadrosáuridos y ornitomimosaurios pueden haber sido catemerales, es decir activos durante intervalos cortos a lo largo del día, aunque se infiere que el pequeño ornitisquio Agilisaurus hubiera sido diurno.[99]
+
+Basándose en la evidencia fósil disponible de dinosaurios como Oryctodromeus, parece que algunas especies de ornistisquios parecen haber adoptado un estilo de vida parcialmente fosorial (en madrigueras).[100] Muchas aves modernas son arborícolas, y esto era igual para muchas aves del Mesozoico, especialmente las enantiornites.[101] Aunque algunas especies de dinosaurios similares a aves parecen también haber sido arborícolas (incluyendo a dromeosáuridos tales como Microraptor [102]) muchos dinosaurios no avianos parecen haber sido ante todo de locomoción terrestre. El buen entendimiento de como los dinosaurios se desplazaban en tierra es clave para modelar el comportamiento dinosauriano; la ciencia de la biomecánica, en particular, ha provisto un significativo entendimiento en esta área. Por ejemplo, los estudios de las fuerzas ejercidos por los músculos y la gravedad en la estructura esquelética de los dinosaurios han indagado cuan rápido podían correr los dinosaurios,[103] si los diplodócidos podrían crear boom sónicos a través de agitar sus colas parecidas a látigos,[104] y si los saurópodos podían flotar.[105]
+
+Comunicación
+
+Recreación artística de un despliegue visual llamativo en un Lambeosaurus magnicristatus.
+Las aves modernas se comunican mediante señales visuales y auditivas, y la amplia diversidad de estructuras de exhibición visual entre los grupos de dinosaurios fósiles, como cuernos, volantes, crestas, velas y plumas, sugiere que la comunicación visual siempre ha sido importante en la biología de los dinosaurios.[106] La reconstrucción del color del plumaje de Anchiornis sugiere la importancia del color en la comunicación visual en dinosaurios no avianos.[107] Una revisión de 2009 indicó que los no avianos usaban exhibiciones visuales y posiblemente sonidos no vocales, como silbidos, rechinar o aplaudir las mandíbulas, chapotear y batir de alas (posible en dinosaurios maniraptores alados).[106]
+
+Se han identificado laringes o cajas de voz fosilizadas en dos dinosaurios; el anquilosáurido Pinacosaurus y el neornitisquio Pulaosaurus, cuyas estructuras sugieren que los dinosaurios eran capaces de vocalizaciones complejas similares a las de las aves.[108][109] Un estudio de 2016 concluye que algunos dinosaurios pueden haber producido vocalizaciones con la boca cerrada, como arrullos, ululatos y estruendos. Estos ocurren tanto en reptiles como en aves e implican inflar el esófago o las bolsas traqueales. Dichas vocalizaciones evolucionaron de forma independiente en los arcosaurios existentes numerosas veces, tras aumentos en el tamaño corporal.[110] Las crestas de algunos hadrosáuridos y las cámaras nasales de los anquilosáuridos pueden haber sido resonadores.[111][112] Las aves han desarrollado un nuevo órgano para la vocalización, la siringe,[113] cuyos primeros restos se encontraron en un ejemplar de Vegavis iaai, parecido a un pato, que data de hace 69–66 millones de años.[114] La siringe puede haber complementado y luego reemplazado a la laringe como órgano vocal durante la evolución de las aves.[115]
+
+Biología reproductiva
+Artículo principal: Huevo de dinosaurio
+Three eggs, bluish with black speckling, sit atop a layer of white mollusk shells pieces, surrounded by sandy ground and small bits of bluish stone.
+Nido de un chorlitejo (Charadrius).
+Todos los dinosaurios depositan huevos amnióticos con cáscaras duras compuestas principalmente de carbonato de calcio.[116] Los huevos son usualmente dejados en un nido. Muchas especies crean nidos elaborados, en forma de cuenco, domo, meseta, camas, montículos, o madrigueras.[117] Algunas especies de aves modernas no hacen nidos; una especie que vive en acantilados, el arao común deja sus huevos en la roca desnuda, y el macho del pingüino emperador cuida de sus huevos colocándolos entre su vientre y sus patas. Las aves primitivas y muchos de los dinosaurios no avianos con frecuencia depositaban sus huevos en nidos comunales, en los que los mayormente los machos incubaban los huevos. Aunque las aves modernas solo tengan un oviducto funcional y depositen un huevo a la vez, las aves más primitivas y los dinosaurios tenían dos, como los cocodrilos. Algunos dinosaurios no avianos, como Troodon, presentaban puestas repetitivas, en las que los adultos podían depositar un par de huevos cada día o dos, y luego se aseguraban de que eclosionaran simultáneamente al posponer su incubación hasta que todos los huevos hubieran sido depositados.[118]
+
+Cuando depositaban los huevos, las hembras desarrollaban un tipo especial de hueso entre la capa ósea dura externa y la médula de sus extremidades. Este hueso medular, el cual es rico en calcio, es usado para hacer la cáscara del huevo. El descubrimiento de esta característica en un espécimen de Tyrannosaurus rex proporcionó evidencia del hueso medular en los dinosaurios extintos y, por primera vez, permitió a los paleontólogos establecer el sexo de un ejemplar fósil de dinosaurio. Investigaciones posteriores han encontrado hueso medular en el carnosaurio Allosaurus y el ornitópodo Tenontosaurus. Debido a que el linaje de dinosaurios que incluye a Allosaurus y a Tyrannosaurus se separó del que conduce a Tenontosaurus muy tempranamente en la evolución de los dinosaurios, esto sugiere que la producción de tejido medular es una característica general de todos los dinosaurios.[119]
+
+
+Fósiles interpretados como un oviraptor Citipati anidando en el Museo Americano de Historia Natural. El fósil más pequeño a la extrema derecha muestra el interior de uno de los huevos.
+Otro rasgo extendido entre las aves modernas es el cuidado paternal para las crías recién nacidas. Jack Horner en 1978 descubrió una zona de anidación de Maiasaura (el "lagarto buena madre") en Montana, Estados Unidos, demostrando que el cuidado paternal continuaba por un buen tiempo después del nacimiento entre los ornitópodos, lo que indica que este comportamiento puede haber sido común entre los dinosaurios.[120] Hay evidencia de que otros dinosaurios no terópodos, como los titanosaurios de la Patagonia también anidaban en grandes grupos.[121] Un espécimen hallado en Mongolia del ovirraptórido Citipati osmolskae fue descubierto en una postura de incubación similar a la de las gallinas en 1993,[122] lo cual indica que usaban una capa aislante de plumas para mantener el calor de los huevos.[123] La suposición de que el cuidado paternal fuera un rasgo común en los dinosaurios es apoyado por otros hallazgos. Por ejemplo, un embrión de dinosaurio perteneciente al prosaurópodo Massospondylus fue encontrado sin dientes, indicando que se requería que las crías fueran alimentadas por sus padres.[124] Los senderos de huellas también han confirmado cuidado paternal entre ornitópodos de la Isla de Skye en el noroeste de Escocia.[125] Nidos y huevos han sido hallados para varios de los principales grupos de dinosaurios, y parece probable que todos los dinosaurios cuidaran de sus crías en alguna medida antes o poco después de la eclosión.[126] Recientemente se han reconocido, gracias a los estudios del ámbar, la relación estrecha de algunos grupos de dinosaurios emplumados con artrópodos que vivirían en el interior de sus nidos. Así se conocen garrapatas[127] que se alimentarían de la sangre de los dinosaurios, y escarabajos derméstidos[128] que comerían sus restos de plumas y piel.
+
+Fisiología
+Artículo principal: Fisiología de los dinosaurios
+Debido a que tanto los crocodilianos como las aves modernas tienen corazones divididos en cuatro cámaras (si bien modificados en los crocodilianos), es probable que sean un rasgo compartido por todos los arcosaurios, incluyendo a los dinosaurios.[129] Aunque todas las aves tienen metabolismos altos y son de "sangre caliente" (endotérmico), ha existido un vigoroso debate desde la década de 1960 con respecto a que tanto se remonta esta característica en el linaje dinosauriano. Los científicos han diferido en si los dinosaurios no avianos eran endotérmicos, ectotérmicos o una combinación de ambas cosas.[130]
+
+Tras el descubrimiento de los primeros dinosaurios no avianos, los paleontólogos inicialmente consideraron que eran ectotérmicos. Esta supuesta condición de "sangre fría" fue usada para implicar que los dinosaurios eran organismos relativamente lentos y perezosos, aunque muchos reptiles modernos en realidad son rápidos y ágiles a pesar de depender de fuentes externas de calor para regular su temperatura corporal. La idea de los dinosaurios lentos continuó siendo la predominante hasta que Robert Bakker, uno de los primeros en proponer la endotermia de los dinosaurios, publicó un influyente artículo sobre el tema en 1968.[131]
+
+La evidencia reciente indica que incluso los dinosaurios no avianos y las aves prosperaron en climas fríos, y al menos algunas de las primeras especies deben de haber sido capaces de regular su temperatura corporal por medio biológicos internos (ayudado por la masa de los animales en las especies más grandes y las plumas u otros elementos aislantes en las especies más pequeñas). La evidencia de endotermia en los dinosaurios mesozoicos incluyen el descubrimiento de los «dinosaurios polares» en Australia y Antártida así como el análisis de estructuras de vasos sanguíneos dentro de los huesos fósiles que son típicos de los endotermos. El debate científico ha continuado en lo que respecta a los modos específicos en que evolucionó la regulación de temperatura en los dinosaurios.[132]
+
+
+Comparación entre los sacos aéreos de un abelisáurido y un ave.
+En los dinosaurios saurisquios, los metabolismos activos son apoyados por la evolución del sistema respiratorio aviano, caracterizado por un extenso sistema de sacos aéreos que se extiende a los pulmones e invade a muchos de los huesos en el esqueleto, lo que lo hace más ligero.[133] Los primeros sistemas respiratorios de tipo aviano con sacos aéreos pueden haber sido capaces de sostener mayores niveles de actividad que en los mamíferos de tamaño y constitución similar. Además de proveer un muy eficiente suministro de oxígeno, el rápido flujo de aire pudo haber sido un efectivo mecanismo de enfriamiento, lo cual es esencial en animales que son activos pero demasiado grandes para disipar todo el exceso de calor a través de su piel.[134]
+
+Como otros reptiles, los dinosaurios son principalmente uricotélicos, lo que significa que sus riñones extraen los desechos nitrogenados de su flujo sanguíneo y lo excretan como ácido úrico en lugar de la urea o amoníaco como en otros animales, a través de los uréteres a los intestinos. En muchas especies actuales, el ácido úrico es excretado junto con las heces como un desecho semisólido.[135][136][137] Sin embargo, al menos algunas aves (como los colibríes) pueden ser facultativamente amoniotélicas, excretando la mayor parte de los desechos nitrogenados como amoníaco.[138] Estas también excretan creatina, en lugar de creatinina como en los mamíferos. Este material, así como el desecho de los intestinos, sale por la cloaca.[139][140] Aparte de esto, muchas especies regurgitan egagrópilas, y se conocen fósiles de egagrópilas posiblemente procedentes de dinosaurios que se remontan hasta el período Cretácico.[141]
+
+Historia evolutiva
+Artículo principal: Evolución de los dinosaurios
+Orígenes e inicios evolutivos
+
+Esqueleto de Marasuchus lilloensis, un ornitódiro similar a los dinosaurios.
+Esqueleto completo de un dinosaurio carnívoro primitivo, expuesto en una urna de vidrio en un museo
+Algunos dinosaurios primitivos: Herrerasaurus (atrás), Eoraptor (delante) y un cráneo de Plateosaurus.
+Los dinosaurios divergieron de sus ancestros arcosaurios entre mediados a finales del período Triásico posiblemente en una región de Gondwana, hace aproximadamente 245-235 millones,[142] unos 20 millones de años después de que la extinción masiva del Pérmico-Triásico acabara con un estimado del 95 % de toda la vida en la Tierra.[143][144][145][146] La datación radiométrica de la formación rocosa que contenía los fósiles del género primitivo de dinosaurio Eoraptor ha arrojado una fecha de 231.4 millones de años, estableciendo su presencia en el registro fósil del Triásico.[147] Los paleontólogos creen que Eoraptor se parece al ancestro común de todos los dinosaurios;[69][148] es decir, que de ser así los primeros dinosaurios eran animales depredadores pequeños y bípedos.[149]
+
+Los fósiles de dinosaurios bien conocidos más antiguos conocidos a partir de restos sustanciales datan de la época Carniense del período Triásico y se han encontrado principalmente en las Formaciones Ischigualasto y Santa María de Argentina y Brasil respectivamente, y en la Formación Pebbly Arkose de Zimbabue.[150]
+
+La Formación Ischigualasto, fechada radiométricamente entre 231 y 230 millones de años,[151] ha producido el saurisquio temprano Eoraptor, originalmente considerado un miembro de Herrerasauridae[147] pero ahora considerado como un sauropodomorfo temprano, junto con los herrerasáuridos Herrerasaurus y Sanjuansaurus y los sauropodomorfos Chromogisaurus, Eodromaeus y Panphagia,[152] así como el tentativo ornitisquio temprano Pisanosaurus.[153] El probable parecido de Eoraptor con el ancestro común de todos los dinosaurios sugiere que los primeros dinosaurios habrían sido depredadores pequeños y bípedos.[154][69][149] La Formación Santa María, fechada radiométricamente como más antigua, con 233,23 millones de años,[155] ha producido los herrerasáuridos Gnathovorax y Staurikosaurus, junto con los sauropodomorfos Bagualosaurus, Buriolestes, Guaibasaurus, Macrocollum, Nhandumirim, Pampadromaeus, Saturnalia y Unaysaurus.[152] La Formación Pebbly Arkose, que es de edad incierta pero probablemente era comparable a las otras dos, ha producido el sauropodomorfo Mbiresaurus, junto con un herrerasáurido sin nombre.[150] Restos menos bien conservados de los sauropodomorfos Jaklapallisaurus y Nambalia, junto con el saurisquio temprano Alwalkeria, se conocen en las formacionesb Maleri Superior y Maleri Inferior de la India.[156] La Formación Chañares de Argentina, de edad Carniense, preserva ornitodiranos primitivos parecidos a dinosaurios, como Lagosuchus y Lagerpeton, lo que la convierte en otro sitio importante para comprender la evolución de los dinosaurios. Estos ornitodiranos apoyan el modelo de los primeros dinosaurios como depredadores pequeños y bípedos.[152][157] Los dinosaurios pueden haber aparecido ya en la época anisiana del Triásico, hace aproximadamente 243 millones de años, que es la edad del Nyasasaurus de la Formación Manda de Tanzania. Sin embargo, sus fósiles conocidos son demasiado fragmentarios para identificarlo como un dinosaurio o sólo como un pariente cercano.[158] La referencia de la Formación Manda al Anisiano también es incierta. Independientemente, los dinosaurios existieron junto con los ornitodiranos no dinosaurios durante un período de tiempo, con estimaciones que oscilan entre 5 y 10 millones de años [159] a 21 millones de años.[155]
+
+Cuando los dinosaurios aparecieron, ellos no eran los animales terrestres dominantes. Los hábitats terrestres eran ocupados por varios tipos de arcosauromorfos y terápsidos, como los cinodontes y también estaban los rincosaurios. Sus principales competidores eran los pseudosuquios, como los etosaurios, ornitosúquidos y los rauisuquios, los cuales eran más exitosos que los dinosaurios.[160] Muchos de estos animales desaparecerían a lo largo del Triásico, en alguno de los dos eventos de extinción que hubo. El primero, hace cerca de 215 millones de años, vio la desaparición de una gran variedad de arcosauromorfos basales, incluyendo a los protorosaurios. Esto fue seguido por la extinción masiva del Triásico-Jurásico, hace unos 200 millones de años, en la cual se extinguieron varios otros grupos de arcosaurios primitivos, como los etosaurios, los ornitosúquidos, los fitosaurios y los rauisuquios. Los rincosaurios y los dicinodontes sobrevivieron, al menos en algunas áreas, tan tardíamente como el inicio del Noriense e inicios del Rhaetiense, respectivamente,[161][162] pero la fecha exacta de sus extinciones es incierta. Estas pérdidas dejaron como resultado una fauna terrestre compuesta por crocodilomorfos, dinosaurios, mamíferos, pterosaurios y tortugas.[35] Los primeros linajes de dinosaurios primitivos se diversificaron durante las épocas del Carniense y el Noriense en el Triásico, posiblemente al ir ocupando los nichos de los grupos que se extinguían.[37]
+
+Evolución y paleobiogeografía
+
+El supercontinente Pangea a comienzos del Mesozoico (hace unos 200 millones de años).
+La evolución de los dinosaurios tras el Triásico fue acompañada de los cambios en la vegetación y la posición de los continentes. En el Triásico Superior y el Jurásico Inferior, los continentes estaban conectados a una única masa continental conocida como Pangea, y había virtualmente solo un tipo de fauna de dinosaurios compuesto mayormente por carnívoros celofisoides y herbívoros sauropodomorfos primitivos (prosaurópodos).[163] Las plantas gimnospermas (particularmente coníferas), una fuente potencial de comida, se difundieron en el Triásico Superior. Los sauropodomorfos primitivos no tenían mecanismos sofisticados para procesar la comida en la boca, por lo que debieron emplear otros medios para desmenuzar el alimento a lo largo de su tracto digestivo.[164] La homogeneidad general de la fauna de dinosaurios continuó durante el Jurásico Medio y el Jurásico Superior, épocas en las que muchas localidades tenían depredadores tales como los ceratosaurianos, los megalosauroideos y los carnosaurios, mientras que los herbívoros por lo general eran ornitisquios estegosaurios y grandes saurópodos. Ejemplos de estas faunas se hallan en la formación de Morrison en Norteamérica y Tendaguru en Tanzania. Los dinosaurios de China muestran algunas diferencias, con especializados terópodos como los metriacantosáuridos y saurópodos de cuellos inusualmente largos como Mamenchisaurus.[163] Los anquilosaurios y los ornitópodos se estaban volviendo más comunes, pero los prosaurópodos se habían extinguido. Las coníferas y las pteridofitas eran las plantas más comunes. Los saurópodos, como sus antecesores prosaurópodos, no procesaban el alimento oralmente, pero los ornitisquios estaban evolucionando varias formas para tratar la comida en sus bocas, incluyendo posibles estructuras parecidas a mejillas para mantener la comida dentro de la boca y movimientos mandibulares para masticarla.[164] Otro notable evento evolutivo del Jurásico fue la aparición de las aves propiamente dichas, descendientes de los celurosaurios manirraptores.[143]
+
+Durante el Cretácico Inferior y con el sucesivo rompimiento de Pangea, los dinosaurios se empezaron a diferenciar más en cada continente. La primera parte de esta época vio la expansión de los anquilosaurios, los iguanodontianos y los braquiosáuridos a través de Europa, Norteamérica y el norte de África. Estos últimos fueron complementados o reemplazados en África por los grandes terópodos espinosáuridos y carcarodontosáuridos, y los saurópodos rebaquisáuridos y titanosaurios, también hallados en Suramérica. En Asia, los celurosaurios manirraptores como los dromeosáuridos, trodóntidos y ovirraptorosaurios se convirtieron en los terópodos más comunes, mientras que los anquilosáuridos y los ceratopsios primitivos como Psittacosaurus se convirtieron en herbívoros dominantes. Mientras tanto, Australia fue hogar de una fauna de anquilosaurios basales, "hipsilofodóntidos" e iguanodontianos.[163] Los estegosaurios parecen haberse extinto en algún punto entre el final del Cretácico Inferior y el inicio del Cretácico Superior. Un cambio importante que se produjo durante el Cretácico Inferior, y que se amplificaría en el Cretácico Superior, fue la evolución de las plantas con flor. Al mismo tiempo, varios grupos de dinosaurios herbívoros desarrollaron formas más sofisticadas para procesar la comida en la boca. Los ceratopsios emplearon un método para trozar la comida con dientes apilados en baterías dentales, mientras que los iguanodontianos refinaron su método para triturar los alimentos con baterías dentales, que serían llevadas al extremo por los hadrosáuridos.[164] Algunos saurópodos también desarrollaron dichas baterías, de los cuales el mejor ejemplo es el rebbaquisáurido Nigersaurus.[165]
+
+Hubo tres tipos principales de faunas de dinosaurios en el Cretácico Superior. En los continentes septentrionales de Norteamérica y Asia, los principales terópodos eran los tiranosáuridos y varios tipos de terópodos manirraptores pequeños, mientras que los herbívoros eran predominantemente ornitisquios como los hadrosáuridos, ceratopsios, anquilosáuridos y paquicefalosaurios. En los continentes del sur que resultaron del rompimiento de Gondwana, los terópodos más comunes eran los abelisáuridos, y los saurópodos titanosaurios eran los herbívoros más comunes. Finalmente, en Europa, la fauna se componía de dromeosáuridos, iguanodontianos rabdodóntidos, anquilossaurios nodosáuridos, y los saurópodos titanosaurios eran predominantes.[163] Las plantas con flor se irradiaron con mucho éxito,[164] y los primeros tipos de pastos aparecieron al final del Cretácico.[166] Los hadrosáuridos y los ceratopsios se volvieron sumamente diversos en Norteamérica y el oriente de Asia. Los terópodos también desarrollaron formas omnívoras y herbívoras, destacando entre estas a los tericinosaurios y los ornitomimosaurios.[164]
+
+La extinción masiva del Cretácico-Terciario, la cual ocurrió hace aproximadamente 66 millones de años al final del Cretácico, causó la extinción de todos los grupos de dinosaurios exceptuando a las aves modernas (Neornithes) (o quizás casi todos, véase sobre esto más abajo). Algunos otros grupos de diápsidos, como los crocodilianos, los sebecosuquios, las tortugas, los lagartos, las serpientes, los esfenodontes y los coristoderos, también sobrevivieron al evento de extinción.[167]
+
+Los linajes sobrevivientes de aves modernas, incluyendo a los ancestros de los Paleognathae, los patos, gallinas y afines (Galloanserae) y linajes pertenecientes al clado Neoaves (la mayor radiación adaptativa de aves modernas), se diversificaron rápidamente al principio del período Paleógeno, llenando los nichos ecológicos que quedaron vacantes tras la extinción de los grupos de dinosaurios mesozoicos como las aves arborícolas enantiornites, las aves acuáticas hesperornitiformes, e incluso los grandes terópodos terrestres (que sería el caso de Gastornis, los dromornítidos, y Phorusrhacidae).[168][169][170] Sin embargo, los mamíferos también evolucionaron con rapidez en esa época, y superaron a las aves neornites en la dominación de la mayoría de los nichos terrestres.[171]
+
+Clasificación
+Artículo principal: Clasificación de los dinosaurios
+Los dinosaurios son arcosaurios, al igual que los cocodrilos modernos.[172][37] Los cráneos diápsidos de los arcosaurios tienen dos agujeros localizados donde se atan los músculos de la mandíbula, llamado fenestra temporal. La mayor parte de reptiles (incluyendo a las aves) son diápsidos. Los mamíferos, con solo una fenestra temporal, son llamados sinápsidos; y las tortugas, sin fenestra temporal, son anápsidos. Anatómicamente, los dinosaurios comparten muchas otras características de arcosaurio, incluidos los dientes que nacen de alvéolos más bien que como las extensiones directas de las mandíbulas. Dentro del grupo Archosauria, los dinosaurios son diferenciados más perceptiblemente por su paso. Las patas de los dinosaurios se extienden directamente bajo el cuerpo y son rectas, mientras que las patas de lagartos y cocodrilos se extienden hacia fuera, sobresaliendo.
+
+Muchas otras clases de reptiles vivieron en la era Mesozoica, en convivencia con los dinosaurios. Algunos de estos son comúnmente, pero incorrectamente, considerados como dinosaurios, incluyendo a los plesiosaurios (que no están relacionados estrechamente con los dinosaurios) y los pterosaurios, que se desarrollaron separadamente de antepasados reptiles de finales del Triásico.
+
+Los dinosaurios están divididos en dos órdenes, Saurischia y Ornithischia, los cuales se basan en la estructura de la cadera.[173][174] Los saurisquios (del griego para Pelvis de lagarto) son dinosaurios que al principio conservaron la estructura de la cadera de sus antepasados. Ellos incluyen todo los terópodos (carnívoros bípedos) y saurópodos (herbívoros de cuello largo). Los ornitisquios (del griego para Pelvis de ave) son el otro orden de dinosaurios, la mayoría de estos eran cuadrúpedos herbívoros.
+
+Estructura pélvica en Saurischia (lateral izquierdo).
+Estructura pélvica en Saurischia (lateral izquierdo).
+ 
+Pelvis saurisquia de Tyrannosaurus (lateral izquierdo).
+Pelvis saurisquia de Tyrannosaurus (lateral izquierdo).
+ 
+Estructura pélvica en Ornithischia (lateral izquierdo).
+Estructura pélvica en Ornithischia (lateral izquierdo).
+ 
+Pelvis ornitisquia de Edmontosaurus (lateral izquierdo).
+Pelvis ornitisquia de Edmontosaurus (lateral izquierdo).
+El siguiente es un cladograma simplificado de las relaciones filogenéticas de los distintos grupos de dnosauriosque propuso Michael Benton el 2015.[175]
+
+Dinosauria	
+Saurischia	
+ 	
+†Herrerasauridae 
+
+ 
+ 	
+Theropoda	
+ 	
+†Coelophysoidea 
+
+ 
+ 	
+ 	
+†Ceratosauria 
+
+ 
+Tetanurae	
+ 	
+†Megalosauroidea 
+
+ 
+ 	
+ 	
+†Allosauroidea 
+
+ 
+Coelurosauria	
+ 	
+†Tyrannosauroidea 
+
+ 
+ 	
+ 	
+†Compsognathidae 
+
+ 
+ 	
+ 	
+†Ornithomimidae 
+
+ 
+Maniraptora	
+ 	
+†Alvarezsauridae 
+
+ 
+ 	
+ 	
+†Therizinosauridae 
+
+ 
+ 	
+ 	
+†Oviraptorosauria 
+
+ 
+Paraves	
+ 	
+†Deinonychosauria
+
+
+
+ 
+ 	
+Aves 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+†Sauropodomorpha	
+ 	
+†Plateosauridae 
+
+ 
+ 	
+ 	
+†Riojasauridae
+
+ 
+ 	
+ 	
+†Massospondylidae 
+
+ 
+†Sauropoda	
+ 	
+†Vulcanodontidae 
+
+ 
+ 	
+ 	
+†Mamenchisauridae 
+
+ 
+†Neosauropoda	
+ 	
+†Diplodocoidea 
+
+ 
+†Macronaria	
+ 	
+†Camarasauridae 
+
+ 
+ 	
+ 	
+†Brachiosauridae 
+
+ 
+ 	
+†Titanosauria 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+†Ornithischia	
+ 	
+†Heterodontosauridae 
+
+ 
+ 	
+†Thyreophora	
+ 	
+†Stegosauria 
+
+ 
+ 	
+†Ankylosauria 
+
+ 
+ 
+†Cerapoda	
+†Marginocephalia	
+ 	
+†Pachycephalosauria 
+
+ 
+ 	
+†Ceratopsia 
+
+ 
+ 
+†Ornithopoda	
+ 	
+†Iguanodon 
+
+ 
+ 	
+†Hadrosauridae 
+
+ 
+ 
+ 
+ 
+ 
+ 
+Origen de las aves
+Artículo principal: Origen de las aves
+La posibilidad de que las aves fuesen dinosaurios fue sugerida por primera vez en 1868 por Thomas Henry Huxley.[176] Después del trabajo de Gerhard Heilmann a principios del siglo XX, la teoría de las aves como descendientes de los dinosaurios fue abandonada en favor de antepasados tecodontes, siendo la prueba clave la supuesta falta de clavícula de los dinosaurios.[177] Sin embargo, como lo demostraron descubrimientos posteriores, las clavículas (o una única fúrcula fusionada, derivada de dos clavículas separadas) no estaban realmente ausentes;[143] ya se había encontrado en 1924 en Oviraptor, pero habían sido identificadas erróneamente como interclavícula.[178] En la década de 1970, John Ostrom recuperó la teoría de los dinosaurios como antepasados de las aves,[179] que ganó impulso durante las décadas siguientes con el advenimiento del análisis cladístico,[180] y un gran aumento de los descubrimientos de pequeños terópodos y aves primitivas.[56] Han sido de especial relevancia los fósiles de la formación de Yixian, donde se han encontrado múltiples terópodos y aves primitivas, muchas veces con plumas de algún tipo.[143] Las aves comparten más de un centenar de rasgos anatómicos distintos con los dinosaurios terópodos, al siglo XXI considerados generalmente sus parientes prehistóricos más cercanos.[181][16][2][182]
+
+Una minoría de científicos, destacando Alan Feduccia y Larry Martin, han sugerido otros caminos evolutivos, incluyendo versiones revisadas de la propuesta de Heilmann de los arcosaurios basales,[183] o que los terópodos manirraptores eran los antepasados de las aves, pero que no eran dinosaurios, sino convergentes con ellos.[184]
+
+Plumas
+Artículo principal: Dinosaurios con plumas
+
+Varios dinosaurios emplumados no avianos, incluyendo el Archaeopteryx, Anchiornis, Microraptor y Zhenyuanlong
+Las plumas son una de las características más reconocibles de las aves modernas, y un rasgo que fue compartida por todos los otros grupos de dinosaurios.[185] Basado en la distribución actual de la evidencia fósil, al parecer las plumas fueron un rasgo dinosauriano ancestral, aunque uno que se puede haber perdido de forma selectiva en algunas especies.[186] Han sido descubiertas evidencias fósil directa de plumas o de estructuras similares a plumas en una gran variedad de especies en muchos grupos de dinosaurios no avianos, tanto entre los saurisquios como los ornitisquios. Las estructuras simples y ramificados, como plumas se conocen de heterodontosáuridos, neornitisquianos primitivos[187] terópodos,[188] y ceratópsidos primitivos. Solo se ha encontrado evidencias de plumas verdaderas, paletas similares a las plumas de vuelo de las aves modernas en el subgrupo terópodo Maniraptora que incluye oviraptorosaurios, troodóntidos dromeosáuridos, y aves.[143][189] Las estructuras similares a plumas conocidas como picnofibras también se han encontrado en los pterosaurios,[190] lo que sugiere la posibilidad de que filamentos similares a plumas podrían haber sido comunes en el linaje de aves y evolucionado antes de la aparición de los propios dinosaurios.[186] La investigación sobre la genética de los cocodrilos americanos también ha revelado que los escudos cocodrilianos poseen plumas-queratinas durante el desarrollo embrionario, pero estas queratinas no son expresadas por los animales antes de la eclosión.[191]
+
+Archaeopteryx fue el primer fósil encontrado que reveló una posible relación entre los dinosaurios y las aves. Se considera una forma de transición, en que se muestra características de ambos grupos. Sacado a la luz dos años después seminal de Darwin El origen de las especies, su descubrimiento estimuló el debate incipiente entre los partidarios de la biología evolutiva y el creacionismo. Esta ave es tan antigua como lo son los dinosaurios, sin una clara impresión de plumas en la roca circundante, al menos un espécimen fue confundido con Compsognathus.[192] Desde los años 1990 se ha encontrado un número creciente de dinosaurios no avianos con plumas, lo cual proveyó nuevas pruebas adicionales sobre la relación directa existente entre dinosaurios y aves modernas. La mayoría de estos especímenes han sido exhumados en la provincia de Liaoning en el noreste de China, que fue parte de un continente aislado durante el Cretáceo. A pesar de que rastros de plumas han sido encontrados solo en la formación Yixian y otros pocos sitios, es probable que dinosaurios similares en otras partes del mundo también hayan estado cubiertos por plumas. La falta de restos fósiles de plumaje a escala planetaria puede deberse al hecho de que las estructuras delicadas como piel, pelo y plumas no son preservadas por las usuales condiciones de fosilización, lo que dificulta su presencia en el registro fósil.[193]
+
+La descripción de los dinosaurios emplumados no ha estado exento de polémica; tal vez los mayores críticos han sido Alan Feduccia y Theagarten Lingham-Soliar, que han propuesto que algunos fósiles similares a plumas supuestamente son el resultado de la descomposición de las fibras de colágeno que está debajo de la piel de los dinosaurios,[194][195][196] y que los dinosaurios maniraptoranos con plumas paletas no eran en realidad dinosaurios, sino convergentes con los dinosaurios.[184][195] Sin embargo, sus opiniones en general no han sido aceptadas por otros investigadores, hasta el punto de ser cuestionada la naturaleza científica de las propuestas de Feduccia.[197]
+
+Esqueleto
+Como las plumas están generalmente asociadas a las aves, los dinosaurios emplumados son tildados y descritos con frecuencia como el eslabón perdido entre las aves y los dinosaurios. Sin embargo, las múltiples características esqueléticas que comparten los dos grupos también son un indicio importante para los paleontólogos. Las áreas del esqueleto con semejanzas importantes son el cuello, el pubis, la muñeca (carpo semilunar), el brazo y la cintura escapular, la fúrcula y la quilla. La comparación de los esqueletos de dinosaurio y de las aves por medio del análisis cladístico refuerza la teoría de la relación entre ambos grupos.[198]
+
+Tejidos blandos
+
+Neumatóforos en el hueso ilíaco izquierdo de ilium Aerosteon riocoloradensis
+Los grandes dinosaurios carnívoros poseían un complejo sistema de sacos de aire similares a los que tienen las aves modernas, según una investigación de 2005 dirigida por Patrick O'Connor de la Universidad de Ohio. Es probable que los pulmones de los dinosaurios terópodos carnívoros bípedos con patas (similares a las de las aves) bombeen aire en sacos vacíos de su esqueleto, como ocurre en las aves. Lo que en el pasado se consideraba formalmente un rasgo único de las aves estaba presente en cierta forma en los antepasados de estas, dijo O'Connor.[199] En 2008, los científicos describieron a Aerosteon riocoloradensis, el esqueleto del que ha proporcionado las pruebas más claras hasta ahora de un dinosaurio con un sistema de respiración similar a la de las aves. Una tomografía computarizada puso de manifiesto la presencia de sacos de aire dentro de la cavidad corporal del esqueleto de Aerosteon.[200][201]
+
+Evidencias de comportamiento
+Los fósiles de troodóntidos Mei y Sinornithoides demuestran que algunos dinosaurios dormían con la cabeza bajo el brazo.[202] Este comportamiento, que pueden haber contribuido a mantener la cabeza caliente, también es característico de las aves modernas. Varios especímenes deynonsaurianos y oviraptorosaurios también se han encontrado conservados en la parte superior de sus nidos, incubando probablemente de una manera similar a las aves.[203] La relación entre el volumen del huevo y la masa corporal de los adultos entre estos dinosaurios sugieren que los huevos son incubados principalmente por el macho, y que los jóvenes fueron muy precoces, similares a muchas aves modernas que habitan en el suelo.[204]
+
+Algunos dinosaurios se sabe que usan piedras de molleja, como las aves modernas. Estas piedras son ingeridas por animales para ayudar a la digestión y descomponer los alimentos y fibras duras una vez que entran en el estómago. Cuando se encuentra en asociación con fósiles, estas piedras se llaman gastrolitos.[205]
+
+Extinción de los dinosaurios no avianos
+Artículo principal: Extinción masiva del Cretácico-Paleógeno
+Todos los dinosaurios no avianos, así como varios linajes de aves[206] se extinguieron repentinamente hace aproximadamente 66 millones de años, en lo que se conoce como la extinción masiva del Cretácico-Paleógeno (K–Pg), que ocurrió a finales del período Cretácico. Esta franja de tiempo es definida por una elevada presencia de iridio en los estratos.[207][208] Se ha sugerido que debido a que los pequeños mamíferos, squamatas y aves ocuparon los nichos ecológicos aptos para su tamaño corporal pequeño, los dinosaurios no avianos nunca evolucionaron una diversa fauna de especies de cuerpo pequeño, lo que condujo a su caída, cuando se vieron afectados por los tetrápodos terrestres de gran cuerpo, como consecuencia del evento de extinción masiva.[209] Muchos otros grupos de animales también se extinguieron en este momento, incluyendo las amonitas (moluscos similares a nautilus), mosasaurios, plesiosaurios, pterosaurios, y muchos grupos de mamíferos.[29] De manera significativa, los insectos no sufrieron ninguna pérdida apreciable en su población, lo que dejó alimento a disposición para otros sobrevivientes. La naturaleza del evento que causó esta extinción en masa ha sido ampliamente estudiada desde la década de 1970; al siglo XXI, varias teorías relacionadas cuentan con el apoyo de los paleontólogos. Aunque el consenso es que un evento de impacto fue la causa principal de la extinción de los dinosaurios, algunos científicos citan otras causas posibles, o apoyan la idea de que una confluencia de varios factores fue responsable de la repentina desaparición de los dinosaurios del registro fósil.[210][211][212]
+
+Diversidad antes de la extinción
+Justo antes del evento de extinción K-Pg, el número de especies de dinosaurios no avianos que existían globalmente se ha estimado entre 628 y 1078.[213] Sigue siendo incierto si la diversidad de dinosaurios estaba en declive gradual antes del evento de extinción K-Pg, o si los dinosaurios realmente estaban prosperando antes de la extinción. Se ha descubierto que las formaciones rocosas del Maastrichtiense, que precedió directamente a la extinción, tienen una diversidad menor que el Campaniense precedente, lo que llevó a la visión predominante de un declive a largo plazo de la diversidad.[214][215][216] Sin embargo, estas comparaciones no explicaron ni el potencial de conservación variable entre unidades rocosas ni los diferentes grados de exploración y excavación.[217] En 1984, Dale Russell llevó a cabo un análisis para explicar estos sesgos y no encontró evidencia de un declive;[218] Otro análisis de David Fastovsky y sus colegas en 2004 incluso mostró que la diversidad de dinosaurios aumentó continuamente hasta la extinción,[219] pero este análisis ha sido refutado.[220] Desde entonces, diferentes enfoques basados en estadísticas y modelos matemáticos han apoyado de diversas maneras una extinción repentina[217][213][221] o un declive gradual.[222][223] Las tendencias del Cretácico Final en la diversidad pueden haber variado entre los linajes de dinosaurios: se ha sugerido que los saurópodos no estaban en declive, mientras que los ornitisquios y los terópodos sí lo estaban.[224][225]
+
+Colisión de un asteroide
+Artículo principal: Cráter de Chicxulub
+
+Luis Walter Alvarez (izquierda) y su hijo Walter Alvarez (derecha) en el límite K-T en Gubbio, Italia, en 1981
+La teoría de la colisión con un asteroide, que fue popularizada en 1980 por Walter Alvarez y sus colegas, relaciona la extinción de finales del período Cretácico con un impacto con un bólido hace aproximadamente 66 millones de años. Alvarez y otros sugirieron que un aumento repentino de los niveles de iridio, registrado en todo el mundo en los estratos rocosos de este periodo, era una prueba directa del impacto.[226] La mayoría de los indicios sugieren que un bólido de entre 5 y 15 km de diámetro impactó con la Tierra cerca de la península de Yucatán, creando el cráter de Chicxulub, de 170 km de diámetro, y desencadenando la extinción masiva.[227] Los científicos no saben con certeza si los dinosaurios estaban prosperando o en declive antes del impacto astronómico. Algunos científicos sugieren que el meteorito causó una bajada de la temperatura atmosférica larga y no natural, mientras que otros, en cambio, afirman que habría provocado una ola de calor fuera de lo habitual.
+
+
+El cráter de Chicxulub en la península de Yucatán, lugar de impacto del meteorito que habría causado la extinción de los dinosaurios.
+Algunos científicos proponen que el impacto del meteorito provocó extinciones tanto directamente (por el calor del impacto meteórico) como indirectamente (por un enfriamiento global debido al hecho de que la materia eyectada del cráter de impacto reflejaba la radiación térmica del Sol). Aunque la velocidad de extinción no puede ser inferida solo del registro fósil, varios modelos sugieren que la extinción fue extremadamente rápida, siendo de horas en lugar de años.[228]
+
+Traps del Decán
+Artículo principal: Traps del Decán
+Antes de 2000, los argumentos que las Traps del Decán causaron la extinción estaban generalmente relacionados con la teoría de que la extinción fue gradual, pues se pensaba que las Traps comenzaron hace unos sesenta y ocho millones de años y duraron unos dos millones. Sin embargo, hay pruebas de que dos tercios de las Traps del Decán fueron creadas en un período de un millón de años, hace aproximadamente 65,5 millones de años, por lo que estas erupciones habrían provocado una extinción bastante rápida, posiblemente en un período de miles de años, pero igualmente un período más largo que el que cabría esperar de un único impacto meteórico.[229][230]
+
+Las Traps del Decán podrían haber causado la extinción mediante diversos mecanismos, incluyendo la liberación de polvo y de aerosoles sulfúricos en el aire, que podrían haber bloqueado la luz solar, reduciendo la capacidad fotosintética de las plantas. Además, el vulcanismo de las Traps del Decán podría haber provocado emisiones de dióxido de carbono que habrían aumentado el efecto invernadero una vez el polvo y los aerosoles hubieran desaparecido de la atmósfera.[230] Antes de la extinción masiva de los dinosaurios, la liberación de gases volcánicos durante la formación de las Traps del Decán contribuyeron a un calentamiento global aparentemente masivo. Algunos datos indican un aumento medio de la temperatura de aproximadamente 8 °C (grados Celsius) en el último medio millón de años antes del impacto en Chicxulub.[229][230]
+
+En los años en que la teoría de las Traps del Decán estaba relacionada con una extinción más lenta, Luis Walter Álvarez (que murió en 1988), respondía que los paleontólogos estaban siendo engañados por los pocos datos de que disponían. Aunque en principio su afirmación no fue bien recibida, estudios de campo intensivos posteriores de los estratos fosilíferos reforzaron su argumento. Finalmente, la mayoría de paleontólogos comenzaron a aceptar la idea de que las extinciones en masa de finales del Cretáceo se debieron principalmente, o al menos en parte, a un impacto masivo de la Tierra contra un bólido. Sin embargo, incluso Walter Alvarez admitió que hubo otros grandes cambios en la Tierra incluso antes del impacto, tales como un descenso del nivel del mar y grandes erupciones volcánicas que crearon las Traps del Decán en la India, y que estos cambios podrían haber contribuido a las extinciones.[231]
+
+Falta de adaptación a las condiciones cambiantes
+El Cretácico medio, las plantas con flor se convirtieron en una parte importante de los ecosistemas terrestres, que anteriormente habían sido dominados por gimnospermas como las coníferas.[232] Los coprolitos (estiércol fosilizado) de dinosaurio indican que, mientras que algunos comían angiospermas, la mayoría de dinosaurios herbívoros se alimentaban principalmente de gimnospermas. Análisis estadísticos de Lloyd et al. llegaron a la conclusión de que, a diferencia de lo que afirmaban estudios anteriores, los dinosaurios no se diversificaron mucho en el Cretáceo superior. Lloyd et al. sugirieron que el fracaso de los dinosaurios a la hora de adaptarse a ecosistemas cambiantes los condenó a la extinción.[233]
+
+Posibles supervivientes del Paleoceno
+Ocasionalmente se encuentran restos de dinosaurios no avianos en sedimentos por encima del límite K-T. En 2000, Fassett y colaboradores comunicaron el descubrimiento del fósil de un hueso de una pata de un hadrosaurio en la cuenca del San Juan (Nuevo México), y describieron este único hallazgo como prueba de dinosaurios del Paleoceno. La formación en la que se descubrió el hueso fue datada de principios de la época del Paleoceno, hace aproximadamente 64,5 millones de años. Si el hueso no fue redepositado en ese estrato por la acción de la reelaboración de materiales más antiguos, sería una prueba de que algunas poblaciones de dinosaurios podrían haber sobrevivido al menos medio millón de años en la era Cenozoico.[234] Otras pruebas incluyen el descubrimiento de restos de dinosaurios en la formación de Hell Creek hasta 1,3 m por encima del límite K-T (equivalentes a 40 000 años después).[235] Han llegado descubrimientos similares de otros lugares del mundo, incluyendo China. Sin embargo, muchos científicos rechazan que hubiera habido dinosaurios en el Paleoceno, argumentando que estos huesos fueron reelaborados, es decir, que la erosión los sacó de su ubicación inicial y quedaron enterrados de nuevo en sedimentos posteriores,[236][237] o piensan que, aunque fuera cierto, la presencia de un grupo de dinosaurios en el Paleoceno inferior no cambiaría gran cosa a efectos prácticos.[236]
+
+Descubrimiento e investigación
+Artículo principal: Paleontología de dinosaurios
+Historia precientífica
+Los fósiles de dinosaurio son conocidos desde hace milenios, aunque su naturaleza auténtica no fuera entendida. Los chinos, que llaman a los dinosaurios konglong, 恐龍, o ‘dragón terrible’, los consideraban huesos de dragón y los documentaron como tales. Por ejemplo, Hua Yang Guo Zhi, en chino tradicional, 華陽國志, un diccionario geográfico compilado por Chang Qu en chino tradicional, 常璩 durante la Dinastía Jin Occidental, documentaba el descubrimiento de huesos de dragón en Wucheng, en la provincia de Sichuan.[238] Los poblados de China central han excavado huesos de dinosaurios desde hace décadas, pensando que pertenecían a dragones, para hacer medicinas tradicionales.[239] En general, en Europa se creía que los fósiles de dinosaurios eran los restos de gigantes y otras criaturas que murieron en el Diluvio universal.[240]
+
+Investigación temprana sobre dinosaurios
+
+William Buckland llevó a cabo la primera descripción de un dinosaurio en 1824 (Megalosaurus).
+Las descripciones académicas de lo que ahora se reconocerían como huesos de dinosaurio aparecieron por primera vez a finales del siglo XVII en Inglaterra. Parte de un hueso, que ahora se sabe que fue el fémur de un Megalosaurus fue el primer dinosaurio en ser descrito formalmente, en 1677, cuando se recuperó una parte de un hueso de una cantera de roca caliza en Cornualles, cerca de Chipping Norton (Inglaterra). Este fragmento óseo fue identificado correctamente como el extremo inferior del fémur de un animal más grande que cualquier ser viviente de tiempos modernos. Identificó correctamente el hueso como la extremidad inferior del fémur de un animal grande, y reconoció que era demasiado grande para pertenecer a cualquier especie conocida. Por lo tanto, concluyó que se trataba del fémur de un humano enorme, tal vez un titán u otro tipo de gigante que aparece en las leyendas.[241][242] Edward Lhuyd, amigo de Isaac Newton, publicó Lithophylacii Britannici ichnographia en 1699, el primer tratamiento científico de lo que ahora sería reconocido como un dinosaurio cuando describió y nombró a un diente de saurópodo, Rutellum implicatum,[243][244] que se había encontrado en Caswell, cerca de Witney, Oxfordshire.[245]
+
+Entre 1815 y 1824, el reverendo William Buckland, primer lector de Geología de la Universidad de Oxford, recolectó más huesos fosilizados de Megalosaurus y se convirtió en la primera persona en describir un dinosaurio no aviano en una revista científica.[246][247] El segundo género de dinosaurio en ser identificado, Iguanodon, fue descubierto en 1822 por Mary Ann Mantell, la esposa del geólogo inglés Gideon Mantell. Este reconoció las semejanzas entre sus fósiles y los huesos de las iguanas modernas y publicó sus hallazgos en 1825.[248]
+
+
+Richard Owen acuñó el término Dinosauria en 1842.
+El estudio de estos «grandes lagartos fósiles» pasó a ser de sumo interés para científicos europeos y estadounidenses y en 1842 el paleontólogo inglés Richard Owen creó el término «dinosaurio». Reconoció que los restos que habían sido encontrados hasta ese momento, Iguanodon, Megalosaurus e Hylaeosaurus, compartían un número de rasgos distintivos, de manera que decidió agruparlos como un grupo taxonómico propio. Con el apoyo del príncipe Alberto de Sajonia-Coburgo-Gotha, marido de la Reina Victoria, Owen estableció el Museo de Historia Natural en Kensington Sur, Londres, para exhibir la colección nacional de fósiles de dinosaurios y otros artículos sobre biología y geología.
+
+El taxón Dinosauria fue formalmente nombrado en 1842 por el paleontólogo Richard Owen, que lo utilizó para referirse a la «tribu distinta o sub-orden de los reptiles saurios» que luego fue reconocido en Inglaterra y en todo el mundo.[249] El término deriva de las palabras griegas δεινός, deinós, que significa ‘terrible’, ‘potente’, o ‘gran temor’ y σαῦρος, sauros, que significa ‘lagarto’ o ‘reptil’.[249][250] Aunque el nombre taxonómico ha sido frecuentemente interpretado como una referencia a los dientes, las garras y otras características temibles de los dinosaurios, Owen pretendía simplemente evocar su tamaño y majestuosidad.[251]
+
+Descubrimientos en América del Norte y la "Guerra de los Huesos"
+En 1858 se descubrió el primer dinosaurio en lo que hoy es el territorio estadounidense en unos pozos de marga en el pequeño pueblo de Haddonfield, Nueva Jersey. Aunque ya se habían encontrado fósiles antes, no se había discernido correctamente su naturaleza. La criatura fue denominada Hadrosaurus foulkii, por el autor del hallazgo, William Parker Foulke. Fue un descubrimiento sumamente importante: el primer esqueleto de dinosaurio encontrado casi completo, el primero había sido descubierto en 1834 en Maidstone (Inglaterra) y demostraba una postura claramente bípeda. Era un descubrimiento revolucionario, ya que hasta entonces, la mayoría de científicos pensaban que los dinosaurios caminaban en cuatro patas, como otros reptiles. Los descubrimientos de Foulke desencadenaron una oleada de «manía de dinosaurios» en Estados Unidos.[252]
+
+
+Edward Drinker Cope
+
+Othniel Charles Marsh
+Aquella obsesión por los dinosaurios fue ejemplificada por la gran rivalidad entre Edward Drinker Cope y Othniel Charles Marsh que competían para ver quién descubría más dinosaurios, enfrentamiento que posteriormente fue conocido como la Guerra de los Huesos. La contienda probablemente se originó cuando Marsh indicó públicamente que la reconstrucción de Cope del esqueleto de Elasmosaurus tenía un defecto. Cope sin querer había colocado la cabeza de un plesiosaurio en el lugar donde debería haber sido el extremo caudal del animal. Aquella lucha entre los dos científicos cavadores duró más de 30 años, finalizando en 1897 cuando Cope murió tras haber gastado toda su fortuna en la búsqueda. Marsh ganó la competición principalmente porque estaba mejor financiado debido a su relación con la United States Geological Survey. Desafortunadamente, muchos especímenes valiosos fueron destruidos debido a los toscos métodos de ambos paleontólogos, por ejemplo, sus excavadores muchas veces usaban dinamita para desenterrar huesos, un método que los paleontólogos modernos encontrarían atroz. A pesar de su métodos burdos, las contribuciones de Cope y Marsh a la paleontología fueron enormes. Marsh descubrió 86 nuevas especies de dinosaurios y Cope encontró 56, un total de 142 especies nuevas. La colección de Cope se encuentra a 2016 en el Museo Americano de Historia Natural en Nueva York, mientras que la de Marsh está expuesta en el Museo Peabody de Historia Natural, en la Universidad de Yale.[253]
+
+Renacimiento de los dinosaurios
+Artículo principal: Renacimiento de los dinosaurios
+La Segunda Guerra Mundial provocó una pausa en la investigación paleontológica. Después de la guerra, el centro de atención de la investigación se desvió cada vez más hacia los mamíferos fósiles en lugar de los dinosaurios, a los que se consideraba lentos y de sangre fría.[254][255] Sin embargo, a finales de la década de 1960, el campo de la investigación de los dinosaurios experimentó un aumento en la actividad que continúa.[256] Esto fue provocado, en parte, por el descubrimiento de John Ostrom de Deinonychus, un depredador activo que pudo haber sido de «sangre caliente», endotermia, en contraste marcado con la imagen, aún predominante, de dinosaurios como animales lentos y de «sangre fría», ectotermia.[257] Al mismo tiempo, Robert Bakker publicó una serie de estudios que también abogaban por estilos de vida activos en los dinosaurios basados en evidencia anatómica y ecológica, que posteriormente se resumieron en su libro de 1986 The Dinosaur Heresies.[258]
+
+
+A partir de la descripción de Deinonychus por parte de John Ostrom en 1969, se dio inicio al período conocido como el "Renacimiento de los dinosaurios".
+La paleontología de los vertebrados se convirtió en un campo de la ciencia global. Nuevos e importantes descubrimientos de dinosaurios han sido hechos por paleontólogos que trabajan en regiones antes inexploradas, incluyendo India, Sudamérica, Madagascar, la Antártida, y la más considerable, China, los dinosaurios emplumados sorprendentemente bien conservados de China han consolidado aún más la relación entre los dinosaurios y sus descendientes vivientes, las aves modernas. La extensa aplicación de la cladística, que analiza rigurosamente las relaciones entre los organismos biológicos, se ha revelado como extremadamente útil a la hora de clasificar a los dinosaurios. Los análisis cladísticos, junto con otras técnicas modernas, ayudan a compensar el hecho de que el registro fósil está muchas veces incompleto y fragmentario.
+
+Entre terópodos, sauropodomorfos y ornitisquios, el número de géneros nombrados comenzó a aumentar exponencialmente a partir de la década de 1990.[47] A partir de 2008, cada año se nombraban más de 30 nuevas especies de dinosaurios.[259] Al menos los sauropodomorfos experimentaron un aumento adicional en el número de especies nombradas en la década de 2010, con un promedio de 9,3 nuevas especies nombradas cada año entre 2009 y 2020. Como consecuencia, se nombraron más sauropodomorfos entre 1990 y 2020 que en todos los años anteriores combinados.[260] Estas nuevas localidades también condujeron a mejoras en la calidad general de los especímenes, y las nuevas especies reciben cada vez más nombres no de fósiles fragmentados sino de esqueletos más completos, a veces de varios individuos. Mejores especímenes también condujeron a que las nuevas especies fueran invalidadas con menos frecuencia.[259] Las localidades asiáticas han producido los especímenes de terópodos más completos,[261] mientras que las localidades de América del Norte han producido los especímenes de sauropodomorfos más completos.[260]
+
+
+El paleontólogo Robert Bakker fue quien acuñó el término "Renacimiento de los dinosaurios" en 1975.
+Antes del renacimiento de los dinosaurios, los dinosaurios se clasificaban principalmente utilizando el sistema tradicional basado en rangos de la taxonomía de Linneo. El renacimiento también estuvo acompañado por la aplicación cada vez más extendida de la cladística, un método de clasificación más objetivo basado en la ascendencia y los rasgos compartidos, que ha demostrado ser tremendamente útil en el estudio de la sistemática y la evolución de los dinosaurios. El análisis cladístico, entre otras técnicas, ayuda a compensar un registro fósil a menudo incompleto y fragmentario.[262][263] Los libros de referencia que resumen el estado de la investigación sobre dinosaurios, como The Dinosauria de David B. Weishampel y sus colegas, hicieron que el conocimiento fuera más accesible[264] y estimuló un mayor interés en la investigación de los dinosaurios. La publicación de la primera y segunda ediciones de The Dinosauria en 1990 y 2004, y de un artículo de revisión de Paul Sereno en 1998, estuvieron acompañadas de un aumento en el número de árboles filogenéticos de dinosaurios publicados.[265]
+
+Preservación molecular y de tejidos blandos
+
+Impresiones de piel de un espécimen de Edmontosaurus encontradas en 1999.
+Los fósiles de dinosaurios no se limitan a huesos, sino que también incluyen huellas o restos mineralizados de cubiertas de piel, órganos y otros tejidos. De estos, los revestimientos cutáneos basados en proteínas de queratina se conservan más fácilmente debido a su estructura molecular hidrófoba y reticulada.[266] Se conocen fósiles de cubiertas de piel a base de queratina o cubiertas de piel óseas de la mayoría de los grupos principales de dinosaurios. Desde el siglo XIX se han encontrado fósiles de dinosaurios con impresiones de piel escamosa. Samuel Beckles descubrió una extremidad anterior de saurópodo con piel conservada en 1852 que se atribuyó incorrectamente a un cocodrilo, Marsh lo atribuyó correctamente en 1888 y fue objeto de más estudios por parte de Reginald Hooley en 1917.[267] Entre los ornitisquios, en 1884 Jacob Wortman encontró impresiones de piel en el primer espécimen conocido de Edmontosaurus annectens, que fueron en gran parte destruidas durante la excavación del espécimen.[267] Owen y Hooley describieron posteriormente impresiones de la piel de Hypsilophodon e Iguanodon en 1885 y 1917.[268] Desde entonces, las impresiones de escamas se han encontrado con mayor frecuencia entre los hadrosáuridos, donde las impresiones se conocen de casi todo el cuerpo en múltiples especímenes.[269]
+
+
+Reconstrucción del color de las plumas de Sinosauropteryx
+
+Reconstrucción del color del integumento de Psittacosaurus
+A partir de la década de 1990, importantes descubrimientos de fósiles excepcionalmente conservados en depósitos conocidos como Lagerstätten de conservación contribuyeron a la investigación sobre los tejidos blandos de los dinosaurios.[270][271] Principalmente entre ellas estaban las rocas que produjeron las biotas Jehol, datads del Cretácico temprano y Yanliao, del Jurásico medio a tardío, del noreste de China, de las cuales cientos de especímenes de dinosaurios con impresiones de estructuras parecidas a plumas han sido descritos por Xing Xu y sus colegas.[272][273] En los reptiles y mamíferos vivos, las estructuras celulares que almacenan pigmentos conocidas como melanosomas son parcialmente responsables de producir la coloración[274][275] Se han informado rastros químicos de melanina y melanosomas de formas características en las plumas y escamas de los dinosaurios Jehol y Yanliao, incluidos terópodos, ornitisquios y saurópodos.[276][277] Esto ha permitido múltiples reconstrucciones de cuerpo completo de la coloración de los dinosaurios, como las de Sinosauropteryx[278] y Psittacosaurus[279] por Jakob Vinther y colegas, y técnicas similares también se han extendido a fósiles de dinosaurios de otras localidades.[274] Sin embargo, algunos investigadores también han sugerido que los melanosomas fosilizados representan restos bacterianos.[280][281] El contenido del estómago en algunos dinosaurios Jehol y Yanliao estrechamente relacionados con las aves también ha proporcionado indicaciones indirectas de la dieta y la anatomía del sistema digestivo.[282][283] Se ha informado más evidencia concreta de la anatomía interna en Scipionyx del Plattenkalk Pietraroja de Italia. Preserva porciones de los intestinos, el colon, el hígado, los músculos y la tráquea.
+
+
+Fósil de Scipionyx con intestinos, Museo de Historia Natural de Milán.
+Al mismo tiempo, una línea de trabajo dirigida por Mary Higby Schweitzer, Jack Horner y sus colegas informaron varios casos de proteínas y tejidos blandos conservados dentro de fósiles de huesos de dinosaurios. Schweitzer y otros habían encontrado varias estructuras mineralizadas que probablemente representaban glóbulos rojos y fibras de colágeno en huesos de tiranosáuridos ya en 1991.[284][285][286] Sin embargo, en 2005, Schweitzer y sus colegas informaron un fémur de Tyrannosaurus que en su interior se conservaba tejido blando y flexible, incluidos vasos sanguíneos, matriz ósea y tejido conectivo,fibras óseas, que habían conservado su estructura microscópica. Este descubrimiento sugirió que los tejidos blandos originales podrían conservarse a lo largo del tiempo geológico,[266] habiéndose propuesto múltiples mecanismos.[287] Más tarde, en 2009, Schweitzer y sus colegas informaron que un fémur de Brachylophosaurus conservaba microestructuras similares, y las técnicas inmunohistoquímicas, basadas en la unión de anticuerpos, demostraron la presencia de proteínas como colágeno, elastina y laminina.[288] Ambos especímenes produjeron secuencias de proteínas de colágeno que eran viables para análisis filogenéticos moleculares, que los agruparon con aves como era de esperar.[288][289] También se ha informado de la extracción de ADN fragmentario para ambos fósiles,[290] junto con un espécimen de Hypacrosaurus.[291] En 2015, Sergio Bertazzo y sus colegas informaron sobre la preservación de fibras de colágeno y glóbulos rojos en ocho especímenes de dinosaurios del Cretácico que no mostraron ningún signo de preservación excepcional, lo que indica que el tejido blando puede preservarse con más frecuencia de lo que se pensaba anteriormente.[292] Se han rechazado las sugerencias de que estas estructuras representan biopelículas bacterianas,[293] siendo rechazadas,[294] pero la contaminación cruzada sigue siendo una posibilidad difícil de detectar.[295]
+
+Representaciones culturales
+
+Estatuas desactualizadas de Iguanodon creadas por Benjamin Waterhouse Hawkins para el Crystal Palace Park en 1853.
+Según la visión generalizada, los dinosaurios eran criaturas de apariencia fantástica y a menudo de un enorme tamaño. Así pues, han atraído la imaginación del público y se han convertido en una parte duradera de la cultura. Solo tres décadas después de las primeras descripciones científicas de restos de dinosaurios, se les erigieron unas esculturas en el Crystal Palace Park de Londres que gustaron tanto al público que se vendieron réplicas a pequeña escala lo que se convirtió en uno de los primeros ejemplos de merchandising de productos derivados. En las décadas posteriores, se han hecho exhibiciones de dinosaurios en parques y museos de todo el mundo, respondiendo al interés público y reforzándolo.[296] Desde hace tiempo la popularidad de los dinosaurios también ha tenido un efecto recíproco sobre el conocimiento de los dinosaurios. La competición entre los museos para la atención del público llevó directamente a la Guerra de los Huesos de las décadas de 1880 y 1890, y la contribución resultante al conocimiento de estos animales fue enorme.[297]
+
+Los dinosaurios ocupan un lugar importante en la cultura moderna. La palabra "dinosaurio" se utiliza coloquialmente para referirse a algo muy viejo o muy grande. El interés del público por estos reptiles llevó a su entrada inevitable en la cultura popular. Comenzando con una mención de pasada del megalosaurio en el primer párrafo de Casa desolada de Charles Dickens en 1852,[298] los dinosaurios han aparecido en una gran variedad de obras de ficción. El libro de 1864 de Julio Verne con Viaje al centro de la Tierra, el libro de 1912 de Arthur Conan Doyle con El mundo perdido, la icónica película de 1933 King Kong, la destacada cinta de 1953 The Beast from 20,000 Fathoms, la película japonesa de 1954 Godzilla y sus múltiples secuelas, el best seller de 1990 Parque Jurásico y su versión en película, que fue durante un corto tiempo la película más taquillera de la historia, son solo algunos ejemplos prominentes de la larga tradición de los dinosaurios en la ficción. Los dinosaurios están omnipresentes en la publicidad, y muchas compañías intentan utilizar los dinosaurios para vender sus propios productos o para tachar a sus rivales como de movimientos lentos, difumados u obsoletos.[299]
+
+Los dinosaurios también han aparecido en los dibujos animados, desde la primera adaptación animada de los mismos con Gertie the Dinosaur (1914) hasta en la célebre cinta animada de 1940 Fantasía. Los dinosaurios también han hecho apariciones en distintas series televisivas documentales como Walking with Dinosaurs, When Dinosaurs Roamed America o Prehistoric Planet.
+
+Al comienzo del siglo XXI, las excavaciones paleontológicas las comenzaron a organizar activamente en China y Mongolia, donde fue encontrada una multitud de otras especies de dinosaurios alados que habitaban durante el período Cretácico. Este período se puede llamar condicionalmente el segundo renacimiento que siguió después del primero, en los años 1970.[300][301

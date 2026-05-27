@@ -14,7 +14,7 @@ class MockConfig:
     def __init__(self):
         self.llm_api = "https://generativelanguage.googleapis.com/v1beta/openai"
         self.llm = "gemini-flash-latest"
-        self.llm_params = {"temperature": 0.8, "max_tokens": 800}
+        self.llm_params = {"temperature": 0.8, "max_tokens": 800, "stop": ["<TERMINAR>"]}
         self.custom_token_count = 4096
         self.vision_enabled = False
         self.advanced_actions_enabled = False

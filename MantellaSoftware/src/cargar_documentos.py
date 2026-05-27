@@ -57,5 +57,5 @@ def cargar_documento_a_npc(ruta_archivo: str, nombre_npc: str):
 
 if __name__ == "__main__":
     # AQUÍ CONFIGURAS LO QUE QUIERES SUBIR
-    archivo_apuntes = "apuntes_vengadores.txt" 
+    archivo_apuntes = "dinosaurios.txt" 
     cargar_documento_a_npc(archivo_apuntes, "Nazeem")
