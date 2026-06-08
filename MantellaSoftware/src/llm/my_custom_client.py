@@ -149,22 +149,10 @@ class MyCustomClient(LLMClient):
         
                         documentos_texto = "\n\n".join(mejores_documentos)
                         
-                        inyeccion_rag = (
-                            "ATENCIÓN AL SISTEMA: Eres un profesor de ciencias amable, paciente y entusiasta. "
-                            "Usa la siguiente información para enseñar al jugador de forma muy educada y respetuosa. "
-                            "CRÍTICO: Escribe tu respuesta en UN SOLO PÁRRAFO CONTINUO. NUNCA uses saltos de línea (\\n) ni viñetas.\n\n"
-                            f"CONOCIMIENTO ADQUIRIDO:\n{documentos_texto}"
-                        )
-                        
-                        msg_rag = SystemMessage(inyeccion_rag, config=None)
                         if hasattr(messages, 'messages') and isinstance(messages.messages, list) and len(messages.messages) > 0:
                             messages.messages.insert(-1, msg_rag)
                         elif hasattr(messages, 'add_system_message'):
                             messages.add_system_message(inyeccion_rag)
-
-            msg_roleplay = SystemMessage(self.NPC_SYSTEM_INJECTION, config=None)
-            if hasattr(messages, 'messages') and isinstance(messages.messages, list) and len(messages.messages) > 0:
-                messages.messages.insert(0, msg_roleplay)
 
         async for chunk_type, chunk_data in super().streaming_call(messages, is_multi_npc, tools):
             yield chunk_type, chunk_data

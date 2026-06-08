@@ -3,43 +3,61 @@ import os
 import logging
 
 class GestorMemoriaAG2:
-    """
-    Componente encargado de serializar y deserializar el historial 
-    de conversaciones de los agentes de AG2 para que sea persistente en el disco.
-    """
-    def __init__(self, carpeta_memorias="npc_conversations_db"):
-        # Subimos a la raíz del proyecto para centralizar la carpeta
-        base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-        self.ruta_carpeta = os.path.join(base_dir, carpeta_memorias)
-        os.makedirs(self.ruta_carpeta, exist_ok=True)
+    def __init__(self, base_dir="npc_conversations_db"):
+        self.base_dir = base_dir
+        os.makedirs(self.base_dir, exist_ok=True)
 
-    def _obtener_ruta_archivo(self, nombre_npc: str) -> str:
-        # Reemplazamos espacios para evitar problemas de formato en el archivo
-        nombre_limpio = nombre_npc.replace(" ", "_").lower()
-        return os.path.join(self.ruta_carpeta, f"{nombre_limpio}_history.json")
+    def obtener_ruta_archivo(self, npc_name):
+        return os.path.join(self.base_dir, f"{npc_name}_memory.json")
 
-    def guardar_conversacion(self, nombre_npc: str, agent_chat_history: list):
-        """Guarda el historial de mensajes del agente en un archivo JSON."""
-        ruta = self._obtener_ruta_archivo(nombre_npc)
-        try:
-            with open(ruta, "w", encoding="utf-8") as f:
-                json.dump(agent_chat_history, f, ensure_ascii=False, indent=4)
-            logging.info(f"[Memoria AG2] Historial guardado con éxito para {nombre_npc}.")
-        except Exception as e:
-            logging.error(f"[Memoria AG2] Error al guardar el historial de {nombre_npc}: {e}")
-
-    def cargar_conversacion(self, nombre_npc: str) -> list:
-        """Recuperates el historial de mensajes guardado. Devuelve una lista vacía si no existe."""
-        ruta = self._obtener_ruta_archivo(nombre_npc)
+    def cargar_conversacion(self, npc_name: str, emocion_actual: str) -> list:
+        """
+        Carga el historial. Si la emoción actual difiere de la guardada, 
+        purga la memoria para evitar el sesgo de aprendizaje en contexto.
+        """
+        ruta = self.obtener_ruta_archivo(npc_name)
         if not os.path.exists(ruta):
-            logging.info(f"[Memoria AG2] No se encontró historial previo para {nombre_npc}. Iniciando conversación de cero.")
             return []
+
+        try:
+            with open(ruta, 'r', encoding='utf-8') as f:
+                data = json.load(f)
+
+            # Control de compatibilidad por si existen historiales antiguos (lista plana)
+            if isinstance(data, list):
+                logging.warning("[Memoria] Formato heredado detectado. Se purgará en el próximo guardado.")
+                emocion_guardada = "desconocida"
+                historial = data
+            else:
+                emocion_guardada = data.get("emocion", "neutral")
+                historial = data.get("historial", [])
+
+            # El núcleo de la solución: validación de estado emocional
+            if emocion_guardada != emocion_actual:
+                print(f"\n[!] Disrupción emocional detectada ({emocion_guardada} -> {emocion_actual}).")
+                print(f"[!] Limpiando caché de memoria de {npc_name} para evitar arrastre cognitivo...")
+                return [] 
+
+            return historial
+            
+        except Exception as e:
+            logging.error(f"[Memoria] Error al cargar el disco: {e}")
+            return []
+
+    def guardar_conversacion(self, npc_name: str, historial: list, emocion_actual: str):
+        """
+        Guarda el historial envolviéndolo en un diccionario de estado.
+        """
+        ruta = self.obtener_ruta_archivo(npc_name)
+        
+        # Estructura de guardado con metadatos
+        data = {
+            "emocion": emocion_actual,
+            "historial": historial
+        }
         
         try:
-            with open(ruta, "r", encoding="utf-8") as f:
-                history = json.load(f)
-            logging.info(f"[Memoria AG2] Historial de conversación recuperado ({len(history)} mensajes) para {nombre_npc}.")
-            return history
+            with open(ruta, 'w', encoding='utf-8') as f:
+                json.dump(data, f, indent=4, ensure_ascii=False)
         except Exception as e:
-            logging.error(f"[Memoria AG2] Error al cargar el historial de {nombre_npc}: {e}")
-            return []
+            logging.error(f"[Memoria] Error crítico al escribir en disco: {e}")
