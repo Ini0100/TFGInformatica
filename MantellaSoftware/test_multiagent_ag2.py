@@ -194,19 +194,34 @@ def iniciar_sistema_multiagente():
     # ==========================================
     # EJECUCIÓN DEL MODO SELECCIONADO
     # ==========================================
+    # TEXTO DE REGLAS ESTRICTAS PARA MULTIAGENTE
+    reglas_rag_grupo = (
+        "\n\n[REGLAS CRÍTICAS DEL SISTEMA PARA EL GRUPO]:\n"
+        "1. FILTRO DE IDENTIDAD: Si decidís usar esta información, hacedlo STRICTAMENTE bajo vuestra personalidad y estado emocional actual.\n"
+        "2. REGLA DE IGNORANCIA: Si esta información no tiene sentido para vosotros o no responde al tema, ignoradla por completo."
+    )
+
     if modo == "1":
         print("\n[Modo Observador Activo]")
         tema_inicial = input("Introduce un evento o frase inicial para detonar la conversación entre ellos: ")
+        
+        # FIX 1: Extracción RAG en Modo Observador
+        contexto_factual = loop.run_until_complete(
+            extraer_conocimiento_rag_global(hyde_client, coleccion_memoria, tema_inicial)
+        )
+        
+        mensaje_final = tema_inicial
+        if contexto_factual:
+            print(f"[*] Recuperando contexto del mundo para el debate...")
+            mensaje_final = f"CONTEXTO FACTUAL: {contexto_factual}{reglas_rag_grupo}\n\nDetonante de la charla: {tema_inicial}"
+
         print("\n--- INICIO DEL DEBATE ---")
-        player_proxy.initiate_chat(manager, message=tema_inicial, clear_history=True)
+        player_proxy.initiate_chat(manager, message=mensaje_final, clear_history=True)
         print("\n[+] Debate finalizado por límite de turnos o consenso natural.")
 
     else:
         print("Escribe 'salir' para terminar.\n")
         try:
-            # En GroupChat, initiate_chat se hace una vez y usamos run para continuar.
-            # Pero para mantener tu arquitectura asíncrona de I/O, lo simulamos inyectando el RAG
-            # directamente en el mensaje enviado al Manager.
             primer_mensaje = True
             while True:
                 texto_usuario = input("\nTú: ")
@@ -221,23 +236,35 @@ def iniciar_sistema_multiagente():
                 mensaje_final = texto_usuario
                 if contexto_factual:
                     print(f"[*] Recuperando contexto del mundo para el debate...")
+                    # FIX 2 y 3: Inyección controlada con reglas de identidad
                     mensaje_final = (
-                        f"INFORMACIÓN DEL MUNDO (USADLA SI ES RELEVANTE PARA VOSOTROS): {contexto_factual}\n\n"
+                        f"[SISTEMA: La siguiente información contextualiza la duda del jugador. {reglas_rag_grupo}]\n"
+                        f"INFORMACIÓN: {contexto_factual}\n"
+                        f"----------------------------------------\n"
                         f"El Jugador dice: {texto_usuario}"
                     )
                 
                 player_proxy.initiate_chat(
                     manager,
                     message=mensaje_final,
-                    clear_history=primer_mensaje, # Solo limpia la primera vez, luego concatena
+                    clear_history=primer_mensaje, 
                     silent=False
                 )
+                
+                # FIX 3 (Mitigación de Bloat): Limpiamos la inyección del sistema del último mensaje
+                # para que los NPCs recuerden lo que dijo el jugador, pero no acumulen la misma info de la BBDD
+                if contexto_factual and groupchat.messages:
+                    ultimo_msg = groupchat.messages[-1]
+                    if "El Jugador dice:" in ultimo_msg.get("content", ""):
+                        ultimo_msg["content"] = f"El Jugador dijo: {texto_usuario}"
+                
                 primer_mensaje = False
                 
         except KeyboardInterrupt:
             print("\n[!] Cierre forzado detectado (Ctrl+C).")
         finally:
             print(f"\n[+] Sesión de debate cerrada con seguridad.")
+            # Opcional: Aquí deberías iterar sobre `agentes_npc_instanciados` e invocar tu GestorMemoriaAG2 si deseas guardar.
 
 if __name__ == "__main__":
     if sys.platform == 'win32':

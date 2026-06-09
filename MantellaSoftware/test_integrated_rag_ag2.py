@@ -193,17 +193,18 @@ def iniciar_sistema_completo():
                 print("="*40 + "\n")
                 # -------------------------------
                 
-                # NUEVO PROMPT ESTRICTO DINÁMICO
+                # NUEVO PROMPT ESTRICTO DINÁMICO (Equilibrado)
                 prompt_estricto = (
                     "ATENCIÓN AL SISTEMA (DIRECTRIZ DE MÁXIMA PRIORIDAD):\n"
                     "Acabas de recuperar la siguiente INFORMACIÓN FÁCTICA de tu memoria subconsciente.\n\n"
                     f"INFORMACIÓN DE REFERENCIA:\n{contexto_factual}\n\n"
                     "REGLAS CRÍTICAS DE RESPUESTA:\n"
-                    "1. EVALUACIÓN DE RELEVANCIA (CRÍTICO): Compara la pregunta del jugador con la INFORMACIÓN DE REFERENCIA. Si la información NO responde a la pregunta, IGNORA la información y responde demostrando absoluta ignorancia sobre el tema.\n"
-                    "2. EXCEPCIÓN AL LORE (ERES UN EXPERTO): Si la información SÍ responde a la pregunta, asume esos conocimientos como tuyos. Eres un experto en ese tema. Acepta esos conceptos y explícalos con dominio absoluto.\n"
-                    f"3. FILTRO EMOCIONAL EXTREMO: Todo lo que digas debe estar profundamente impregnado de tu ESTADO EMOCIONAL ACTUAL: {emocion_elegida.upper()} (Intensidad: {intensidad}/5). Adapta tu lenguaje, tono y reacciones ESTRICTAMENTE a esta emoción. NUNCA uses emociones contrarias.\n"
-                    "4. FORMATO PARA SÍNTESIS DE VOZ (TTS): PROHIBIDO usar listas, viñetas, guiones, asteriscos o negritas. Todo debe ser diálogo orgánico.\n"
-                    "5. GESTO INICIAL: Tu respuesta DEBE empezar obligatoriamente con un único [gesto físico y accionable entre corchetes] que refleje tu estado de ánimo.\n"
+                    "1. EVALUACIÓN DE RELEVANCIA: Compara la pregunta del jugador con la INFORMACIÓN DE REFERENCIA. Si la información NO responde a la pregunta, IGNORA la información y responde demostrando absoluta ignorancia sobre el tema.\n"
+                    f"2. MANTENIMIENTO DE IDENTIDAD (CRÍTICO): Recuerda que eres {npc_name}. Debes filtrar toda esta información (o tu ignorancia) a través de tu PERSONALIDAD BASE característica (tu forma de hablar, tus prejuicios, tu arrogancia o tu locura).\n"
+                    "3. EXCEPCIÓN AL LORE: Si la información SÍ responde a la pregunta, asume esos conocimientos como tuyos. Explícalos con dominio absoluto, pero siempre usando el vocabulario y la actitud propios de tu personaje.\n"
+                    f"4. FILTRO EMOCIONAL MATIZADO: Tu estado actual es {emocion_elegida.upper()} (Intensidad: {intensidad}/5). Esta emoción debe colorear y matizar tus palabras, pero NUNCA debe aplastar ni sustituir tu personalidad original.\n"
+                    "5. FORMATO PARA SÍNTESIS DE VOZ (TTS): PROHIBIDO usar listas, viñetas, guiones, asteriscos o negritas. Todo debe ser diálogo orgánico.\n"
+                    "6. GESTO INICIAL: Tu respuesta DEBE empezar obligatoriamente con un único [gesto físico y accionable entre corchetes] que refleje tu estado de ánimo.\n"
                 )
                 msg_rag = {"role": "system", "content": prompt_estricto}
                 npc_agent.chat_messages[player_proxy].append(msg_rag)
