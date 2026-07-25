@@ -31,6 +31,8 @@ def main():
         )
         ui = StartUI(config)
         routes: list[routeable] = [conversation, ui]
+
+        print("Revision si se envia la informacion de pyton al juego", config.port)
         
         mantella_http_server.start(int(config.port), routes, config.play_startup_sound, should_debug_http)
 

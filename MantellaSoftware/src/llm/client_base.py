@@ -590,7 +590,7 @@ For more information, see here: https://art-from-the-machine.github.io/Mantella/
         return num_tokens
     
     @staticmethod
-    def get_model_list(service: str, secret_key_file: str, default_model: str = "google/gemma-3-27b-it:free", is_vision: bool = False, is_tool_calling: bool = False) -> LLMModelList:
+    def get_model_list(service: str, secret_key_file: str, default_model: str = "gemini-flash-latest", is_vision: bool = False, is_tool_calling: bool = False) -> LLMModelList:
         if service not in ['OpenAI', 'OpenRouter']:
             # Extended support for Gemini in Custom Model dropdown
             if "googleapis" in service or "gemini" in service.lower():

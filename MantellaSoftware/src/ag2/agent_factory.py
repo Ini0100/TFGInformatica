@@ -1,4 +1,3 @@
-
 from autogen import AssistantAgent
 from src.character_manager import Character
 from src.config.config_loader import ConfigLoader
@@ -9,64 +8,56 @@ class AgentFactory:
     """Factory for creating AG2 agents from Mantella characters."""
 
     @staticmethod
-    def create_agent(character: Character, config: ConfigLoader) -> AssistantAgent:
+    def create_agent(character: Character, config: ConfigLoader, llm_client=None, gestor_memoria=None) -> AssistantAgent:
         """
         Creates an AG2 AssistantAgent representing the given Mantella character.
-
-        Args:
-            character (Character): The Mantella character to convert.
-            config (ConfigLoader): The configuration loader containing LLM settings.
-
-        Returns:
-            AssistantAgent: The configured AG2 agent.
         """
-        llm_config = AgentFactory._get_llm_config(config)
-        
-        # Construct a system message based on the character's bio
-        # In the real implementation, this should also include the current context, 
-        # similar to how Conversation.generate_prompt works, but for now we use the bio.
-        system_message = f"You are {character.name}. {character.bio}"
+        try:
+            llm_config = AgentFactory._get_llm_config(config)
+            
+            # 1. Integramos la memoria RAG (ChromaDB) en el System Message
+            contexto_rag = ""
+            if gestor_memoria:
+                try:
+                    contexto_rag = gestor_memoria.obtener_contexto(character.name) 
+                except Exception as e:
+                    logging.warning(f"No se pudo cargar contexto RAG para {character.name}: {e}")
 
-        agent = AssistantAgent(
-            name=AgentFactory._sanitize_name(character.name),
-            system_message=system_message,
-            llm_config=llm_config,
-        )
-        return agent
+            # Inyectamos la memoria vectorial directamente en el cerebro del agente
+            system_message = f"You are {character.name}. {character.bio}\n\nAdditional Memory/Context:\n{contexto_rag}"
+
+            agent = AssistantAgent(
+                name=AgentFactory._sanitize_name(character.name),
+                system_message=system_message,
+                llm_config=llm_config,
+            )
+            return agent
+        except Exception as e:
+            logging.error(f"AgentFactory: Error creating agent for {character.name}: {e}")
+            return None
 
     @staticmethod
     def _get_llm_config(config: ConfigLoader) -> dict:
         """
         Constructs the LLM configuration for AG2 based on Mantella's config.
         """
-        # Extract model and API key using ClientBase logic (or similar)
-        # We need to replicate some of ClientBase's logic here or instantiate it to get the values.
-        # Since ClientBase is designed to be instantiated, let's look at config directly where possible,
-        # or use helper methods if they were static. _get_api_key is static.
-
-        # 1. API Key
-        # The key file depends on the service. defaulting to GPT_SECRET_KEY.txt for now.
         secret_key_file = 'GPT_SECRET_KEY.txt' 
         api_key = ClientBase._get_api_key(secret_key_file, show_error=False)
         
-        # 2. Base URL & Model
-        # We need to handle different services (OpenAI, OpenRouter, Local, etc.)
-        # Mantella stores this in config.
-        # We'll map Mantella's "LLM Service" concept to AG2's config.
-        
-        # definitions are in config.definitions
-        # definitions are in config.definitions
         try:
-             service = config.llm_api # Correct attribute is llm_api
-             model_name = config.llm # Correct attribute is llm (mapped from model in config.ini)
+             service = config.llm_api 
+             model_name = config.llm 
         except AttributeError:
-             # Fallback if attributes are missing (should not happen if config loaded correctly)
              logging.warning("AgentFactory: Could not find llm_api or llm in config, checks definitions.")
              service = config.definitions.get_value("llm_api")
              model_name = config.definitions.get_value("model")
 
         base_url = None
-        api_type = None
+        
+        # 2. Arreglamos la compatibilidad de AG2 con Gemini
+        api_type = None 
+        if "gemini" in model_name.lower():
+            api_type = "gemini"  # Le dice a AutoGen que use el wrapper de Google
 
         if service == 'OpenAI':
             base_url = "https://api.openai.com/v1"
@@ -75,26 +66,28 @@ class AgentFactory:
         elif service == 'Kobold':
             base_url = "http://127.0.0.1:5001/v1"
         else:
-            base_url = service # Custom URL case
+            base_url = service 
 
-        config_list = [
-            {
-                "model": model_name,
-                "api_key": api_key if api_key else "NULL", # Local models might not need key
-                "base_url": base_url,
-            }
-        ]
+        # 3. Añadimos el api_type a la configuración si existe
+        config_dict = {
+            "model": model_name,
+            "api_key": api_key if api_key else "NULL",
+            "base_url": base_url,
+        }
+        
+        if api_type:
+            config_dict["api_type"] = api_type
+
+        config_list = [config_dict]
+
+        logging.info(f"[AG2 Config] Inicializando configuración del LLM - Modelo asignado: {model_name} | API Type: {api_type}")
 
         return {
             "config_list": config_list,
             "temperature": config.llm_params.get("temperature", 0.7), 
-            "cache_seed": 42, # For reproducibility during testing
+            "cache_seed": 42, 
         }
 
     @staticmethod
     def _sanitize_name(name: str) -> str:
-        """
-        Sanitizes the character name to be a valid AG2 agent name.
-        (Alphanumeric and underscores only typically)
-        """
         return "".join(c for c in name if c.isalnum() or c == '_')

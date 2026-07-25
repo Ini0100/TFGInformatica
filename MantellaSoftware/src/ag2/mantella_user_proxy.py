@@ -1,4 +1,5 @@
 
+import time
 from autogen import UserProxyAgent
 from typing import Optional
 
@@ -38,9 +39,20 @@ class MantellaUserProxy(UserProxyAgent):
         )
 
     def get_human_input(self, prompt: str) -> str:
-        """
-        Override to hook into Mantella's input system in the future.
-        For now, it defaults to standard input() or the provided prompt mechanism.
-        """
-        # Future: Integrate with stt.get_latest_transcription()
-        return super().get_human_input(prompt)
+        # 1. Usamos logging en lugar de un print básico para que quede en el historial
+        import logging
+        logging.info(f"[User Proxy] AutoGen solicita input del jugador: {prompt}") 
+        
+        # 2. Implementar una espera no bloqueante (polling) en el hilo secundario
+        while True:
+            # Consultamos la cola de entrada de audio de Mantella
+            # Nota: 'stt' hace referencia al módulo Speech-to-Text configurado en tu entorno
+            player_input = stt.get_latest_transcription() 
+            
+            # Si Mantella detecta y transcribe la voz del jugador, rompemos el bucle y devolvemos el texto
+            if player_input:
+                logging.info(f"[User Proxy] Voz detectada y enviada a AG2: {player_input}")
+                return player_input
+                
+            # 3. Pausa mínima para liberar recursos de la CPU y evitar bloqueos en el juego
+            time.sleep(0.5)

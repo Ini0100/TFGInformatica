@@ -28,14 +28,19 @@ class mantella_route(routeable):
     Args:
         routeable (_type_): _description_
     """
-    def __init__(self, config: ConfigLoader, stt_secret_key_file: str, image_secret_key_file: str, function_llm_secret_key_file: str, secret_key_file: str, language_info: dict[Hashable, str], show_debug_messages: bool = False) -> None:
+    def __init__(self, config: ConfigLoader, stt_secret_key_file: str, image_secret_key_file: str, function_llm_secret_key_file: str, secret_key_file: str, language_info: dict[Hashable, str], show_debug_messages: bool = False, gestor_memoria=None) -> None:
+        # Inicializamos la clase base (routeable) solo con los parámetros que espera
         super().__init__(config, show_debug_messages)
+        
         self.__language_info: dict[Hashable, str] = language_info
         self.__secret_key_file: str = secret_key_file
         self.__function_llm_secret_key_file: str = function_llm_secret_key_file
         self.__stt_secret_key_file: str = stt_secret_key_file
         self.__image_secret_key_file: str = image_secret_key_file
         self.__game: GameStateManager | None = None
+        
+        # Guardamos tu gestor de memoria en la instancia de la ruta
+        self.gestor_memoria = gestor_memoria
 
         # if not self._can_route_be_used():
         #     error_message = "MantellaSoftware settings faulty. Please check MantellaSoftware's window or log."
@@ -61,15 +66,33 @@ class mantella_route(routeable):
         if self._config.tts_service == TTSEnum.PIPER:
             tts = Piper(self._config, game)
 
-        llm_client = MyCustomClient(self._config, self.__secret_key_file, self.__image_secret_key_file, self.__function_llm_secret_key_file)
+        llm_client = MyCustomClient(
+            self._config, 
+            self.__secret_key_file, 
+            self.__image_secret_key_file, 
+            self.__function_llm_secret_key_file,
+            gestor_memoria=self.gestor_memoria
+        )
         
         chat_manager = ChatManager(self._config, tts, llm_client)
-        self.__game = GameStateManager(game, chat_manager, self._config, self.__language_info, llm_client, self.__stt_secret_key_file, self.__secret_key_file)
+        
+        # --- CORRECCIÓN CLAVE ---
+        # Inicializamos GameStateManager con los 7 parámetros obligatorios que demanda Mantella v0.13.1
+        self.__game = GameStateManager(
+            game, 
+            chat_manager, 
+            self._config, 
+            self.__language_info, 
+            llm_client, 
+            self.__stt_secret_key_file, 
+            self.__secret_key_file
+        )
 
     @utils.time_it
     def add_route_to_server(self, app: FastAPI):
         @app.post("/mantella")
         async def mantella(request: Request):
+            print("ha llegado el post")
             if not self._can_route_be_used():
                 error_message = "MantellaSoftware settings faulty. Please check MantellaSoftware's window or log."
                 logging.error(error_message)
