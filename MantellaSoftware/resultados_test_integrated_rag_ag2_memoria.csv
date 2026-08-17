@@ -1,0 +1,4 @@
+turno,mensaje,respuesta,t_turno_s,inyecto_rag,mensajes_historial,tokens_pregunta,tokens_respuesta
+1,"Hola, me llamo Aela.",[Fruncir el ceño con desdén] Qué importa. Ahora has desperdiciado mi tiempo.,12.65,True,3,8,26
+2,¿Quién es Tony Stark?,[Arrugar la nariz con exasperación] Es un estúpido genio multimillonario que diseñó una armadura electromecánica. Nada más. Es el Iron Man. No esperes más de eso.,13.782,True,6,7,50
+3,¿Recuerdas cómo me llamo?,[Levantar una ceja con extrema impaciencia] Por supuesto que lo recuerdo. No es algo que requiera el esfuerzo de un intelecto superior.,14.815,True,9,9,40

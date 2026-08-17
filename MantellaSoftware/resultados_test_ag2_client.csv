@@ -1,0 +1,5 @@
+fase,mensaje,respuesta,t_turno_s,mensajes_historial,tokens_contexto_enviado,tokens_respuesta
+sesion_1_turno_1,"Hola, me llamo Aela y quiero aprender sobre hechizos de fuego.","El fuego es pasión y destrucción. ¿Qué forma de conjuro buscas, Aela?",25.874,2,19,23
+sesion_1_turno_2,¿Qué opinas de la magia de hielo en comparación con la de fuego?,"El fuego consume; el hielo detiene. Uno es acción, el otro es quietud. Ambos son poderosos.",5.178,4,63,28
+sesion_1_turno_3,¿Recuerdas cómo me llamo?,Recuerdo Aela.,4.438,6,100,5
+sesion_2_continuidad,¿Sigues recordando de qué hablamos?,"Recordo el fuego, el hielo y tu nombre, Aela.",4.696,8,116,17

@@ -72,6 +72,19 @@ def main():
             gestor_memoria=gestor_rag_ag2 
         )
         
+        # Precargamos aqui todo lo pesado (CrossEncoder, TTS headless, ChromaDB) para que
+        # ocurra durante el arranque visible y no en la primera peticion real del juego.
+        # Si no se hace, el juego agota su propio timeout esperando la primera respuesta
+        # y cancela la conversacion antes de que el backend termine de cargar.
+        logging.info("[Main] Precargando modelos pesados antes de aceptar conexiones del juego...")
+        try:
+            conversation._can_route_be_used()
+            logging.info("[Main] Precarga completa. El backend puede responder de inmediato.")
+        except Exception:
+            logging.error("[Main] La precarga de modelos pesados ha fallado:")
+            logging.error(traceback.format_exc())
+            raise
+
         ui = StartUI(config)
         routes: list[routeable] = [conversation, ui]
         

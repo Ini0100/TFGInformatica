@@ -43,6 +43,10 @@ class MyCustomClient(LLMClient):
         super().__init__(config, secret_key_file, image_secret_key_file, function_secret_key_file)
         logging.info("========= MyCustomClient (RAG + HyDE Optimizado) INICIALIZADO =========")
 
+        # Guardamos la config: ni ClientBase ni LLMClient la conservan, y la necesitamos
+        # mas abajo para construir instancias de SystemMessage (RAG y capa emocional).
+        self._config = config
+
         # CORRECCIÓN 3: Reutilizamos la colección de ChromaDB que ya instanció el Main para evitar bloqueos de base de datos
         base_dir = os.path.dirname(os.path.dirname(os.path.dirname(__file__)))
         
@@ -61,24 +65,23 @@ class MyCustomClient(LLMClient):
                 embedding_function=self.emb_fn
             )
 
-        api_key = ""
-        ruta_key = os.path.join(base_dir, secret_key_file)
-        if os.path.exists(ruta_key):
-            with open(ruta_key, 'r', encoding='utf-8') as f:
-                api_key = f.read().strip()
-                
+        # El cliente HyDE reutiliza el mismo endpoint/modelo/clave que el cliente
+        # principal (self._base_url / self._api_key / self.model_name, ya resueltos
+        # por ClientBase.__init__ a partir de config.ini), en vez de apuntar a un
+        # servicio en la nube fijo. Así HyDE corre contra Ollama en local igual que
+        # el resto de la conversación.
         self.hyde_client = AsyncOpenAI(
-            api_key=api_key,
-            base_url="https://generativelanguage.googleapis.com/v1beta/openai"
+            api_key=self._api_key,
+            base_url=self._base_url
         )
 
     @staticmethod
-    def get_model_list(service: str, secret_key_file: str, default_model: str = "gemini-flash-latest", is_vision: bool = False, is_tool_calling: bool = False):
+    def get_model_list(service: str, secret_key_file: str, default_model: str = "gemma4:e2b", is_vision: bool = False, is_tool_calling: bool = False):
         from src.llm.llm_model_list import LLMModelList
         opciones_modelos = [
-            default_model, 
-            "gemini-flash-latest", 
-            "AG2 Agent System", 
+            default_model,
+            "gemma4:e2b",
+            "AG2 Agent System",
         ]
         return LLMModelList(opciones_modelos, default_model)
 
@@ -106,7 +109,7 @@ class MyCustomClient(LLMClient):
             )
             
             response = await self.hyde_client.chat.completions.create(
-                model="gemini-flash-latest",
+                model=self.model_name,
                 messages=[{"role": "user", "content": prompt_hyde}],
                 temperature=0.1, 
                 max_tokens=120
@@ -157,7 +160,7 @@ class MyCustomClient(LLMClient):
                         documentos_texto = "\n\n".join(mejores_documentos)
                         
                         inyeccion_rag = f"INFORMACIÓN SOBRE LAS LEYENDAS/ENTORNO:\n{documentos_texto}"
-                        msg_rag = SystemMessage(inyeccion_rag)
+                        msg_rag = SystemMessage(inyeccion_rag, self._config)
 
                         if hasattr(messages, 'messages') and isinstance(messages.messages, list) and len(messages.messages) > 0:
                             messages.messages.insert(-1, msg_rag)
@@ -176,7 +179,7 @@ class MyCustomClient(LLMClient):
             else:
                 inyeccion_total = prompt_emocional
                 
-            msg_sistema_dinamico = SystemMessage(inyeccion_total)
+            msg_sistema_dinamico = SystemMessage(inyeccion_total, self._config)
             
             if hasattr(messages, 'messages') and isinstance(messages.messages, list) and len(messages.messages) > 0:
                 messages.messages.insert(-1, msg_sistema_dinamico)

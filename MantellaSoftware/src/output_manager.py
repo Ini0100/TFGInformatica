@@ -3,6 +3,7 @@ from threading import Lock
 import logging
 import time
 import unicodedata
+
 from openai import APIConnectionError
 from src.llm.output.sentence_accumulator import sentence_accumulator
 from src.config.definitions.llm_definitions import NarrationHandlingEnum
@@ -97,9 +98,14 @@ class ChatManager:
         if(not characters.last_added_character):
             return
         self.__is_generating = True
-        
-        asyncio.run(self.process_response(characters.last_added_character, blocking_queue, messages, characters, actions, tools))
-    
+
+        try:
+            asyncio.run(self.process_response(characters.last_added_character, blocking_queue, messages, characters, actions, tools))
+        except Exception as e:
+            import traceback
+            logging.error(f"Exception in process_response: {e}")
+            logging.error(traceback.format_exc())
+
     @utils.time_it
     def stop_generation(self):
         """Stops the current generation and only returns once this stop has been successful

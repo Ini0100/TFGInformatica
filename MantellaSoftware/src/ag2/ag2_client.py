@@ -37,20 +37,35 @@ class AG2Client(AIClient):
             logging.error(f"AG2Client: Error extrayendo nombre seguro: {e}")
         return None
 
+    def _extraer_system_prompt_real(self, messages) -> str | None:
+        """Extrae el system prompt completo (idioma, rol, hora, clima, reglas...) que Mantella
+        ya construye para el flujo estandar, para que AG2 lo use en vez de un prompt recortado."""
+        try:
+            if hasattr(messages, 'get_openai_messages'):
+                for m in messages.get_openai_messages():
+                    if m.get('role') == 'system':
+                        return m.get('content')
+        except Exception as e:
+            logging.error(f"AG2Client: Error extrayendo el system prompt real: {e}")
+        return None
+
     async def streaming_call(self, messages: Message | message_thread, is_multi_npc: bool, tools: list[dict] | None = None) -> AsyncGenerator[str | None, None]:
-        
+
+        system_prompt_real = self._extraer_system_prompt_real(messages)
+
         # --- INTENTO 1: Carga desde el contexto oficial ---
         try:
             for character in self.context.npcs_in_conversation.get_all_characters():
                 if getattr(character, 'is_player', False) or getattr(character, 'is_player_character', False):
                     continue
-                    
+
                 if character.ref_id not in self.agents:
                     agent = AgentFactory.create_agent(
-                        character=character, 
+                        character=character,
                         config=self.context.config,
-                        llm_client=self.llm_client,                     
-                        gestor_memoria=self.gestor_memoria         
+                        llm_client=self.llm_client,
+                        gestor_memoria=self.gestor_memoria,
+                        system_message_override=system_prompt_real
                     )
                     if agent:
                         self.agents[character.ref_id] = agent
@@ -78,7 +93,8 @@ class AG2Client(AIClient):
                     character=npc_target,
                     config=self.context.config,
                     llm_client=self.llm_client,
-                    gestor_memoria=self.gestor_memoria # Si lo tienes disponible aquí
+                    gestor_memoria=self.gestor_memoria, # Si lo tienes disponible aquí
+                    system_message_override=system_prompt_real
                 )
                 if agente_emergencia:
                     self.agents[npc_target.ref_id] = agente_emergencia
@@ -122,6 +138,6 @@ class AG2Client(AIClient):
         return False
 
     @staticmethod
-    def get_model_list(service: str, secret_key_file: str, default_model: str = "gemini-flash-latest", is_vision: bool = False, is_tool_calling: bool = False) -> LLMModelList:
-         opciones = ["gemini-flash-latest", "AG2 Agent System", default_model]
+    def get_model_list(service: str, secret_key_file: str, default_model: str = "gemma4:e2b", is_vision: bool = False, is_tool_calling: bool = False) -> LLMModelList:
+         opciones = ["gemma4:e2b", "AG2 Agent System", default_model]
          return LLMModelList(opciones, default_model)

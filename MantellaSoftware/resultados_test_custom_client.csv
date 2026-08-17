@@ -1,0 +1,7 @@
+npc,pregunta,tema_esperado,t_hyde_s,t_retrieval_s,t_rerank_s,t_total_s,docs_recuperados,score_top1,tokens_pregunta,tokens_respuesta,respuesta
+Nazeem,¿Qué fue la Guerra de los Clones?,star_wars,29.215,0.362,0.387,39.405,5,9.062,11,53,"[Se ajusta con desdén] Es un conflicto trivial, francamente. Fue la guerra entre la República Galáctica y la Confederación de Sistemas Independientes. Una disputa innecesaria que duró tres años."
+Nazeem,Háblame del Canciller Supremo Palpatine.,star_wars,3.404,0.025,0.022,12.988,5,1.275,14,84,"[Se ajusta con desdén]
+Palpatine fue una figura de gran importancia, aunque su papel real es más interesante que la mayoría de lo que la gente se imagina. Fue el arquitecto detrás de todo, el verdadero motor detrás de la reorganización de la República. Es una figura que demuestra una astucia que pocos poseen."
+Farengar,¿Quién es Tony Stark?,avengers,3.522,0.027,0.031,11.735,8,10.968,7,46,"[Toca una varita con desdén] Es Iron Man, un genio, filántropo y ex-fabricante de armas que creó una armadura electromecánica de alta tecnología."
+Farengar,Cuéntame quién es Thor Odinson.,avengers,3.479,0.026,0.029,12.511,8,7.497,11,42,[Tose un poco de humo] Es el Dios del Trueno y heredero de Asgard. Posee fuerza y manipula el clima con su martillo. Nada más.
+Nazeem,¿Cuál es tu plato favorito para desayunar?,control_sin_memoria,3.532,0.023,0.021,12.323,5,-6.294,14,25,[😏] ¿De verdad tienes que saber eso? Solo los de mi clase consumen lo que es digno.

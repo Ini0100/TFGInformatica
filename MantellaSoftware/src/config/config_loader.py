@@ -284,6 +284,7 @@ LLM parameter list must follow the Python dictionary format: https://www.w3schoo
 
             self.save_audio_data_to_character_folder = self.__definitions.get_bool_value("save_audio_data_to_character_folder")
             self.use_chromadb = self.__definitions.get_bool_value("use_chromadb")
+            self.use_ag2 = self.__definitions.get_bool_value("use_ag2")
 
             #new separate prompts for Fallout 4 have been added 
             if self.game.base_game == GameEnum.FALLOUT4:

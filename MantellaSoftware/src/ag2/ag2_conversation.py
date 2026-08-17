@@ -3,31 +3,37 @@ from src.ag2.agent_factory import AgentFactory
 from src.ag2.mantella_user_proxy import MantellaUserProxy
 from src.ag2.ag2_client import AG2Client
 from src.output_manager import ChatManager
+from src.remember.chroma_memory import ChromaMemory
+from src.llm.gestor_memoria_ag2 import GestorMemoriaAG2
 import logging
 
 class AG2Conversation(Conversation):
     """
     Clase adaptadora para integrar AG2 (AutoGen) en el flujo de Mantella.
     """
-    gestor_memoria = None 
 
     def __init__(self, context_for_conversation, output_manager, rememberer, llm_client, stt, mic_input, mic_ptt):
-        
+
         # 1. Proxy del usuario (jugador)
         player_char = context_for_conversation.npcs_in_conversation.get_player_character()
         player_name = player_char.name if player_char else "Player"
-        
+
         user_proxy = MantellaUserProxy(
             name=player_name,
-            human_input_mode="NEVER", 
+            human_input_mode="NEVER",
             max_consecutive_auto_reply=0
         )
 
+        # Reutilizamos la misma coleccion de ChromaDB que usa el sistema de memoria
+        # estandar (rememberer) para inyectar recuerdos en el system message de los agentes AG2.
+        coleccion_chroma = rememberer.collection if isinstance(rememberer, ChromaMemory) else None
+        gestor_memoria = GestorMemoriaAG2(coleccion_chroma=coleccion_chroma)
+
         # 2. Cliente AG2 (Ahora recibe el contexto completo, no el diccionario de agentes vacío)
         ag2_client = AG2Client(
-            context=context_for_conversation, 
-            llm_client=llm_client, 
-            gestor_memoria=self.gestor_memoria,
+            context=context_for_conversation,
+            llm_client=llm_client,
+            gestor_memoria=gestor_memoria,
             user_proxy=user_proxy
         )
 

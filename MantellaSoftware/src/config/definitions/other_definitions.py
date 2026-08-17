@@ -121,4 +121,4 @@ class OtherDefinitions:
     def get_use_ag2_config_value() -> ConfigValue:
         description = """Whether to use AG2 (AutoGen) for multi-agent conversation handling.
                         If enabled, Mantella will use AG2 agents for defining NPC behavior and interactions."""
-        return ConfigValueBool("use_ag2", "Use AG2 Agents", description, False, tags=[ConfigValueTag.advanced])
+        return ConfigValueBool("use_ag2", "Use AG2 Agents", description, True, tags=[ConfigValueTag.advanced])

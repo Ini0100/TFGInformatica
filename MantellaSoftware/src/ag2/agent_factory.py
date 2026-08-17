@@ -8,23 +8,28 @@ class AgentFactory:
     """Factory for creating AG2 agents from Mantella characters."""
 
     @staticmethod
-    def create_agent(character: Character, config: ConfigLoader, llm_client=None, gestor_memoria=None) -> AssistantAgent:
+    def create_agent(character: Character, config: ConfigLoader, llm_client=None, gestor_memoria=None, system_message_override: str | None = None) -> AssistantAgent:
         """
         Creates an AG2 AssistantAgent representing the given Mantella character.
         """
         try:
             llm_config = AgentFactory._get_llm_config(config)
-            
+
             # 1. Integramos la memoria RAG (ChromaDB) en el System Message
             contexto_rag = ""
             if gestor_memoria:
                 try:
-                    contexto_rag = gestor_memoria.obtener_contexto(character.name) 
+                    contexto_rag = gestor_memoria.obtener_contexto(character.name)
                 except Exception as e:
                     logging.warning(f"No se pudo cargar contexto RAG para {character.name}: {e}")
 
-            # Inyectamos la memoria vectorial directamente en el cerebro del agente
-            system_message = f"You are {character.name}. {character.bio}\n\nAdditional Memory/Context:\n{contexto_rag}"
+            # Usamos el prompt completo que ya construye Mantella (idioma, reglas de roleplay,
+            # hora, clima, etc.) en vez de uno recortado, para que AG2 tenga el mismo contexto
+            # que el cliente estandar. Si no esta disponible, caemos al prompt minimo anterior.
+            if system_message_override:
+                system_message = f"{system_message_override}\n\nAdditional Memory/Context:\n{contexto_rag}"
+            else:
+                system_message = f"You are {character.name}. {character.bio}\n\nAdditional Memory/Context:\n{contexto_rag}"
 
             agent = AssistantAgent(
                 name=AgentFactory._sanitize_name(character.name),
@@ -53,11 +58,13 @@ class AgentFactory:
              model_name = config.definitions.get_value("model")
 
         base_url = None
-        
+
         # 2. Arreglamos la compatibilidad de AG2 con Gemini
-        api_type = None 
-        if "gemini" in model_name.lower():
-            api_type = "gemini"  # Le dice a AutoGen que use el wrapper de Google
+        # AG2 no reconoce "gemini" como api_type valido (solo "google", que exige el SDK nativo).
+        # Como Mantella habla con Gemini via su endpoint compatible con OpenAI
+        # (https://generativelanguage.googleapis.com/v1beta/openai), dejamos que AG2 use
+        # su wrapper "openai" por defecto en vez de forzar un api_type inexistente.
+        api_type = None
 
         if service == 'OpenAI':
             base_url = "https://api.openai.com/v1"
@@ -66,7 +73,14 @@ class AgentFactory:
         elif service == 'Kobold':
             base_url = "http://127.0.0.1:5001/v1"
         else:
-            base_url = service 
+            base_url = service
+
+        # config.llm guarda el nombre "bonito" para mostrar en la UI (ej. "Gemini 1.5 Flash"),
+        # no el ID real que espera la API (ej. "gemini-1.5-flash"). client_base.py ya corrige
+        # esto para el cliente estandar; replicamos la misma correccion aqui para AG2.
+        if ("googleapis" in base_url or "gemini" in base_url) and not model_name.lower().startswith("gemini-"):
+            logging.info(f"[AG2 Config] Detectada URL de Gemini pero modelo invalido '{model_name}'. Forzando a 'gemini-flash-latest'.")
+            model_name = "gemini-flash-latest"
 
         # 3. Añadimos el api_type a la configuración si existe
         config_dict = {

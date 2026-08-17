@@ -70,22 +70,12 @@ class GameStateManager:
         
         context_for_conversation = Context(world_id, self.__config, self.__client, self.__rememberer, self.__language_info)
         
-        if False:
+        if self.__config.use_ag2:
             logging.info("Starting conversation with AG2 Agents")
             self.__talk = AG2Conversation(context_for_conversation, self.__chat_manager, self.__rememberer, self.__client, self.__stt, self.__mic_input, self.__mic_ptt)
         else:
-            logging.info("Starting conversation with standad")
-            logging.info(context_for_conversation)
-            logging.info(self.__chat_manager)
-            logging.info(self.__rememberer)
-            logging.info(self.__client)
-            logging.info(self.__stt)
-            logging.info(self.__mic_input)
-            logging.info(self.__mic_ptt)
-
+            logging.info("Starting conversation with standard")
             self.__talk = Conversation(context_for_conversation, self.__chat_manager, self.__rememberer, self.__client, self.__stt, self.__mic_input, self.__mic_ptt)
-            logging.info(self.__talk)
-            logging.info(input_json)
 
         self.__update_context(input_json)
         self.__try_preload_voice_model()

@@ -1,0 +1,8 @@
+turno,hablante,contenido,cumple_formato_gesto,menciona_a_otro_npc,tokens
+1,Farengar,[Resoplar] Tony Stark. No me importa. Es una tontería irrelevante.,True,False,22
+2,Nazeem,"[Tembellar] Farengar, tus comentarios son tan vacíos como el aire en el Distrito de la Nube; la relevancia de semejantes trivialidades no es asunto mío.",True,True,44
+3,Farengar,[Fruncir el ceño] No te atrevas a juzgar mi intelecto. La relevancia es una construcción de los débiles.,True,False,35
+4,Nazeem,"[Ajustar la postura con tensión] Farengar, tu ignorancia es palpable; el conocimiento de las cosas importantes es algo que se posee, no se discute con semejantes trivialidades.",True,True,47
+5,Farengar,[Levantar una ceja] Tu opinión carece de fundamento. Mi conocimiento es superior al tuyo.,True,False,26
+6,Nazeem,"[Parpadear lentamente] Farengar, tu arrogancia es tan frágil como el cristal; la superioridad del intelecto no se demuestra con tonterías, sino con la posesión real de lo que es importante.",True,True,52
+7,Farengar,[Resoplar] Necesitas aprender la jerarquía. Lo importante es lo que yo decido que lo es.,True,False,27

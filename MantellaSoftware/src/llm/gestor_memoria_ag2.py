@@ -26,9 +26,10 @@ class GestorMemoriaAG2:
             return ""
             
         try:
-            # CORRECCIÓN: Filtro simplificado compatible con todas las versiones de ChromaDB
+            # ChromaMemory guarda los nombres de NPCs en el campo "npc_names" (lista),
+            # por lo que hay que usar $contains en vez de comparar un campo "npc_name" que no existe.
             resultados = self.coleccion_chroma.get(
-                where={"npc_name": {"$eq": npc_name}} 
+                where={"npc_names": {"$contains": npc_name}}
             )
             
             if resultados and resultados.get('documents') and len(resultados['documents']) > 0:
