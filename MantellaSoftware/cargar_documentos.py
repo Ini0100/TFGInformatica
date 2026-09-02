@@ -1,20 +1,19 @@
 import os
+import sys
 import uuid
 import chromadb
 from chromadb.utils import embedding_functions
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 
-# Importamos el registro para validar nombres de forma estricta
-from src.llm.npc_emotions import REGISTRO_NPCS
-
 def cargar_documento_a_npc(ruta_archivo: str, nombre_npc: str):
-    # 1. VALIDACIÓN ESTRICTA: Evita errores tipográficos (ej. "Farengar Fuego Secreto")
-    nombres_validos = [data["nombre"] for data in REGISTRO_NPCS.values()]
-    if nombre_npc not in nombres_validos:
-        print(f"[!] ERROR CRÍTICO: '{nombre_npc}' no es un NPC válido en tu sistema.")
-        print(f"[*] Nombres permitidos: {nombres_validos}")
-        return
-
+    # Nota: no se valida nombre_npc contra ninguna lista cerrada. El campo
+    # "npc_name" solo tiene que coincidir con el nombre real del personaje tal
+    # y como lo usa Mantella (el mismo que aparece en "You are {name}, ..."
+    # del prompt), sea o no uno de los NPC del roster de pruebas de
+    # npc_emotions.py (Farengar, Nazeem, etc. — esos son solo para los tests de
+    # AG2 multiagente). Un typo aquí simplemente hace que ese conocimiento no
+    # se recupere nunca para nadie, en vez de dar un error, así que revisa bien
+    # el nombre antes de cargar.
     print(f"\n[+] Iniciando carga de conocimiento para: {nombre_npc}")
     
     # 2. Leer el archivo
@@ -69,8 +68,13 @@ def cargar_documento_a_npc(ruta_archivo: str, nombre_npc: str):
     print(f"[*] Total de documentos actuales en la BBDD global: {coleccion.count()}")
 
 if __name__ == "__main__":
-    
-    archivo = "star_wars.txt" 
-    npc_objetivo = "Nazeem" 
-    
+    if len(sys.argv) == 3:
+        archivo, npc_objetivo = sys.argv[1], sys.argv[2]
+    else:
+        # Valores por defecto si se ejecuta sin argumentos.
+        archivo = "star_wars.txt"
+        npc_objetivo = "Nazeem"
+        print(f"[*] Uso: python cargar_documentos.py <archivo.txt> <NombreDelNPC>")
+        print(f"[*] Sin argumentos, se usan los valores por defecto: {archivo} -> {npc_objetivo}")
+
     cargar_documento_a_npc(archivo, npc_objetivo)

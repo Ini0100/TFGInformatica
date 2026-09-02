@@ -1,3 +1,4 @@
+import onnxruntime  # ver el comentario equivalente en main_custom.py: debe importarse antes que pandas
 import pytest
 from src.game_manager import GameStateManager
 from src.conversation.conversation import Conversation

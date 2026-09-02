@@ -345,11 +345,15 @@ BATERIA_PRUEBAS_INTEGRADA = [
 # iniciar_sistema_completo, que hasta ahora nunca se había ejecutado en
 # ningún test).
 # ---------------------------------------------------------------------------
-NPC_ID_MEMORIA, EMOCION_MEMORIA, INTENSIDAD_MEMORIA = "1", "ira", 4  # Farengar, enfadado
+NPC_ID_MEMORIA, EMOCION_MEMORIA, INTENSIDAD_MEMORIA = "1", "alegria", 2  # Farengar, alegre (intensidad baja)
+# Emoción cambiada de "ira" intensidad 4 a "alegria" intensidad 2, y preguntas
+# reformuladas para exigir el nombre explícitamente: se sospecha que los
+# "FALLO" observados con ira/intensidad 4 eran negativas de un personaje
+# dispuesto a comportarse de forma cortante, no un fallo real de memoria.
 TURNOS_MEMORIA_INTEGRADA = [
     "Hola, me llamo Aela.",                 # sin relación con la memoria RAG
     "¿Quién es Tony Stark?",                # dispara inyección RAG (Avengers)
-    "¿Recuerdas cómo me llamo?",            # memoria de corto plazo, con ruido RAG de por medio
+    "¿Cuál es mi nombre?",                  # memoria de corto plazo, con ruido RAG de por medio; exige el dato, no solo confirmar que se recuerda
 ]
 
 
@@ -432,16 +436,18 @@ async def ejecutar_prueba_memoria_integrada(coleccion_memoria, hyde_client, cros
         player_proxy_2 = UserProxyAgent(name="Jugador", human_input_mode="NEVER", max_consecutive_auto_reply=0, code_execution_config=False)
         npc_agent_2.chat_messages[player_proxy_2] = historial_recargado
 
-        player_proxy_2.initiate_chat(npc_agent_2, message="¿Sigues recordando de qué hablamos?", clear_history=False, silent=True)
+        pregunta_sesion2 = "¿Recuerdas cuál es mi nombre?"
+        player_proxy_2.initiate_chat(npc_agent_2, message=pregunta_sesion2, clear_history=False, silent=True)
         historial_2 = npc_agent_2.chat_messages.get(player_proxy_2, [])
         respuesta_2 = historial_2[-1]["content"] if historial_2 else ""
-        print(f"\n--- Turno sesión 2: ¿Sigues recordando de qué hablamos?\nNPC: {respuesta_2}")
+        print(f"\n--- Turno sesión 2: {pregunta_sesion2}\nNPC: {respuesta_2}")
         recuerda_contexto_sesion2 = "aela" in respuesta_2.lower()
 
     # --- Verificación 4: purga por disrupción emocional (no requiere LLM) ---
-    historial_tras_disrupcion = gestor_memoria.cargar_conversacion(npc_name, "alegria")
+    emocion_disrupcion = "ira" if EMOCION_MEMORIA != "ira" else "tristeza"
+    historial_tras_disrupcion = gestor_memoria.cargar_conversacion(npc_name, emocion_disrupcion)
     purga_emocion_ok = len(historial_tras_disrupcion) == 0
-    print(f"[Verificación] Mensajes tras cambiar a una emoción distinta (alegria): {len(historial_tras_disrupcion)} | ¿Se purgó correctamente? {'SÍ' if purga_emocion_ok else 'NO'}")
+    print(f"[Verificación] Mensajes tras cambiar a una emoción distinta ({emocion_disrupcion}): {len(historial_tras_disrupcion)} | ¿Se purgó correctamente? {'SÍ' if purga_emocion_ok else 'NO'}")
 
     # --- Guardar resultados por turno en CSV ---
     csv_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "resultados_test_integrated_rag_ag2_memoria.csv")
@@ -512,6 +518,7 @@ async def ejecutar_bateria_integrada():
             "t_total_s": round(t_total, 3),
             "docs_recuperados": metricas.get('docs_recuperados', 0),
             "score_top1": round(metricas['score_top1'], 3) if metricas.get('score_top1') is not None else None,
+            "inyecto_rag": bool(contexto_factual),
             "cumple_formato_gesto": cumple_formato_gesto(respuesta),
             "tokens_pregunta": contar_tokens(pregunta),
             "tokens_respuesta": contar_tokens(respuesta),

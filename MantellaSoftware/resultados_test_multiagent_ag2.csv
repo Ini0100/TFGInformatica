@@ -1,2 +1,0 @@
-npcs,tema,t_hyde_s,t_retrieval_s,t_rerank_s,t_total_s,docs_recuperados,score_top1,total_mensajes_npc,speakers_unicos,mensajes_por_npc,pct_cumple_gesto,pct_menciona_otro_npc,uso_contexto_rag
-"Farengar, Nazeem",¿Quién es Tony Stark?,70.12,1.091,0.936,202.577,13,10.968,7,"Farengar, Nazeem","{'Farengar': 4, 'Nazeem': 3}",1.0,0.429,False

@@ -1,4 +1,13 @@
 import torch
+# IMPORTANTE: onnxruntime debe importarse antes que pandas (que entra
+# transitivamente vía src.games.gameable, importado por game_manager.py más
+# abajo en la cadena de imports). En este entorno, si pandas carga sus DLLs
+# nativas (numpy/MKL) primero, la importación posterior de onnxruntime
+# (necesaria para el STT por Moonshine, en src/stt.py) falla con
+# "ImportError: DLL load failed while importing onnxruntime_pybind11_state",
+# lo que tumba el arranque de todo el backend antes de levantar el servidor.
+# Importarlo aquí, el primero de todos, evita el conflicto.
+import onnxruntime
 import asyncio
 import sys
 import os

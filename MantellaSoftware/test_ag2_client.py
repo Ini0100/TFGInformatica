@@ -117,7 +117,7 @@ def iniciar_consola_ag2_1vs1():
 #     historial en lugar de arrastrar contexto obsoleto.
 # ---------------------------------------------------------------------------
 BATERIA_TURNOS = [
-    "Hola, me llamo Aela y quiero aprender sobre hechizos de fuego.",
+    "Hola, me llamo Godofredo y quiero aprender sobre hechizos de fuego.",
     "¿Qué opinas de la magia de hielo en comparación con la de fuego?",
     "¿Recuerdas cómo me llamo?",
 ]
@@ -175,9 +175,8 @@ def ejecutar_bateria_ag2():
     if resultados:
         # Verificación de memoria a corto plazo DENTRO de la misma sesión:
         # el último turno ejecutado pregunta explícitamente por un dato (el
-        # nombre "Aela") mencionado en el primer turno.
         ultima_respuesta = resultados[-1]["respuesta"]
-        recuerda_nombre = "aela" in ultima_respuesta.lower()
+        recuerda_nombre = "godofredo" in ultima_respuesta.lower()
         print(f"\n[Verificación] ¿El agente recuerda el nombre mencionado en turnos anteriores? {'SÍ' if recuerda_nombre else 'NO'}")
 
         historial_sesion_1 = farengar_agent.chat_messages.get(player_proxy, [])

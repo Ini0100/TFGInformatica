@@ -98,8 +98,12 @@ class AgentFactory:
 
         return {
             "config_list": config_list,
-            "temperature": config.llm_params.get("temperature", 0.7), 
-            "cache_seed": 42, 
+            # config.llm_params puede ser None si el JSON de "Parameters" en la
+            # config está mal formado (ver el mismo patrón defensivo en
+            # ClientBase.max_tokens_param); sin esta guarda, un config.ini con
+            # ese campo inválido tumbaría cualquier conversación con AG2.
+            "temperature": config.llm_params.get("temperature", 0.7) if config.llm_params else 0.7,
+            "cache_seed": 42,
         }
 
     @staticmethod

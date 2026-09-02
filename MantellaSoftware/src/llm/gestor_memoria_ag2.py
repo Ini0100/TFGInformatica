@@ -1,14 +1,41 @@
 import json
 import os
 import logging
+import chromadb
+from chromadb.utils import embedding_functions
 
 class GestorMemoriaAG2:
     def __init__(self, coleccion_chroma=None, base_dir="npc_conversations_db"):
-        self.coleccion_chroma = coleccion_chroma  
-        self.base_dir = base_dir                  
-        
+        # Si no se pasa una colección explícita, nos conectamos directamente a
+        # la misma base de conocimiento que usa MyCustomClient/HyDE
+        # ("npc_chroma_db" / "memoria_global_npcs", la que rellenan
+        # cargar_documentos.py y cargar_documento_frodnar.py). Antes, cuando se
+        # llamaba sin argumentos (como hace AG2Conversation en producción), el
+        # gestor se quedaba sin ChromaDB en absoluto -> obtener_contexto()
+        # devolvía siempre "" y ningún conocimiento RAG llegaba jamás a los
+        # agentes AG2, aunque estuviera correctamente cargado en la base de
+        # datos.
+        if coleccion_chroma is None:
+            try:
+                base_dir_proyecto = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+                db_path = os.path.join(base_dir_proyecto, "npc_chroma_db")
+                emb_fn = embedding_functions.SentenceTransformerEmbeddingFunction(
+                    model_name="paraphrase-multilingual-MiniLM-L12-v2"
+                )
+                chroma_client = chromadb.PersistentClient(path=db_path)
+                coleccion_chroma = chroma_client.get_or_create_collection(
+                    name="memoria_global_npcs",
+                    embedding_function=emb_fn
+                )
+            except Exception as e:
+                logging.error(f"[Memoria] No se pudo conectar automáticamente a la base de conocimiento RAG: {e}")
+                coleccion_chroma = None
+
+        self.coleccion_chroma = coleccion_chroma
+        self.base_dir = base_dir
+
         os.makedirs(self.base_dir, exist_ok=True)
-        
+
         if self.coleccion_chroma:
             logging.info("[Memoria] Gestor enlazado correctamente con ChromaDB.")
         else:
@@ -26,10 +53,15 @@ class GestorMemoriaAG2:
             return ""
             
         try:
-            # ChromaMemory guarda los nombres de NPCs en el campo "npc_names" (lista),
-            # por lo que hay que usar $contains en vez de comparar un campo "npc_name" que no existe.
+            # La base de conocimiento RAG ("memoria_global_npcs") etiqueta cada
+            # fragmento con el campo "npc_name" (string exacto, no una lista),
+            # tal y como lo escriben cargar_documentos.py y
+            # cargar_documento_frodnar.py, y como lo lee MyCustomClient. Un
+            # filtro "npc_names"/$contains (pensado para el esquema de
+            # ChromaMemory, que es una colección distinta) nunca encontraba
+            # nada aquí.
             resultados = self.coleccion_chroma.get(
-                where={"npc_names": {"$contains": npc_name}}
+                where={"npc_name": npc_name}
             )
             
             if resultados and resultados.get('documents') and len(resultados['documents']) > 0:

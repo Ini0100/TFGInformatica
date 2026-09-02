@@ -10,6 +10,14 @@ import re
 
 class AG2Client(AIClient):
 
+    # Emoción usada para guardar_conversacion/cargar_conversacion. GestorMemoriaAG2
+    # purga la memoria si la emoción guardada no coincide con la actual (pensado
+    # para la capa emocional de Ekman de los scripts de prueba). El flujo real
+    # del juego no tiene ese concepto de emoción por NPC, así que se usa un
+    # valor fijo: con eso, guardar/cargar nunca provoca una purga y el NPC
+    # simplemente recuerda lo hablado en la última conversación.
+    EMOCION_PRODUCCION = "neutral"
+
     def __init__(self, context, llm_client, gestor_memoria, user_proxy: UserProxyAgent):
         self.context = context
         self.llm_client = llm_client
@@ -17,10 +25,22 @@ class AG2Client(AIClient):
         self.user_proxy = user_proxy
         self.agents = {}
         self.character_names = {}
-        self._encoding = None 
+        # Historial de conversaciones ANTERIORES con cada NPC, cargado de disco
+        # al crear su agente. Se antepone al historial de la conversación en
+        # curso en cada llamada a generate_reply (ver streaming_call).
+        self.historial_previo: dict[Any, list[dict]] = {}
+        self.last_messages: message_thread | None = None
+        self._encoding = None
 
     def request_call(self, messages: Message | message_thread) -> str | None:
-        return None
+        # Usado por src/remember/summaries.py para generar el resumen de fin de
+        # conversación ({conversation_summary} en el prompt). Antes devolvía
+        # siempre None, lo que hacía fallar SIEMPRE ese resumen (en silencio,
+        # solo un error en el log) para cualquier NPC llevado por AG2: nunca
+        # se guardaba memoria a largo plazo estándar de Mantella para ellos.
+        # Delegamos en el cliente LLM real (el mismo usado para RAG/HyDE), que
+        # no depende de la maquinaria de agentes de AutoGen para esta llamada.
+        return self.llm_client.request_call(messages)
 
     def _extraer_nombre_npc_seguro(self, messages) -> str:
         """Extrae el nombre del NPC directamente del prompt del sistema como plan de respaldo."""
@@ -51,6 +71,10 @@ class AG2Client(AIClient):
 
     async def streaming_call(self, messages: Message | message_thread, is_multi_npc: bool, tools: list[dict] | None = None) -> AsyncGenerator[str | None, None]:
 
+        # Guardado para poder persistir esta conversación al terminar (ver
+        # guardar_memorias, llamado desde AG2Conversation.end()).
+        self.last_messages = messages
+
         system_prompt_real = self._extraer_system_prompt_real(messages)
 
         # --- INTENTO 1: Carga desde el contexto oficial ---
@@ -70,6 +94,9 @@ class AG2Client(AIClient):
                     if agent:
                         self.agents[character.ref_id] = agent
                         self.character_names[character.ref_id] = character.name
+                        self.historial_previo[character.ref_id] = self.gestor_memoria.cargar_conversacion(
+                            character.name, self.EMOCION_PRODUCCION
+                        ) if self.gestor_memoria else []
                         logging.info(f"AG2: Agente creado exitosamente para {character.name}")
         except Exception as e:
             logging.error(f"AG2: Fallo al intentar cargar agentes desde el contexto: {e}")
@@ -98,6 +125,10 @@ class AG2Client(AIClient):
                 )
                 if agente_emergencia:
                     self.agents[npc_target.ref_id] = agente_emergencia
+                    self.character_names[npc_target.ref_id] = npc_target.name
+                    self.historial_previo[npc_target.ref_id] = self.gestor_memoria.cargar_conversacion(
+                        npc_target.name, self.EMOCION_PRODUCCION
+                    ) if self.gestor_memoria else []
                 else:
                     yield "System Error: No se pudo instanciar al agente."
                     return
@@ -107,18 +138,36 @@ class AG2Client(AIClient):
 
 
         # Seleccionar agente
-        agent_ref_id = next(iter(self.agents)) 
+        agent_ref_id = next(iter(self.agents))
         agent = self.agents[agent_ref_id]
         character_name = self.character_names.get(agent_ref_id, agent.name)
 
-        last_message = messages.get_last_message()
-        last_content = last_message.get_formatted_content() if last_message else ""
-        
+        # IMPORTANTE: se pasa el hilo de conversación COMPLETO (sin el mensaje
+        # de sistema, que AutoGen ya antepone solo desde agent.system_message),
+        # no solo el último mensaje del jugador. Antes se llamaba a
+        # generate_reply con una lista de un único mensaje en cada turno, lo
+        # que hacía que el NPC "olvidara" todo lo dicho en turnos anteriores
+        # DENTRO de la misma conversación (cada respuesta se generaba como si
+        # fuera la primera línea del diálogo).
+        openai_messages = messages.get_openai_messages()
+        conversation_messages = [m for m in openai_messages if m.get("role") != "system"]
+        if not conversation_messages:
+            last_message = messages.get_last_message()
+            last_content = last_message.get_formatted_content() if last_message else ""
+            conversation_messages = [{"role": "user", "content": last_content}]
+
+        # Antepone lo hablado en la ÚLTIMA conversación con este NPC (cargado de
+        # disco al crear el agente), para que recuerde entre visitas separadas,
+        # no solo dentro de la conversación actual.
+        historial_previo = self.historial_previo.get(agent_ref_id, [])
+        if historial_previo:
+            conversation_messages = historial_previo + conversation_messages
+
         try:
             logging.info(f"AG2: Solicitando respuesta a AutoGen para el agente {agent.name}")
-            
+
             # Generar respuesta bloqueante
-            reply = agent.generate_reply(messages=[{"role": "user", "content": last_content}])
+            reply = agent.generate_reply(messages=conversation_messages)
             
             if reply and isinstance(reply, str):
                 yield f"{character_name}: {reply}"
@@ -131,11 +180,35 @@ class AG2Client(AIClient):
             logging.error(f"AG2 Error Crítico durante la generación: {e}")
             yield "I am having trouble thinking right now."
 
+    def guardar_memorias(self):
+        """Persiste en disco (vía GestorMemoriaAG2) la conversación mantenida con
+        cada NPC que participó, para que la recuerden en la próxima conversación.
+        Llamado desde AG2Conversation.end() al finalizar la conversación."""
+        if not self.gestor_memoria or not self.last_messages or not self.character_names:
+            return
+
+        historial_actual = [m for m in self.last_messages.get_openai_messages() if m.get("role") != "system"]
+        if not historial_actual:
+            return
+
+        for ref_id, npc_name in self.character_names.items():
+            try:
+                historial_completo = self.historial_previo.get(ref_id, []) + historial_actual
+                self.gestor_memoria.guardar_conversacion(npc_name, historial_completo, self.EMOCION_PRODUCCION)
+                logging.info(f"AG2: Memoria de {npc_name} guardada ({len(historial_completo)} mensajes).")
+            except Exception as e:
+                logging.error(f"AG2: Error guardando memoria de {npc_name}: {e}")
+
     def get_count_tokens(self, messages: message_thread | list[Message] | Message | str) -> int:
-        return 0
+        # Delegado en el cliente LLM real: devolver 0 siempre desactivaba el
+        # mecanismo estándar de Mantella que resume/recorta la conversación
+        # cuando se acerca al límite de contexto del modelo (is_too_long nunca
+        # se disparaba), lo que en una conversación larga podría acabar
+        # desbordando el límite de tokens de gemma4:e2b sin previo aviso.
+        return self.llm_client.get_count_tokens(messages)
 
     def is_too_long(self, messages: message_thread | list[Message] | Message | str, token_limit_percent: float) -> bool:
-        return False
+        return self.llm_client.is_too_long(messages, token_limit_percent)
 
     @staticmethod
     def get_model_list(service: str, secret_key_file: str, default_model: str = "gemma4:e2b", is_vision: bool = False, is_tool_calling: bool = False) -> LLMModelList:

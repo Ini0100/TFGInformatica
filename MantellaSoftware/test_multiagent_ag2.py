@@ -382,7 +382,12 @@ def iniciar_sistema_multiagente():
 # directamente con el formato usuario/asistente de 1 contra 1 que usa
 # GestorMemoriaAG2. Queda fuera de alcance de esta prueba.
 # ---------------------------------------------------------------------------
-GRUPO_BATERIA = [("1", "ira", 4), ("2", "miedo", 4)]  # Farengar, Nazeem
+GRUPO_BATERIA = [("1", "alegria", 2), ("2", "alegria", 2)]  # Farengar, Nazeem
+# Emociones cambiadas de ira/miedo intensidad 4 a alegria intensidad 2 (mismo
+# cambio validado en test_integrated_rag_ag2.py) para comprobar si el fallo de
+# uso del contexto RAG en grupo se debe a una limitación real del modelo o a
+# un conflicto entre emociones de valencia negativa/intensidad alta y la regla
+# de usar el contexto RAG inyectado.
 # Pregunta factual directa en vez de una frase de opinión ("¿qué opináis?"):
 # en la primera ejecución, la frase de opinión obtuvo score_top1 = -1.7 con el
 # cross-encoder (que puntúa relevancia pregunta-pasaje, no relevancia de
@@ -472,8 +477,11 @@ async def ejecutar_bateria_multiagente():
     pct_gesto = sum(1 for m in filas_mensajes if m["cumple_formato_gesto"]) / len(filas_mensajes) if filas_mensajes else 0.0
     pct_menciona_otro = sum(1 for m in filas_mensajes if m["menciona_a_otro_npc"]) / len(filas_mensajes) if filas_mensajes else 0.0
 
+    # Coincidencia por límite de palabra: una búsqueda de subcadena ingenua
+    # daba un falso positivo con "genio", que aparece dentro de "ingenio"
+    # (una palabra genérica sin relación con el documento RAG inyectado).
     texto_completo = " ".join(m["contenido"].lower() for m in filas_mensajes)
-    uso_contexto_rag = any(kw in texto_completo for kw in TEMA_KEYWORDS)
+    uso_contexto_rag = any(re.search(rf'\b{re.escape(kw)}\b', texto_completo) for kw in TEMA_KEYWORDS)
 
     print("\n[Verificación] ¿Participaron los NPCs esperados?", "SÍ" if set(speakers_unicos) == set(nombres_npc) else f"NO (hablaron: {speakers_unicos})")
     print(f"[Verificación] % de mensajes que cumplen el formato de gesto: {pct_gesto*100:.0f}%")

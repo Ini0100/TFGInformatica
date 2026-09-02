@@ -1,5 +1,4 @@
 
-import time
 from autogen import UserProxyAgent
 from typing import Optional
 
@@ -39,20 +38,25 @@ class MantellaUserProxy(UserProxyAgent):
         )
 
     def get_human_input(self, prompt: str) -> str:
-        # 1. Usamos logging en lugar de un print básico para que quede en el historial
+        # AutoGen solo llama a este método cuando human_input_mode es "ALWAYS"
+        # o "TERMINATE". En la integración real de Mantella (AG2Conversation),
+        # este proxy siempre se instancia con human_input_mode="NEVER" — el
+        # texto/voz del jugador entra por el message_thread estándar de
+        # Mantella, no por aquí. Este método referenciaba una variable global
+        # 'stt' que no existe en este módulo (ni se importa ni se recibe por
+        # parámetro), así que si alguna vez se cambia human_input_mode a
+        # "ALWAYS" en algún punto del código, esto lanzaría un NameError en
+        # cuanto AutoGen lo invocara. Se deja explícito en vez de fallar de
+        # forma confusa; si se necesita entrada humana real vía este mecanismo,
+        # hay que inyectar la fuente de transcripción (p.ej. el objeto stt de
+        # Mantella) por el constructor de MantellaUserProxy.
         import logging
-        logging.info(f"[User Proxy] AutoGen solicita input del jugador: {prompt}") 
-        
-        # 2. Implementar una espera no bloqueante (polling) en el hilo secundario
-        while True:
-            # Consultamos la cola de entrada de audio de Mantella
-            # Nota: 'stt' hace referencia al módulo Speech-to-Text configurado en tu entorno
-            player_input = stt.get_latest_transcription() 
-            
-            # Si Mantella detecta y transcribe la voz del jugador, rompemos el bucle y devolvemos el texto
-            if player_input:
-                logging.info(f"[User Proxy] Voz detectada y enviada a AG2: {player_input}")
-                return player_input
-                
-            # 3. Pausa mínima para liberar recursos de la CPU y evitar bloqueos en el juego
-            time.sleep(0.5)
+        logging.error(
+            "[User Proxy] get_human_input() invocado con human_input_mode != 'NEVER', "
+            "pero no hay ninguna fuente de entrada humana conectada a MantellaUserProxy."
+        )
+        raise NotImplementedError(
+            "MantellaUserProxy.get_human_input no está conectado a ninguna fuente de "
+            "entrada (STT/texto). Usa human_input_mode='NEVER' o inyecta una fuente de "
+            "transcripción por el constructor antes de usar este modo."
+        )
