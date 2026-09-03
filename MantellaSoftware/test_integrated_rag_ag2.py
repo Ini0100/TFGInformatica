@@ -173,6 +173,10 @@ def _llm_config() -> dict:
             "price": [0.0, 0.0]
         }],
         "temperature": 0.7,
+        # Ver nota equivalente en test_ag2_client.py: sin esto, AutoGen cachea
+        # respuestas en disco con cache_seed=41 por defecto, lo que podría
+        # devolver una respuesta pasada en vez de generar una nueva.
+        "cache_seed": None,
     }
 
 

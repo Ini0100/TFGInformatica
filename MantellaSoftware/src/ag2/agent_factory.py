@@ -103,7 +103,14 @@ class AgentFactory:
             # ClientBase.max_tokens_param); sin esta guarda, un config.ini con
             # ese campo inválido tumbaría cualquier conversación con AG2.
             "temperature": config.llm_params.get("temperature", 0.7) if config.llm_params else 0.7,
-            "cache_seed": 42,
+            # cache_seed desactivado (antes fijo a 42): con memoria persistente
+            # entre conversaciones, un mismo NPC puede recibir exactamente el
+            # mismo array de mensajes en sesiones distintas (p. ej. un saludo
+            # inicial sin historial nuevo). Con un cache_seed fijo, AutoGen
+            # devolvía la respuesta cacheada en disco (.cache/42/) en vez de
+            # generar una nueva, anulando en la práctica la variabilidad que
+            # se busca con "temperature".
+            "cache_seed": None,
         }
 
     @staticmethod

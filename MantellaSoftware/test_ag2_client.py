@@ -38,6 +38,12 @@ def crear_llm_config() -> dict:
         }],
         "temperature": 0.8,
         "timeout": 120,
+        # Sin esto, AutoGen usa cache_seed=41 por defecto y cachea en disco
+        # (.cache/41/): con memoria persistente entre "sesiones" (ver
+        # GestorMemoriaAG2), una misma pregunta con el mismo historial podría
+        # devolver una respuesta cacheada de una ejecución anterior en vez de
+        # generar una nueva, contaminando la reproducibilidad de la batería.
+        "cache_seed": None,
     }
 
 

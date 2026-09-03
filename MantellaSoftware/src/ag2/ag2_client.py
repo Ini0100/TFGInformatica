@@ -166,9 +166,17 @@ class AG2Client(AIClient):
         try:
             logging.info(f"AG2: Solicitando respuesta a AutoGen para el agente {agent.name}")
 
-            # Generar respuesta bloqueante
-            reply = agent.generate_reply(messages=conversation_messages)
-            
+            # a_generate_reply (no generate_reply) porque streaming_call es async:
+            # generate_reply es una llamada síncrona y bloqueante, y al no hacer
+            # nunca un await dentro de esta función, el único yield ocurre al
+            # terminar toda la generación. Esto rompía dos cosas en el juego real:
+            # el chequeo de interrupción por micrófono en process_response()
+            # (output_manager.py) solo se evalúa entre yields, así que con uno
+            # solo al final el jugador no podía interrumpir a un NPC de AG2
+            # mientras "pensaba"; y no había audio/subtítulos progresivos, solo
+            # silencio hasta que aparecía la respuesta completa de golpe.
+            reply = await agent.a_generate_reply(messages=conversation_messages)
+
             if reply and isinstance(reply, str):
                 yield f"{character_name}: {reply}"
             elif isinstance(reply, dict) and "content" in reply:

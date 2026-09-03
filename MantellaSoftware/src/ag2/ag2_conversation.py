@@ -25,8 +25,8 @@ class AG2Conversation(Conversation):
 
         # GestorMemoriaAG2() sin argumentos se conecta directamente a la base
         # de conocimiento RAG ("npc_chroma_db"/"memoria_global_npcs", la misma
-        # que usa MyCustomClient y que rellenan cargar_documentos.py /
-        # cargar_documento_frodnar.py). Antes se intentaba reutilizar
+        # que usa MyCustomClient y que rellena cargar_documentos.py. Antes se
+        # intentaba reutilizar
         # `rememberer.collection` (el sistema de recuerdo de conversaciones
         # pasadas de Mantella, una colección y un esquema de metadatos
         # totalmente distintos) — con eso, el conocimiento RAG cargado para
