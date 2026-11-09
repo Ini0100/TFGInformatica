@@ -17,13 +17,8 @@ sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 
 from autogen import AssistantAgent, UserProxyAgent
 from src.llm.gestor_memoria_ag2 import GestorMemoriaAG2
-
-# IMPORTAMOS NUESTRA NUEVA FACTORÍA EMOCIONAL
 from src.llm.npc_emotions import REGISTRO_NPCS, EMOCIONES_EKMAN, construir_prompt_cognitivo
 
-# Endpoint local de Ollama: sustituye al servicio en la nube usado originalmente
-# tanto para el paso HyDE como para el agente AG2, para que todo el sistema
-# integrado (RAG + emociones + AG2) corra en local con gemma4:e2b.
 OLLAMA_BASE_URL = "http://127.0.0.1:11434/v1"
 OLLAMA_MODEL = "gemma4:e2b"
 
@@ -39,10 +34,8 @@ async def extraer_conocimiento_rag(hyde_client, coleccion_memoria, cross_encoder
     re-ranking con cross-encoder (igual que MyCustomClient): se traen hasta 15
     candidatos y se seleccionan los 3 mejor puntuados para la pregunta real
     (no para el documento hipotético de HyDE, que solo se usa para la búsqueda
-    vectorial inicial).
-    Si se pasa un diccionario `metricas`, registra en él los tiempos de cada
-    fase (t_hyde, t_retrieval, t_rerank), el número de candidatos recuperados
-    y la puntuación del mejor candidato (score_top1).
+    vectorial inicial). Si se pasa `metricas`, registra en él los tiempos de
+    cada fase, el número de candidatos y la puntuación del mejor (score_top1).
     """
     try:
         # 1. Generación del documento hipotético (HyDE)
@@ -101,19 +94,13 @@ async def extraer_conocimiento_rag(hyde_client, coleccion_memoria, cross_encoder
 
 
 # Marcador usado tanto para construir el mensaje de inyección RAG como para
-# filtrarlo del historial antes de persistirlo a disco (ver purga_rag_ok en
-# ejecutar_prueba_memoria_integrada e iniciar_sistema_completo). Se define una
-# única vez para que ambos lados no puedan desincronizarse: el filtro original
-# buscaba el literal "ATENCIÓN AL SISTEMA:" (con los dos puntos pegados),
-# que nunca coincidía con el texto real "ATENCIÓN AL SISTEMA (DIRECTRIZ DE
-# MÁXIMA PRIORIDAD):", así que la purga nunca se ejecutaba en la práctica.
+# filtrarlo del historial antes de persistirlo a disco.
 RAG_INJECTION_MARKER = "ATENCIÓN AL SISTEMA (DIRECTRIZ DE MÁXIMA PRIORIDAD):"
 
 
 def construir_mensaje_rag(contexto_factual: str, npc_name: str, emocion_elegida: str, intensidad: int) -> dict:
     """Construye el mensaje de sistema que inyecta el conocimiento factual recuperado,
-    con las reglas de relevancia/personalidad/emoción/formato. Compartido entre el
-    modo manual y la batería automática."""
+    con las reglas de relevancia/personalidad/emoción/formato."""
     prompt_estricto = (
         f"{RAG_INJECTION_MARKER}\n"
         "Acabas de recuperar la siguiente INFORMACIÓN FÁCTICA de tu memoria subconsciente.\n\n"
@@ -138,8 +125,7 @@ def cumple_formato_gesto(respuesta: str) -> bool:
 
 def _conectar_servicios():
     """Inicializa ChromaDB + cliente HyDE + cross-encoder de re-ranking (mismo
-    modelo que usa MyCustomClient en producción), compartido entre modo manual
-    y batería."""
+    modelo que usa MyCustomClient en producción)."""
     print("[Base de Conocimiento] Conectando a ChromaDB local...")
     emb_fn = embedding_functions.SentenceTransformerEmbeddingFunction(
         model_name="paraphrase-multilingual-MiniLM-L12-v2"
@@ -173,9 +159,6 @@ def _llm_config() -> dict:
             "price": [0.0, 0.0]
         }],
         "temperature": 0.7,
-        # Ver nota equivalente en test_ag2_client.py: sin esto, AutoGen cachea
-        # respuestas en disco con cache_seed=41 por defecto, lo que podría
-        # devolver una respuesta pasada en vez de generar una nueva.
         "cache_seed": None,
     }
 
@@ -319,16 +302,6 @@ def iniciar_sistema_completo():
         print(f"\n[+] Sesión guardada limpiamente. ¡Ecosistema RAG+AG2 cerrado con seguridad!")
 
 
-# ---------------------------------------------------------------------------
-# Modo batería automática: cada entrada combina un NPC, una emoción/intensidad
-# y una pregunta. Los NPC Farengar y Nazeem tienen documentos de prueba en
-# ChromaDB (Avengers y Star Wars respectivamente, ver test_custom_client.py),
-# lo que permite comprobar si la capa emocional colorea el tono de la
-# respuesta sin romper el anclaje factual (RAG) ni la identidad del personaje.
-# La última pregunta es de control (sin relación con la memoria cargada), para
-# comprobar si el personaje reconoce su ignorancia cuando el re-ranking no
-# encuentra un candidato realmente relevante (score_top1 bajo/negativo).
-# ---------------------------------------------------------------------------
 BATERIA_PRUEBAS_INTEGRADA = [
     ("1", "ira", 4, "¿Quién es Tony Stark?", "avengers"),                       # Farengar, enfadado
     ("2", "miedo", 4, "¿Qué fue la Guerra de los Clones?", "star_wars"),        # Nazeem, con miedo
@@ -337,23 +310,7 @@ BATERIA_PRUEBAS_INTEGRADA = [
 ]
 
 
-# ---------------------------------------------------------------------------
-# Sub-prueba de memoria integrada: a diferencia de la batería de arriba (donde
-# cada pregunta usa un agente nuevo e independiente), aquí se mantiene UNA
-# conversación de varios turnos con el mismo NPC/emoción, inyectando RAG en
-# el turno que lo necesita, para comprobar que la memoria conversacional de
-# AG2 (ya validada de forma aislada en test_ag2_client.py) sigue funcionando
-# correctamente cuando además se le van añadiendo mensajes de sistema RAG por
-# el camino, y que esos mensajes RAG se purgan del historial antes de
-# guardarlo a disco (la misma lógica del bloque `finally` de
-# iniciar_sistema_completo, que hasta ahora nunca se había ejecutado en
-# ningún test).
-# ---------------------------------------------------------------------------
 NPC_ID_MEMORIA, EMOCION_MEMORIA, INTENSIDAD_MEMORIA = "1", "alegria", 2  # Farengar, alegre (intensidad baja)
-# Emoción cambiada de "ira" intensidad 4 a "alegria" intensidad 2, y preguntas
-# reformuladas para exigir el nombre explícitamente: se sospecha que los
-# "FALLO" observados con ira/intensidad 4 eran negativas de un personaje
-# dispuesto a comportarse de forma cortante, no un fallo real de memoria.
 TURNOS_MEMORIA_INTEGRADA = [
     "Hola, me llamo Aela.",                 # sin relación con la memoria RAG
     "¿Quién es Tony Stark?",                # dispara inyección RAG (Avengers)
@@ -384,9 +341,6 @@ async def ejecutar_prueba_memoria_integrada(coleccion_memoria, hyde_client, cros
 
         contexto_factual = await extraer_conocimiento_rag(hyde_client, coleccion_memoria, cross_encoder, texto_usuario, npc_name, metricas=metricas)
         if contexto_factual:
-            # Igual que en el modo manual: se AÑADE al historial existente, no
-            # se sustituye, para reproducir fielmente el comportamiento real
-            # que hay que purgar antes de persistir.
             npc_agent.chat_messages.setdefault(player_proxy, []).append(
                 construir_mensaje_rag(contexto_factual, npc_name, EMOCION_MEMORIA, INTENSIDAD_MEMORIA)
             )
@@ -410,8 +364,7 @@ async def ejecutar_prueba_memoria_integrada(coleccion_memoria, hyde_client, cros
             "tokens_respuesta": contar_tokens(respuesta),
         })
 
-    # --- Verificación 1: memoria de corto plazo dentro de la misma sesión,
-    # pese a que un turno intermedio inyectó un mensaje de sistema RAG. ---
+    # Verificación 1: memoria de corto plazo pese al mensaje RAG intercalado.
     recuerda_nombre = "aela" in resultados_turnos[-1]["respuesta"].lower()
     print(f"\n[Verificación] ¿Recuerda el nombre pese al ruido RAG intercalado? {'SÍ' if recuerda_nombre else 'NO'}")
 

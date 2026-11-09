@@ -30,10 +30,8 @@ class MyCustomClient(LLMClient):
         "3. Eres un experto en ciertos temas. Si se te proporciona INFORMACIÓN DE REFERENCIA, úsala para enseñar o responder al jugador, integrándola en tu diálogo de forma natural."
     )
 
-    # CORRECCIÓN 1: Añadimos gestor_memoria=None al final del constructor
     def __init__(self, config, secret_key_file: str, image_secret_key_file: str, function_secret_key_file: str = None, gestor_memoria=None) -> None:
-        
-        # CORRECCIÓN 2: Eliminamos la doble inicialización. Configuramos el Re-Ranker una sola vez en CUDA de forma estricta
+
         logging.info("[Re-Ranker] Cargando modelo CrossEncoder en VRAM (CUDA)...")
         self.cross_encoder = CrossEncoder(
             'cross-encoder/mmarco-mMiniLMv2-L12-H384-v1',
@@ -43,11 +41,8 @@ class MyCustomClient(LLMClient):
         super().__init__(config, secret_key_file, image_secret_key_file, function_secret_key_file)
         logging.info("========= MyCustomClient (RAG + HyDE Optimizado) INICIALIZADO =========")
 
-        # Guardamos la config: ni ClientBase ni LLMClient la conservan, y la necesitamos
-        # mas abajo para construir instancias de SystemMessage (RAG y capa emocional).
         self._config = config
 
-        # CORRECCIÓN 3: Reutilizamos la colección de ChromaDB que ya instanció el Main para evitar bloqueos de base de datos
         base_dir = os.path.dirname(os.path.dirname(os.path.dirname(__file__)))
         
         if gestor_memoria and hasattr(gestor_memoria, 'coleccion_chroma') and gestor_memoria.coleccion_chroma is not None:
@@ -65,11 +60,6 @@ class MyCustomClient(LLMClient):
                 embedding_function=self.emb_fn
             )
 
-        # El cliente HyDE reutiliza el mismo endpoint/modelo/clave que el cliente
-        # principal (self._base_url / self._api_key / self.model_name, ya resueltos
-        # por ClientBase.__init__ a partir de config.ini), en vez de apuntar a un
-        # servicio en la nube fijo. Así HyDE corre contra Ollama en local igual que
-        # el resto de la conversación.
         self.hyde_client = AsyncOpenAI(
             api_key=self._api_key,
             base_url=self._base_url

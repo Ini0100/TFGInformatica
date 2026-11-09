@@ -16,15 +16,10 @@ import tiktoken
 logging.basicConfig(level=logging.WARNING, format='%(levelname)s - %(message)s')
 sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 
-# IMPORTAMOS LAS CLASES DE GRUPO DE AUTOGEN
 from autogen import AssistantAgent, UserProxyAgent, GroupChat, GroupChatManager
 from src.llm.gestor_memoria_ag2 import GestorMemoriaAG2
-
 from src.llm.npc_emotions import REGISTRO_NPCS, EMOCIONES_EKMAN, construir_prompt_cognitivo
 
-# Endpoint local de Ollama, igual que en los demás tests: sustituye al servicio
-# en la nube (Gemini) usado originalmente tanto para HyDE como para los
-# agentes AG2 y el GroupChatManager.
 OLLAMA_BASE_URL = "http://127.0.0.1:11434/v1"
 OLLAMA_MODEL = "gemma4:e2b"
 
@@ -35,8 +30,7 @@ def contar_tokens(texto: str) -> int:
 
 
 def cumple_formato_gesto(respuesta: str) -> bool:
-    """Igual que en test_integrated_rag_ag2.py: comprueba que el mensaje empiece
-    por un único gesto físico entre corchetes."""
+    """Comprueba que el mensaje empiece por un único gesto físico entre corchetes."""
     return bool(re.match(r'^\s*\[[^\[\]]+\]', respuesta or ""))
 
 
@@ -96,14 +90,6 @@ async def extraer_conocimiento_rag_global(hyde_client, coleccion_memoria, cross_
         return ""
 
 
-# A diferencia de construir_prompt_cognitivo (usado en test_integrated_rag_ag2.py),
-# que sí tiene una "EXCEPCIÓN AL LORE" explícita ("si la información SÍ responde
-# a la pregunta, asume esos conocimientos como tuyos"), la versión de grupo
-# original solo decía qué hacer si la información NO era relevante, nunca qué
-# hacer si SÍ lo era. En la primera ejecución de la batería esto hizo que,
-# pese a recuperar el documento correcto (score_top1 = 10.968), ambos NPCs
-# negaran tener esa información en vez de usarla. Se añade la regla 0 que
-# faltaba.
 REGLAS_RAG_GRUPO = (
     "\n\n[REGLAS CRÍTICAS DEL SISTEMA PARA EL GRUPO]:\n"
     "0. USO DEL CONOCIMIENTO: Si el CONTEXTO FACTUAL SÍ responde al tema, asumidlo como conocimiento propio y usadlo "
@@ -114,19 +100,13 @@ REGLAS_RAG_GRUPO = (
 
 
 def _prompt_base(npc_id: str, emocion: str, intensidad: int) -> tuple[str, str]:
-    """Personalidad + emoción del NPC (construir_prompt_cognitivo), sin la regla
-    de debate grupal todavía: esa se añade en una segunda pasada una vez se
-    conoce el reparto completo de la sala (ver _regla_debate_grupal)."""
+    """Personalidad + emoción del NPC, sin la regla de debate grupal todavía."""
     return construir_prompt_cognitivo(npc_id, emocion, intensidad)
 
 
 def _regla_debate_grupal(otros_nombres: list[str]) -> str:
-    """Regla de comportamiento en grupo, con un ejemplo CONCRETO usando el
-    nombre real de otro participante. La versión original solo decía "debes
-    referirte a ellos por su nombre" sin mostrar cómo, y con un modelo local
-    de 2B esa instrucción sin ejemplo nunca se seguía (0/7 menciones en la
-    primera ejecución de la batería) — un ejemplo explícito ayuda a modelos
-    pequeños a seguir instrucciones de formato."""
+    """Regla de comportamiento en grupo, con un ejemplo concreto usando el
+    nombre real de otro participante."""
     if not otros_nombres:
         return ""
     ejemplo = otros_nombres[0]
@@ -170,9 +150,6 @@ def _llm_config() -> dict:
             "price": [0.0, 0.0],
         }],
         "temperature": 0.7,
-        # Ver nota equivalente en test_ag2_client.py: sin esto, AutoGen cachea
-        # respuestas en disco con cache_seed=41 por defecto, lo que podría
-        # devolver una respuesta pasada en vez de generar una nueva.
         "cache_seed": None,
     }
 
@@ -368,42 +345,12 @@ def iniciar_sistema_multiagente():
             print("\n[!] Cierre forzado detectado (Ctrl+C).")
         finally:
             print(f"\n[+] Sesión de debate cerrada con seguridad.")
-            # Opcional: Aquí deberías iterar sobre `agentes_npc_instanciados` e invocar tu GestorMemoriaAG2 si deseas guardar.
 
 
-# ---------------------------------------------------------------------------
-# Modo batería automática: un debate fijo de 2 NPCs (Farengar/ira, Nazeem/miedo,
-# los mismos usados en test_integrated_rag_ag2.py) en "modo observador",
-# detonado con un tema que sí tiene un documento relevante en ChromaDB
-# (Avengers/Tony Stark). El objetivo es comprobar que, con más de un NPC,
-# siguen funcionando: el anclaje RAG con re-ranking, el formato de gesto por
-# personaje, y (nuevo de este test) la dinámica de turnos entre varios NPCs —
-# que participen varios, no solo uno, y que se refieran entre ellos por su
-# nombre como exige la regla de debate grupal.
-# No se prueba aquí la persistencia en disco (GestorMemoriaAG2): el propio
-# script original la deja como opcional/sin implementar para GroupChat, ya
-# que su formato de mensajes (con campo "name" por hablante) no encaja
-# directamente con el formato usuario/asistente de 1 contra 1 que usa
-# GestorMemoriaAG2. Queda fuera de alcance de esta prueba.
-# ---------------------------------------------------------------------------
 GRUPO_BATERIA = [("1", "alegria", 2), ("2", "alegria", 2)]  # Farengar, Nazeem
-# Emociones cambiadas de ira/miedo intensidad 4 a alegria intensidad 2 (mismo
-# cambio validado en test_integrated_rag_ag2.py) para comprobar si el fallo de
-# uso del contexto RAG en grupo se debe a una limitación real del modelo o a
-# un conflicto entre emociones de valencia negativa/intensidad alta y la regla
-# de usar el contexto RAG inyectado.
-# Pregunta factual directa en vez de una frase de opinión ("¿qué opináis?"):
-# en la primera ejecución, la frase de opinión obtuvo score_top1 = -1.7 con el
-# cross-encoder (que puntúa relevancia pregunta-pasaje, no relevancia de
-# tema-de-conversación) para la MISMA entidad que en test_integrated_rag_ag2.py
-# obtuvo +10.968 con esta redacción directa, así que el contexto RAG se
-# descartaba por "irrelevante" pese a que el documento correcto sí estaba
-# entre los candidatos.
 TEMA_BATERIA = "¿Quién es Tony Stark?"
-# Deliberadamente NO incluye "stark": ese nombre ya aparece en TEMA_BATERIA, así
-# que mencionarlo no prueba que el contenido RECUPERADO (no solo el nombre de
-# la pregunta) se haya usado. Solo cuentan palabras que únicamente pueden venir
-# del documento inyectado.
+# No incluye "stark" (ya aparece en TEMA_BATERIA): solo cuentan palabras que
+# únicamente pueden venir del documento RAG inyectado.
 TEMA_KEYWORDS = ["iron man", "armadura", "multimillonario", "genio", "fabricante de armas", "electromec"]
 MAX_ROUND_BATERIA = 8
 
@@ -481,9 +428,6 @@ async def ejecutar_bateria_multiagente():
     pct_gesto = sum(1 for m in filas_mensajes if m["cumple_formato_gesto"]) / len(filas_mensajes) if filas_mensajes else 0.0
     pct_menciona_otro = sum(1 for m in filas_mensajes if m["menciona_a_otro_npc"]) / len(filas_mensajes) if filas_mensajes else 0.0
 
-    # Coincidencia por límite de palabra: una búsqueda de subcadena ingenua
-    # daba un falso positivo con "genio", que aparece dentro de "ingenio"
-    # (una palabra genérica sin relación con el documento RAG inyectado).
     texto_completo = " ".join(m["contenido"].lower() for m in filas_mensajes)
     uso_contexto_rag = any(re.search(rf'\b{re.escape(kw)}\b', texto_completo) for kw in TEMA_KEYWORDS)
 

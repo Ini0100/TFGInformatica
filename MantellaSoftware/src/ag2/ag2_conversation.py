@@ -23,18 +23,9 @@ class AG2Conversation(Conversation):
             max_consecutive_auto_reply=0
         )
 
-        # GestorMemoriaAG2() sin argumentos se conecta directamente a la base
-        # de conocimiento RAG ("npc_chroma_db"/"memoria_global_npcs", la misma
-        # que usa MyCustomClient y que rellena cargar_documentos.py. Antes se
-        # intentaba reutilizar
-        # `rememberer.collection` (el sistema de recuerdo de conversaciones
-        # pasadas de Mantella, una colección y un esquema de metadatos
-        # totalmente distintos) — con eso, el conocimiento RAG cargado para
-        # cualquier NPC nunca llegaba a los agentes AG2 en la partida real,
-        # aunque sí funcionara en las pruebas independientes.
         gestor_memoria = GestorMemoriaAG2()
 
-        # 2. Cliente AG2 (Ahora recibe el contexto completo, no el diccionario de agentes vacío)
+        # 2. Cliente AG2
         ag2_client = AG2Client(
             context=context_for_conversation,
             llm_client=llm_client,
@@ -42,7 +33,6 @@ class AG2Conversation(Conversation):
             user_proxy=user_proxy
         )
 
-        # Guardado para poder persistir la memoria al finalizar (ver end()).
         self.__ag2_client = ag2_client
 
         # 3. Gestor de chat puente
@@ -60,9 +50,7 @@ class AG2Conversation(Conversation):
         )
 
     def end(self):
-        """Además del cierre estándar de Mantella, persiste en disco (vía
-        GestorMemoriaAG2) lo hablado con cada NPC de esta conversación, para
-        que lo recuerden la próxima vez que el jugador hable con ellos."""
+        """Además del cierre estándar de Mantella, persiste la memoria de cada NPC."""
         try:
             self.__ag2_client.guardar_memorias()
         except Exception as e:

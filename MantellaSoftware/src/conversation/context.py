@@ -433,7 +433,9 @@ class Context:
             self.__prev_game_time = str(time), time_group
         else:
             self.__prev_game_time = None, time_group
-        conversation_summaries = self.__rememberer.get_prompt_text(self.get_characters_excluding_player(), self.__world_id)
+        # Con AG2 activo, AG2Client ya inyecta su propio resumen de memoria por
+        # NPC; el volcado de ChromaMemory queda desactivado para evitar duplicarlo.
+        conversation_summaries = "" if self.__config.use_ag2 else self.__rememberer.get_prompt_text(self.get_characters_excluding_player(), self.__world_id)
         
         # Only include legacy action prompts if advanced actions are disabled
         actions = self.__get_action_texts(actions_for_prompt) if not self.__config.advanced_actions_enabled else ""

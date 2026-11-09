@@ -447,7 +447,9 @@ class Conversation:
             if not npc.is_player_character:
                 characters_object.add_or_update_character(npc)
                 conversation_log.save_conversation_log(npc, self.__messages.transform_to_openai_messages(self.__messages.get_talk_only()), self.__context.world_id)
-        self.__rememberer.save_conversation_state(self.__messages, characters_object, self.__context.world_id, is_reload)
+        if not self.__context.config.use_ag2:
+            # Con AG2 activo, la memoria de cada NPC ya la gestiona GestorMemoriaAG2.
+            self.__rememberer.save_conversation_state(self.__messages, characters_object, self.__context.world_id, is_reload)
 
     @utils.time_it
     def __initiate_reload_conversation(self):

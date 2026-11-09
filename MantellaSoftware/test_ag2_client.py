@@ -22,9 +22,7 @@ def contar_tokens(texto: str) -> int:
     return len(_encoding.encode(texto or ""))
 
 def tokens_de_historial(historial: list) -> int:
-    """Tokens acumulados de TODO el historial que AG2 reenvía en cada turno
-    (a diferencia de test_custom_client, aquí no hay RAG/re-ranking que
-    resuma el contexto: AG2 reenvía la conversación completa cada vez)."""
+    """Tokens acumulados de todo el historial que AG2 reenvía en cada turno."""
     return sum(contar_tokens(m.get("content", "")) for m in historial)
 
 
@@ -38,11 +36,6 @@ def crear_llm_config() -> dict:
         }],
         "temperature": 0.8,
         "timeout": 120,
-        # Sin esto, AutoGen usa cache_seed=41 por defecto y cachea en disco
-        # (.cache/41/): con memoria persistente entre "sesiones" (ver
-        # GestorMemoriaAG2), una misma pregunta con el mismo historial podría
-        # devolver una respuesta cacheada de una ejecución anterior en vez de
-        # generar una nueva, contaminando la reproducibilidad de la batería.
         "cache_seed": None,
     }
 
@@ -62,10 +55,6 @@ def crear_agentes(llm_config: dict):
     return farengar_agent, player_proxy
 
 
-# ---------------------------------------------------------------------------
-# Modo interactivo (comportamiento original del script: entrada manual por
-# teclado, con persistencia de memoria entre ejecuciones vía JSON).
-# ---------------------------------------------------------------------------
 def iniciar_consola_ag2_1vs1():
     print("\n[+] Iniciando AG2 (1 vs 1) con MEMORIA PERSISTENTE (modo interactivo)...")
 
@@ -101,27 +90,6 @@ def iniciar_consola_ag2_1vs1():
         print(f"\n[+] Memoria guardada ({len(historial_actualizado)} mensajes).")
 
 
-# ---------------------------------------------------------------------------
-# Modo batería automática: mide métricas específicas de la orquestación AG2
-# (no de la recuperación RAG, que ya se valida en test_custom_client.py):
-#
-#   - t_turno_s: latencia de cada llamada a initiate_chat().
-#   - mensajes_historial: longitud del historial de chat tras cada turno,
-#     para observar cómo crece el contexto que AG2 reenvía en cada turno.
-#   - tokens_contexto_enviado: tokens estimados de TODO el historial que se
-#     reenvía a la API en ese turno (AG2 no resume ni filtra el contexto
-#     como sí hace el RAG de MyCustomClient, así que este coste crece con
-#     cada turno).
-#   - tokens_respuesta: tokens de la respuesta generada en ese turno.
-#   - memoria_recordada_en_sesion: verificación de que el agente recuerda,
-#     dentro de la MISMA sesión, un dato mencionado en un turno anterior.
-#   - persistencia_entre_sesiones: verificación de que, al recargar el
-#     historial guardado en disco (simulando reabrir el juego), el número
-#     de mensajes recuperados coincide con los guardados.
-#   - purga_por_disrupcion_emocional: verificación de que, si la emoción
-#     declarada no coincide con la guardada, GestorMemoriaAG2 purga el
-#     historial en lugar de arrastrar contexto obsoleto.
-# ---------------------------------------------------------------------------
 BATERIA_TURNOS = [
     "Hola, me llamo Godofredo y quiero aprender sobre hechizos de fuego.",
     "¿Qué opinas de la magia de hielo en comparación con la de fuego?",
@@ -133,8 +101,6 @@ def ejecutar_bateria_ag2():
     print("\n[+] Iniciando AG2 (1 vs 1) con MEMORIA PERSISTENTE (modo batería automática)...")
     llm_config = crear_llm_config()
 
-    # Empezamos la "sesión 1" desde un historial limpio para que la prueba
-    # sea reproducible, guardando lo anterior si existía.
     gestor = GestorMemoriaAG2()
     resultados = []
 
@@ -179,8 +145,6 @@ def ejecutar_bateria_ag2():
     sesion_1_completa = len(resultados) == len(BATERIA_TURNOS)
 
     if resultados:
-        # Verificación de memoria a corto plazo DENTRO de la misma sesión:
-        # el último turno ejecutado pregunta explícitamente por un dato (el
         ultima_respuesta = resultados[-1]["respuesta"]
         recuerda_nombre = "godofredo" in ultima_respuesta.lower()
         print(f"\n[Verificación] ¿El agente recuerda el nombre mencionado en turnos anteriores? {'SÍ' if recuerda_nombre else 'NO'}")
@@ -225,16 +189,11 @@ def ejecutar_bateria_ag2():
             except Exception as e:
                 print(f"\n[!] La API del LLM falló en el turno de continuidad ({e}). Se omite esta verificación.")
 
-        # --- Sub-prueba: purga por disrupción emocional (no requiere LLM) ---
-        # Si la emoción declarada difiere de la guardada, GestorMemoriaAG2 debe
-        # descartar el historial en vez de arrastrar contexto obsoleto.
         print("\n[*] Sub-prueba: recargando memoria con una emoción DISTINTA a la guardada (enfadado)...")
         historial_tras_disrupcion = gestor.cargar_conversacion(NOMBRE_NPC, "enfadado")
         purga_ok = len(historial_tras_disrupcion) == 0
         print(f"[Verificación] Mensajes tras cambio de emoción: {len(historial_tras_disrupcion)} | ¿Se purgó correctamente? {'SÍ' if purga_ok else 'NO'}")
 
-        # Restauramos el fichero de memoria a su estado neutral para no dejar
-        # el purgado como estado final en disco.
         gestor.guardar_conversacion(NOMBRE_NPC, historial_sesion_1, "neutral")
     else:
         print("\n[*] Se omiten las verificaciones de persistencia entre sesiones y de disrupción "

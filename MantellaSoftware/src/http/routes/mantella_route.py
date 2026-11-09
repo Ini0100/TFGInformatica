@@ -39,7 +39,6 @@ class mantella_route(routeable):
         self.__image_secret_key_file: str = image_secret_key_file
         self.__game: GameStateManager | None = None
         
-        # Guardamos tu gestor de memoria en la instancia de la ruta
         self.gestor_memoria = gestor_memoria
 
         # if not self._can_route_be_used():
@@ -76,8 +75,6 @@ class mantella_route(routeable):
         
         chat_manager = ChatManager(self._config, tts, llm_client)
         
-        # --- CORRECCIÓN CLAVE ---
-        # Inicializamos GameStateManager con los 7 parámetros obligatorios que demanda Mantella v0.13.1
         self.__game = GameStateManager(
             game, 
             chat_manager, 

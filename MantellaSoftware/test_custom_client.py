@@ -8,7 +8,6 @@ import csv
 logging.basicConfig(level=logging.WARNING, format='%(levelname)s - %(message)s')
 sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 
-# IMPORTAMOS NUESTRO CLIENTE, NO EL CLIENTE BASE
 from src.llm.my_custom_client import MyCustomClient
 from src.config.definitions.llm_definitions import NarrationIndicatorsEnum
 import tiktoken
@@ -22,8 +21,6 @@ class MockConfig:
         self.custom_token_count = 4096
         self.vision_enabled = False
         self.advanced_actions_enabled = False
-        # Requerido por SystemMessage/Message desde la corrección del bug de
-        # 'MyCustomClient' que no conservaba la config para construir mensajes.
         self.narration_indicators = NarrationIndicatorsEnum.PARANTHESES
 
 class MockMessage:
@@ -47,17 +44,6 @@ class MockMessageThread:
     def add_system_message(self, text):
         self.messages.append(MockMessage("system", text))
 
-# ---------------------------------------------------------------------------
-# Bateria de pruebas fija (reproducible): cada entrada define un NPC, una
-# pregunta y el "tema esperado" del documento que la memoria RAG deberia
-# recuperar. Los NPC Farengar y Nazeem tienen documentos de prueba cargados
-# en ChromaDB (Avengers y Star Wars respectivamente, ver cargar_documentos.py)
-# que no guardan relacion alguna con Skyrim, lo que permite verificar de forma
-# inequivoca si la respuesta del LLM procede de la memoria recuperada o no.
-# La ultima pregunta de control no tiene relacion con ningun documento
-# cargado, y sirve para medir el comportamiento del sistema cuando la
-# recuperacion no deberia aportar contexto relevante.
-# ---------------------------------------------------------------------------
 BATERIA_PRUEBAS = [
     ("Nazeem", "¿Qué fue la Guerra de los Clones?", "star_wars"),
     ("Nazeem", "Háblame del Canciller Supremo Palpatine.", "star_wars"),
@@ -73,9 +59,8 @@ def contar_tokens(texto: str) -> int:
 
 
 def instrumentar_cliente(cliente: MyCustomClient, metricas: dict):
-    """Envuelve las funciones internas de MyCustomClient con cronometros,
-    sin modificar el codigo de produccion, para medir cada fase del
-    pipeline RAG + HyDE de forma independiente."""
+    """Envuelve las funciones internas de MyCustomClient con cronómetros para
+    medir cada fase del pipeline RAG + HyDE de forma independiente."""
 
     hyde_original = cliente._generar_documento_hipotetico
     async def hyde_instrumentado(pregunta, npc_actual):
@@ -105,11 +90,6 @@ def instrumentar_cliente(cliente: MyCustomClient, metricas: dict):
     cliente.cross_encoder.predict = predict_instrumentado
 
 
-# ---------------------------------------------------------------------------
-# Modo interactivo: conversación manual por consola con un único NPC, con el
-# mismo cliente (RAG + HyDE) que usa el juego. Útil para probar a mano
-# preguntas que no están en la batería fija de abajo.
-# ---------------------------------------------------------------------------
 async def iniciar_consola_custom_client():
     print("\n[+] Iniciando MyCustomClient (modo conversación manual)...")
     config = MockConfig()
@@ -204,12 +184,8 @@ async def ejecutar_bateria():
             "respuesta": respuesta_completa.strip(),
         }
         resultados.append(fila)
-
-        # Ollama es local y no tiene límite de peticiones por minuto, pero se deja
-        # una pausa breve entre turnos para no saturar la GPU con el re-ranker.
         await asyncio.sleep(1)
 
-    # --- Guardar resultados en CSV para la memoria del TFG ---
     csv_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "resultados_test_custom_client.csv")
     with open(csv_path, "w", newline="", encoding="utf-8") as f:
         writer = csv.DictWriter(f, fieldnames=list(resultados[0].keys()))
@@ -217,7 +193,6 @@ async def ejecutar_bateria():
         writer.writerows(resultados)
     print(f"\n[+] Resultados guardados en {csv_path}")
 
-    # --- Tabla resumen en consola ---
     print("\n=== RESUMEN ===")
     header = f"{'NPC':<10}{'t_total(s)':<12}{'t_hyde(s)':<11}{'t_retr(s)':<11}{'t_rerank(s)':<13}{'score':<8}{'tok_in':<8}{'tok_out':<8}"
     print(header)
