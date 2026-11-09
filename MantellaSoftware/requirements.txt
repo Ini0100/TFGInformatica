@@ -1,8 +1,11 @@
 # python 3.11
+--extra-index-url https://download.pytorch.org/whl/cu121
+
+# Mantella
 pandas==1.5.3
 tiktoken==0.4.0
-httpx==0.27.2
-openai==1.6.0
+httpx==0.28.1
+openai==2.38.0
 aiohttp==3.8.4
 faster-whisper==1.0.3
 requests==2.31.0
@@ -11,8 +14,8 @@ soundfile==0.12.1
 numpy==1.25.0
 scipy==1.11.1
 charset-normalizer==3.2.0
-fastapi==0.110.2
-gradio==4.28.3
+fastapi==0.136.3
+gradio==6.14.0
 sphinx==7.2.6
 myst-parser==2.0.0
 sphinx-design==0.5.0
@@ -24,3 +27,11 @@ opencv-python==4.10.0.84
 sounddevice==0.5.1
 silero_vad==5.1.2
 git+https://github.com/usefulsensors/moonshine.git@2f6282347950c8d711bd7319287babb87ec5a92d#subdirectory=moonshine-onnx
+
+# TFG: agentes AG2, arquitectura RAG y re-ranking en GPU
+ag2==0.13.1
+chromadb==1.5.9
+sentence-transformers==5.5.1
+langchain-text-splitters==1.1.2
+onnxruntime==1.23.2
+torch==2.5.1+cu121

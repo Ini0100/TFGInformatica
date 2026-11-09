@@ -1,0 +1,36 @@
+# Environment & dependencies
+MantellaSoftware/MantellaEnv/
+__pycache__/
+*.pyc
+
+# Secrets (API keys are read from *_SECRET_KEY.txt files)
+*SECRET_KEY.txt
+
+# Local databases (regenerated with cargar_documentos.py / at runtime)
+MantellaSoftware/npc_chroma_db/
+MantellaSoftware/npc_conversations_db/
+MantellaSoftware/data/chroma_db/
+
+# Heavy voice models and binaries
+MantellaSoftware/piper/models/
+MantellaSoftware/piper/espeak-ng-data/
+*.dll
+*.exe
+*.bin
+*.zip
+
+# Test battery outputs
+MantellaSoftware/resultados_*.csv
+
+# Caches & logs
+.cache/
+.pytest_cache/
+*.log
+
+# Editors & OS
+.claude/
+.idea/
+.vscode/
+*.swp
+.DS_Store
+Thumbs.db
